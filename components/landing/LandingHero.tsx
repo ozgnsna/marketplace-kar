@@ -1,7 +1,6 @@
 "use client";
 
 import { BrandLogo } from "@/components/BrandLogo";
-import { ChartDecoration } from "@/components/landing/ChartDecoration";
 
 interface LandingHeroProps {
   onPrimaryCta: () => void;
@@ -9,50 +8,65 @@ interface LandingHeroProps {
 
 export function LandingHero({ onPrimaryCta }: LandingHeroProps) {
   return (
-    <section className="relative overflow-hidden px-5 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-20 lg:px-12 lg:pb-28 lg:pt-24">
-      {/* Taban: yumuşak lacivertten koyu teal-yeşile doğal geçiş */}
+    <section className="relative overflow-hidden px-5 pt-[120px] pb-[100px] sm:px-6">
+      {/* Derin, sade premium gradient */}
       <div
-        className="absolute inset-0 bg-[linear-gradient(155deg,#080f1c_0%,#0f2138_28%,#143d38_58%,#0f3028_85%,#0c2822_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(165deg,#050a12_0%,#0a1628_22%,#0f2440_48%,#0d2036_72%,#081418_100%)]"
         aria-hidden
       />
-      {/* Üstte çok hafif ışık (parlaklığı kısar) */}
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(255,255,255,0.07),transparent_52%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-30%,rgba(56,189,248,0.08),transparent_55%)]"
         aria-hidden
       />
-      {/* Sağ altta sütlü yeşil yıkama — sert değil */}
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_95%_85%,rgba(16,185,129,0.11),transparent_55%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_100%_0%,rgba(16,185,129,0.06),transparent_50%)]"
         aria-hidden
       />
-      {/* Kenarları hafif karartan vignette */}
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_95%_80%_at_50%_50%,transparent_40%,rgba(0,0,0,0.18)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(0,0,0,0.35),transparent_55%)]"
         aria-hidden
       />
 
-      <ChartDecoration />
+      <div className="relative z-10 mx-auto w-full max-w-[800px] text-center">
+        <header className="mb-8 flex flex-col items-center sm:mb-8">
+          <div className="isolate flex justify-center">
+            <BrandLogo
+              variant="hero"
+              priority
+              knockoutWhiteOnDark
+              className="drop-shadow-[0_2px_24px_rgba(0,0,0,0.25)]"
+            />
+          </div>
+          <p className="mt-2 text-[11px] font-medium uppercase tracking-[0.32em] text-white/40 sm:text-xs">
+            pazarkâr
+          </p>
+        </header>
 
-      <div className="relative z-10 mx-auto max-w-3xl px-1 text-center lg:max-w-4xl">
-        <div className="mb-8 flex justify-center sm:mb-10">
-          <BrandLogo variant="hero" priority className="drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]" />
-        </div>
-        <h1 className="text-balance text-[1.65rem] font-bold leading-[1.15] tracking-[-0.02em] text-white sm:text-4xl sm:leading-[1.12] lg:text-[2.65rem] lg:leading-[1.08] [text-shadow:0_2px_32px_rgba(0,0,0,0.35)]">
-          Trendyol & Hepsiburada satışlarında gerçek kârını hesapla
+        <h1 className="text-balance text-[1.75rem] font-semibold leading-[1.18] tracking-[-0.03em] text-white sm:text-[2rem] md:text-[clamp(2.25rem,4.2vw,3rem)] md:leading-[1.14] [text-shadow:0_1px_40px_rgba(0,0,0,0.25)]">
+          Zarar ettiğini fark etmeden satış yapıyor olabilirsin.
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-pretty text-[0.95rem] leading-relaxed text-slate-300/95 sm:mt-7 sm:max-w-2xl sm:text-lg sm:leading-relaxed">
-          Komisyon, kargo, kampanya ve iade dahil NET kârını anında gör.
+
+        <p className="mx-auto mt-4 max-w-[38rem] text-pretty text-base leading-relaxed text-white/70 md:text-lg md:leading-relaxed">
+          Trendyol & Hepsiburada satışlarında gerçek NET kazancını saniyeler içinde hesapla.
         </p>
-        <div className="mt-10 flex flex-col items-center sm:mt-11">
+
+        <div className="mt-8 flex flex-col items-center">
           <button
             type="button"
             onClick={onPrimaryCta}
-            className="inline-flex min-h-[54px] min-w-[220px] items-center justify-center rounded-2xl bg-[#22C55E] px-12 py-3.5 text-base font-semibold text-white shadow-[0_4px_14px_rgba(0,0,0,0.2),0_16px_40px_-10px_rgba(34,197,94,0.45)] ring-1 ring-white/15 transition hover:brightness-105 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f2138]"
+            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500 px-9 py-4 text-base font-semibold text-white shadow-[0_4px_20px_rgba(5,150,105,0.35)] ring-1 ring-white/10 transition duration-200 ease-out hover:scale-[1.03] hover:shadow-[0_8px_32px_rgba(5,150,105,0.45)] active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/90 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]"
           >
-            Ücretsiz Hesapla
+            Kârımı Hesapla
           </button>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-400/95">
-            Zarar edip etmediğini hemen öğren.
+
+          <p className="mt-4 flex max-w-lg flex-wrap items-center justify-center gap-x-5 gap-y-1 text-center text-[13px] leading-relaxed text-white/60 sm:text-sm">
+            <span className="whitespace-nowrap">✔ 30 saniyede sonuç</span>
+            <span className="whitespace-nowrap">✔ Ücretsiz</span>
+            <span className="whitespace-nowrap">✔ Kayıt gerekmez</span>
+          </p>
+
+          <p className="mt-6 text-xs text-emerald-100/70 sm:text-sm">
+            Bugün 124+ satıcı hesaplama yaptı
           </p>
         </div>
       </div>

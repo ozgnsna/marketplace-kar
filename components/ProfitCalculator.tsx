@@ -342,7 +342,7 @@ export function ProfitCalculator() {
             className="scroll-mt-24 rounded-3xl border border-slate-200/70 bg-white p-7 shadow-premium sm:p-9 lg:p-11"
           >
             <div className="mb-8 flex justify-center border-b border-slate-100 pb-7 sm:mb-9 sm:pb-8">
-              <BrandLogo variant="inline" />
+              <BrandLogo variant="inline" plate="soft" />
             </div>
             <FormStep
               step={1}
