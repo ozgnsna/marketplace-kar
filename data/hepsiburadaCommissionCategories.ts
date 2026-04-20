@@ -1,0 +1,204 @@
+/**
+ * Hepsiburada komisyon kategorileri — elle düzenlenen temiz kategori yolları (PDF gürültüsü yok).
+ * `commissionCategories.ts` içinde `CommissionCategoryRow`’a dönüştürülür.
+ */
+
+export type HbCommissionCategoryRaw = {
+  id: string;
+  platform: "hepsiburada";
+  fullPath: string;
+  commissionRate: number;
+  commissionLabel: string;
+};
+
+export const HB_COMMISSION_CATEGORIES: HbCommissionCategoryRaw[] = [
+  { id: "hb-altin-yatirim", platform: "hepsiburada", fullPath: "Altın > Altın Yatırım", commissionRate: 6.0, commissionLabel: "%6,00" },
+
+  { id: "hb-taki-mucevher", platform: "hepsiburada", fullPath: "Aksesuar > Altın / Takı / Mücevher", commissionRate: 18.64, commissionLabel: "%18,64" },
+  { id: "hb-saat-gozluk", platform: "hepsiburada", fullPath: "Aksesuar > Saat/Gözlük", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-aksesuar-genel", platform: "hepsiburada", fullPath: "Aksesuar > Aksesuar", commissionRate: 18.0, commissionLabel: "%18,00" },
+
+  { id: "hb-valiz", platform: "hepsiburada", fullPath: "Çanta > Valiz", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-canta", platform: "hepsiburada", fullPath: "Çanta > Çanta", commissionRate: 18.0, commissionLabel: "%18,00" },
+
+  { id: "hb-ayakkabi", platform: "hepsiburada", fullPath: "Ayakkabı > Ayakkabı", commissionRate: 19.49, commissionLabel: "%19,49" },
+
+  { id: "hb-giyim", platform: "hepsiburada", fullPath: "Giyim > Giyim", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-bebek-giyim", platform: "hepsiburada", fullPath: "Giyim > Bebek Giyim", commissionRate: 18.0, commissionLabel: "%18,00" },
+
+  { id: "hb-parfum", platform: "hepsiburada", fullPath: "Parfüm > Parfümler", commissionRate: 17.0, commissionLabel: "%17,00" },
+
+  { id: "hb-outdoor-kamp", platform: "hepsiburada", fullPath: "Outdoor- Deniz > Outdoor-Deniz Ekipmanları > Kamp / Deniz / Doğa", commissionRate: 14.0, commissionLabel: "%14,00" },
+  { id: "hb-outdoor-balik", platform: "hepsiburada", fullPath: "Outdoor- Deniz > Outdoor-Deniz Ekipmanları > Balık Av Malzemeleri", commissionRate: 16.0, commissionLabel: "%16,00" },
+  { id: "hb-outdoor-tekne-gps", platform: "hepsiburada", fullPath: "Outdoor- Deniz > Outdoor-Deniz Ekipmanları > Tekne Ürünleri / GPS / Teleskop / Dürbün", commissionRate: 12.0, commissionLabel: "%12,00" },
+
+  { id: "hb-spor-giyim-ayakkabi", platform: "hepsiburada", fullPath: "Spor & Outdoor > Giyim & Ayakkabı", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-spor-tekne-motor", platform: "hepsiburada", fullPath: "Spor & Outdoor > Outdoor-Deniz Ekipmanları > Tekne / Motor / Balık Bulucu", commissionRate: 8.47, commissionLabel: "%8,47" },
+  { id: "hb-spor-aletleri", platform: "hepsiburada", fullPath: "Spor & Outdoor > Spor Aletleri", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-fitness-kondisyon", platform: "hepsiburada", fullPath: "Spor & Outdoor > Fitness ve Kondisyon Ekipmanları", commissionRate: 13.0, commissionLabel: "%13,00" },
+  { id: "hb-bisiklet-paten", platform: "hepsiburada", fullPath: "Spor & Outdoor > Bisikletler ve Paten", commissionRate: 10.0, commissionLabel: "%10,00" },
+
+  { id: "hb-spor-branslari", platform: "hepsiburada", fullPath: "Spor Branşları > Spor Branşları", commissionRate: 13.0, commissionLabel: "%13,00" },
+  { id: "hb-taraftar", platform: "hepsiburada", fullPath: "Taraftar Ürünleri > Taraftar Ürünleri", commissionRate: 18.0, commissionLabel: "%18,00" },
+
+  { id: "hb-cep-telefonu", platform: "hepsiburada", fullPath: "Cep Telefonu > Cep Telefonu", commissionRate: 7.0, commissionLabel: "%7,00" },
+  { id: "hb-cep-telefonu-ikinci-el", platform: "hepsiburada", fullPath: "Cep Telefonu > Cep Telefonu > Yenilenmiş / İkinci El / Tuşlu", commissionRate: 8.5, commissionLabel: "%8,50" },
+
+  { id: "hb-tablet", platform: "hepsiburada", fullPath: "Bilgisayar > Tablet", commissionRate: 7.0, commissionLabel: "%7,00" },
+  { id: "hb-tasinabilir-bilgisayar", platform: "hepsiburada", fullPath: "Bilgisayar > Taşınabilir Bilgisayar", commissionRate: 7.0, commissionLabel: "%7,00" },
+  { id: "hb-bilgisayar-ssd", platform: "hepsiburada", fullPath: "Bilgisayar > Bilgisayar Bileşenleri & Çevre Birimleri > SSD", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-bilgisayar-bilesenleri", platform: "hepsiburada", fullPath: "Bilgisayar > Bilgisayar Bileşenleri > Anakart / Ekran Kartı / RAM / İşlemci / Kasa", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-barkod-etiket-ribon", platform: "hepsiburada", fullPath: "Bilgisayar > Bilgisayar Bileşenleri > Barkod Etiketi / Ribon / Yazıcı Şeridi", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-ek-guvence-tv-dijital", platform: "hepsiburada", fullPath: "Bilgisayar > Bilgisayar Bileşenleri > Ek Güvence Paketleri TV / Dijital Yayın", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-masaustu-server", platform: "hepsiburada", fullPath: "Bilgisayar > Bilgisayar Bileşenleri > Masaüstü Bilgisayar / Server", commissionRate: 7.0, commissionLabel: "%7,00" },
+  { id: "hb-dokunmatik-pos-pc", platform: "hepsiburada", fullPath: "Bilgisayar > Bilgisayar Bileşenleri > Dokunmatik Pos PC", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-projeksiyon-aks", platform: "hepsiburada", fullPath: "Bilgisayar > Projeksiyon & Aksesuarları > Projeksiyon Aksesuarları", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-projeksiyon-cihaz", platform: "hepsiburada", fullPath: "Bilgisayar > Projeksiyon & Aksesuarları > Projeksiyon Cihazı", commissionRate: 11.0, commissionLabel: "%11,00" },
+  { id: "hb-yazicilar", platform: "hepsiburada", fullPath: "Bilgisayar > Yazıcılar ve Aksesuarları > Yazıcılar", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-yazici-aksesuar", platform: "hepsiburada", fullPath: "Bilgisayar > Yazıcılar ve Aksesuarları > Drum / Kartuş / Toner / Yedek Parça", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-ag-modem", platform: "hepsiburada", fullPath: "Bilgisayar > Ağ/Modem, Akıllı Ev", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-cevre-birimleri-disk-klavye", platform: "hepsiburada", fullPath: "Bilgisayar > Çevre Birimleri > Disk / Klavye / Mouse / USB", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-cevre-birimleri-adaptor", platform: "hepsiburada", fullPath: "Bilgisayar > Çevre Birimleri > Adaptör / HDD Kutusu / Mouse Pad", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-yazilim", platform: "hepsiburada", fullPath: "Bilgisayar > Yazılım", commissionRate: 10.0, commissionLabel: "%10,00" },
+
+  { id: "hb-aynasiz-slr", platform: "hepsiburada", fullPath: "Foto-Kamera > Aynasız SLR Fotoğraf Makineleri", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-foto-kamera-aks", platform: "hepsiburada", fullPath: "Foto-Kamera > Fotoğraf ve Kamera Aksesuarları", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-drone", platform: "hepsiburada", fullPath: "Foto-Kamera > Drone & Drone Aksesuarları > Drone", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-drone-aks", platform: "hepsiburada", fullPath: "Foto-Kamera > Drone Aksesuarları", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-fotograf-video-kamera", platform: "hepsiburada", fullPath: "Foto-Kamera > Fotoğraf Makineleri & Video Kameralar", commissionRate: 10.0, commissionLabel: "%10,00" },
+
+  { id: "hb-oto-transmitter", platform: "hepsiburada", fullPath: "Oto Aksesuar > Oto Aksesuarları & Ses ve Navigasyon Sistemleri > Transmitter", commissionRate: 14.0, commissionLabel: "%14,00" },
+  { id: "hb-oto-ses-goruntu", platform: "hepsiburada", fullPath: "Oto Aksesuar > Oto Aksesuarları & Ses ve Navigasyon Sistemleri", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-oto-teyp-cerceve", platform: "hepsiburada", fullPath: "Oto Aksesuar > Oto Aksesuarları & Ses ve Navigasyon Sistemleri > Teyp Çerçeveleri / Navigasyon Harita", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-karavan", platform: "hepsiburada", fullPath: "Oto Aksesuar > Oto Aksesuar > Karavan & Aksesuarları", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-trafik-setleri", platform: "hepsiburada", fullPath: "Oto Aksesuar > Oto Aksesuar > Trafik Setleri ve Ürünleri", commissionRate: 19.0, commissionLabel: "%19,00" },
+  { id: "hb-arac-ici-cam-guneslik", platform: "hepsiburada", fullPath: "Oto Aksesuar > Araç İçi Ekipman & Aksesuarlar > Cam ve Güneşlik", commissionRate: 20.0, commissionLabel: "%20,00" },
+  { id: "hb-arac-ici-seyahat", platform: "hepsiburada", fullPath: "Oto Aksesuar > Araç İçi Ekipman & Aksesuarlar > Seyahat Ürünleri", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-arac-ici-mobil-elektrik", platform: "hepsiburada", fullPath: "Oto Aksesuar > Araç İçi Ekipman & Aksesuarlar > Mobil Elektrik", commissionRate: 16.0, commissionLabel: "%16,00" },
+  { id: "hb-arac-ici-aksesuarlar", platform: "hepsiburada", fullPath: "Oto Aksesuar > Araç İçi Ekipman & Aksesuarlar", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-arac-dis-aksesuar", platform: "hepsiburada", fullPath: "Oto Aksesuar > Araç Dış Aksesuarlar & Temizlik Ürünleri & Oto Aksesuar", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-brandalar", platform: "hepsiburada", fullPath: "Oto Aksesuar > Araç Dış Aksesuarlar & Temizlik Ürünleri & Oto Aksesuar > Brandalar", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-jant-zincir", platform: "hepsiburada", fullPath: "Oto Aksesuar > Araç Dış Aksesuarlar & Temizlik Ürünleri & Oto Aksesuar > Jant / Zincir / El Aleti", commissionRate: 16.0, commissionLabel: "%16,00" },
+  { id: "hb-arac-bakim-temizlik", platform: "hepsiburada", fullPath: "Oto Aksesuar > Araç Dış Aksesuarlar & Temizlik Ürünleri > Araç Bakım / Temizlik", commissionRate: 14.0, commissionLabel: "%14,00" },
+  { id: "hb-motosiklet-lastik", platform: "hepsiburada", fullPath: "Oto Aksesuar > Motosiklet Lastik", commissionRate: 9.0, commissionLabel: "%9,00" },
+  { id: "hb-oto-lastik", platform: "hepsiburada", fullPath: "Oto Aksesuar > Oto Lastik", commissionRate: 9.0, commissionLabel: "%9,00" },
+  { id: "hb-oto-yedek-parca", platform: "hepsiburada", fullPath: "Oto Aksesuar > Oto Yedek Parça", commissionRate: 20.0, commissionLabel: "%20,00" },
+  { id: "hb-aku", platform: "hepsiburada", fullPath: "Oto Aksesuar > Oto Aksesuar > Akü", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-motosiklet-aksesuar", platform: "hepsiburada", fullPath: "Oto Aksesuar > Motosiklet Aksesuarları", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-motosiklet-modelleri", platform: "hepsiburada", fullPath: "Oto Aksesuar > Motosiklet Aksesuarları > Motosiklet Modelleri", commissionRate: 6.0, commissionLabel: "%6,00" },
+  { id: "hb-yakit-yag", platform: "hepsiburada", fullPath: "Oto Aksesuar > Yakıt ve Yağ Katkıları", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-traktor-lastik", platform: "hepsiburada", fullPath: "Oto Aksesuar > Traktör Lastikleri", commissionRate: 12.0, commissionLabel: "%12,00" },
+
+  { id: "hb-sda-supurge-utuler", platform: "hepsiburada", fullPath: "SDA > Süpürge & Ütüler", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-sda-supurgeler", platform: "hepsiburada", fullPath: "SDA > Süpürgeler", commissionRate: 11.0, commissionLabel: "%11,00" },
+  { id: "hb-sda-buharli-temizlik", platform: "hepsiburada", fullPath: "SDA > Süpürgeler > Buharlı Temizlik / Halı Yıkama", commissionRate: 13.0, commissionLabel: "%13,00" },
+  { id: "hb-sda-aksesuar-yedek", platform: "hepsiburada", fullPath: "SDA > Aksesuar, Yedek Parça", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-sda-mutfak", platform: "hepsiburada", fullPath: "SDA > Mutfak Gereçleri & Pişirme-Hazırlama", commissionRate: 13.0, commissionLabel: "%13,00" },
+  { id: "hb-sda-endustriyel-mutfak", platform: "hepsiburada", fullPath: "SDA > Mutfak Gereçleri & Pişirme-Hazırlama > Endüstriyel Mutfak / Mutfak Tartıları", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-kisisel-bakim-aletleri", platform: "hepsiburada", fullPath: "SDA > Elektrikli Kişisel Bakım Aletleri", commissionRate: 15.0, commissionLabel: "%15,00" },
+
+  { id: "hb-beyaz-esya-ana", platform: "hepsiburada", fullPath: "MDA- Beyaz Eşya > Bulaşık, Çamaşır, Kurutma Makinesi ve Buzdolabı", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-ev-isitma-sogutma", platform: "hepsiburada", fullPath: "MDA- Beyaz Eşya > Ev Isıtma & Soğutma Sistemleri", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-ankastre", platform: "hepsiburada", fullPath: "MDA- Beyaz Eşya > Ankastre & Pişirme Grubu", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-beyaz-esya-yedek", platform: "hepsiburada", fullPath: "MDA- Beyaz Eşya > Beyaz Eşya Yedek Parça & Aksesuar", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-beyaz-esya-ek-guvence", platform: "hepsiburada", fullPath: "MDA- Beyaz Eşya > Beyaz Eşya Yedek Parça & Aksesuar > Ek Güvence Paketleri", commissionRate: 8.5, commissionLabel: "%8,50" },
+
+  { id: "hb-tv", platform: "hepsiburada", fullPath: "TV > LCD Televizyon", commissionRate: 8.34, commissionLabel: "%8,34" },
+
+  { id: "hb-anne-bebek-bakim", platform: "hepsiburada", fullPath: "Anne Bebek Ürünleri > Anne / Bebek Bakım > Bez / Islak Mendil", commissionRate: 13.0, commissionLabel: "%13,00" },
+  { id: "hb-anne-bebek-genel", platform: "hepsiburada", fullPath: "Anne Bebek Ürünleri > Anne / Bebek", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-bebek-bakim-marka", platform: "hepsiburada", fullPath: "Anne Bebek Ürünleri > Anne / Bebek Bakım > Bebek Kremi / Yağ / Şampuan", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-bebek-mama", platform: "hepsiburada", fullPath: "Anne Bebek Ürünleri > Anne / Bebek Beslenme > Bebek Mamaları", commissionRate: 11.0, commissionLabel: "%11,00" },
+
+  { id: "hb-cilt-bakimi", platform: "hepsiburada", fullPath: "Cilt Bakımı > Cilt Bakım", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-hindistan-cevizi-yagi", platform: "hepsiburada", fullPath: "Cilt Bakımı > Cilt Bakım / Saç Bakım > Hindistan Cevizi Yağı", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-sac-bakim", platform: "hepsiburada", fullPath: "Saç Bakım > Saç Bakım", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-makyaj", platform: "hepsiburada", fullPath: "Makyaj > Makyaj Ürünleri", commissionRate: 17.0, commissionLabel: "%17,00" },
+
+  { id: "hb-petshop-mama-kum", platform: "hepsiburada", fullPath: "Petshop > Petshop Beslenme > Kedi/Köpek Maması / Kedi Kumu", commissionRate: 14.0, commissionLabel: "%14,00" },
+  { id: "hb-petshop-beslenme", platform: "hepsiburada", fullPath: "Petshop > Petshop Beslenme > Yem / Bisküvi / Ödül / Vitamin", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-petshop-aksesuar", platform: "hepsiburada", fullPath: "Petshop > Petshop Aksesuar", commissionRate: 17.0, commissionLabel: "%17,00" },
+
+  { id: "hb-agiz-bakim", platform: "hepsiburada", fullPath: "Sağlık Kişisel Bakım Ürünleri > Ağız Bakım Ürünleri", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-sarjli-dis-fircasi", platform: "hepsiburada", fullPath: "Sağlık Kişisel Bakım Ürünleri > Ağız Bakım Ürünleri > Şarj Edilebilir/Pilli Diş Fırçası", commissionRate: 14.5, commissionLabel: "%14,50" },
+  { id: "hb-saglik-kisisel-bakim", platform: "hepsiburada", fullPath: "Sağlık Kişisel Bakım Ürünleri > Sağlık / Kişisel Bakım Ürünleri", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-hasta-bezi", platform: "hepsiburada", fullPath: "Sağlık Kişisel Bakım Ürünleri > Sağlık / Kişisel Bakım Ürünleri > Hasta Bezi", commissionRate: 13.0, commissionLabel: "%13,00" },
+  { id: "hb-aile-planlama", platform: "hepsiburada", fullPath: "Sağlık Kişisel Bakım Ürünleri > Sağlık / Kişisel Bakım Ürünleri > Aile Planlaması / +18", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-kuafor", platform: "hepsiburada", fullPath: "Sağlık Kişisel Bakım Ürünleri > Güzellik Salonu & Kuaför Ürünleri", commissionRate: 17.0, commissionLabel: "%17,00" },
+
+  { id: "hb-ev-bakim-temizlik", platform: "hepsiburada", fullPath: "Ev Bakım ve Temizlik > Deterjanlar, Temizlik Malzemeleri, Kağıt Ürünleri ve Mutfak Sarf Malzemeleri", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-gida", platform: "hepsiburada", fullPath: "Temel Tüketim ve Gıda > İçecek ve Gıda Ürünleri", commissionRate: 17.0, commissionLabel: "%17,00" },
+
+  { id: "hb-bungalov-ev", platform: "hepsiburada", fullPath: "Bahçe > Bungalov Ev", commissionRate: 9.0, commissionLabel: "%9,00" },
+  { id: "hb-bahce-dekorasyon", platform: "hepsiburada", fullPath: "Bahçe > Bahçe Dekorasyon ve Bakım", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-cicek-bakim", platform: "hepsiburada", fullPath: "Bahçe > Bahçe Dekorasyon ve Bakım > Çiçek Bakım & Bitki Yetiştirme", commissionRate: 20.0, commissionLabel: "%20,00" },
+  { id: "hb-bahce-mobilyasi", platform: "hepsiburada", fullPath: "Bahçe > Bahçe Mobilyası", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-mangal", platform: "hepsiburada", fullPath: "Bahçe > Mangal / Barbekü", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-bahce-makineleri", platform: "hepsiburada", fullPath: "Bahçe > Bahçe Makineleri", commissionRate: 14.0, commissionLabel: "%14,00" },
+
+  { id: "hb-banyo-ev-gerecleri", platform: "hepsiburada", fullPath: "Yapı Market > Banyo & Ev Gereçleri > Batarya / Musluk / Duş", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-boya-aksesuar", platform: "hepsiburada", fullPath: "Yapı Market > Banyo & Ev Gereçleri > Boya ve Aksesuarları", commissionRate: 16.0, commissionLabel: "%16,00" },
+  { id: "hb-banyo-dolap", platform: "hepsiburada", fullPath: "Yapı Market > Banyo & Ev Gereçleri > Banyo Dolap / Banyo Aksesuar", commissionRate: 16.0, commissionLabel: "%16,00" },
+  { id: "hb-hirdavat-temizlik", platform: "hepsiburada", fullPath: "Yapı Market > Hırdavat > Endüstriyel Temizlik / Mekanik El Aletleri / Seramik", commissionRate: 20.0, commissionLabel: "%20,00" },
+  { id: "hb-hirdavat-genel", platform: "hepsiburada", fullPath: "Yapı Market > Hırdavat > Merdiven / İş Güvenliği / Nalburiye", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-aydinlatma-urunleri", platform: "hepsiburada", fullPath: "Yapı Market > Aydınlatma Ürünleri", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-elektrik-aydinlatma", platform: "hepsiburada", fullPath: "Yapı Market > Elektrik ve Aydınlatma Ürünleri", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-jenerator", platform: "hepsiburada", fullPath: "Yapı Market > Jeneratör", commissionRate: 14.0, commissionLabel: "%14,00" },
+
+  { id: "hb-yatak-odasi-tekstili", platform: "hepsiburada", fullPath: "Ev Tekstili > Yatak Odası Tekstili", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-hali-kilim", platform: "hepsiburada", fullPath: "Ev Tekstili > Halı & Kilim", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-banyo-tekstili", platform: "hepsiburada", fullPath: "Ev Tekstili > Banyo Tekstili", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-mutfak-tekstil", platform: "hepsiburada", fullPath: "Ev Tekstili > Mutfak Tekstil", commissionRate: 18.0, commissionLabel: "%18,00" },
+
+  { id: "hb-mobilya-dekorasyon", platform: "hepsiburada", fullPath: "Mobilya > Dekorasyon", commissionRate: 22.0, commissionLabel: "%22,00" },
+  { id: "hb-ofis-dekorasyon", platform: "hepsiburada", fullPath: "Mobilya > Ofis Dekorasyon", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-ev-mobilya", platform: "hepsiburada", fullPath: "Mobilya > Ev Mobilya", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-yatak-odasi-takimlari", platform: "hepsiburada", fullPath: "Mobilya > Yatak Odası Takımları", commissionRate: 18.0, commissionLabel: "%18,00" },
+
+  { id: "hb-zuccaciye", platform: "hepsiburada", fullPath: "Züccaciye > Sofra & Mutfak Gereçleri", commissionRate: 18.0, commissionLabel: "%18,00" },
+
+  { id: "hb-oyuncak", platform: "hepsiburada", fullPath: "Oyuncak > Oyuncak", commissionRate: 18.0, commissionLabel: "%18,00" },
+
+  { id: "hb-ofis-makineleri", platform: "hepsiburada", fullPath: "Kırtasiye ve Ofis > Ofis Makineleri", commissionRate: 12.71, commissionLabel: "%12,71" },
+  { id: "hb-fotokopi-kagitlari", platform: "hepsiburada", fullPath: "Kırtasiye ve Ofis > Fotokopi Kağıtları", commissionRate: 7.0, commissionLabel: "%7,00" },
+  { id: "hb-para-kasasi", platform: "hepsiburada", fullPath: "Kırtasiye ve Ofis > Ofis Makineleri > Para Kasası", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-piller-sarj", platform: "hepsiburada", fullPath: "Kırtasiye ve Ofis > Piller ve Şarj Cihazları", commissionRate: 13.56, commissionLabel: "%13,56" },
+  { id: "hb-kirtasiye-sanat", platform: "hepsiburada", fullPath: "Kırtasiye ve Ofis > Kırtasiye ve Ofis Ürünleri ve Sanatsal Malzeme", commissionRate: 17.0, commissionLabel: "%17,00" },
+  { id: "hb-ajandalar", platform: "hepsiburada", fullPath: "Kırtasiye ve Ofis > Kırtasiye ve Ofis Ürünleri ve Sanatsal Malzeme > Ajandalar", commissionRate: 17.0, commissionLabel: "%17,00" },
+
+  { id: "hb-film", platform: "hepsiburada", fullPath: "Film > Film", commissionRate: 8.5, commissionLabel: "%8,50" },
+  { id: "hb-kitap", platform: "hepsiburada", fullPath: "Kitap > Kitap", commissionRate: 15.0, commissionLabel: "%15,00" },
+
+  { id: "hb-muzik-aletleri", platform: "hepsiburada", fullPath: "Müzik > Müzik Alet ve Ekipmanları > Amfi / Bateri / Davul / Pikap / Telli / Yaylı / Tuşlu", commissionRate: 12.0, commissionLabel: "%12,00" },
+  { id: "hb-muzik-mikrofon-kulaklik", platform: "hepsiburada", fullPath: "Müzik > Müzik Alet ve Ekipmanları > Mikrofon / Kulaklık / Nefesli / Perküsyon", commissionRate: 14.0, commissionLabel: "%14,00" },
+  { id: "hb-muzik-album-isik", platform: "hepsiburada", fullPath: "Müzik > Müzik Alet ve Ekipmanları > Albüm / Işık Sistemleri / Poster", commissionRate: 15.0, commissionLabel: "%15,00" },
+
+  { id: "hb-dijital-urunler-1", platform: "hepsiburada", fullPath: "Dijital Ürünler > Dijital Ürünler 1", commissionRate: 8.05, commissionLabel: "%8,05" },
+  { id: "hb-dijital-urunler-2", platform: "hepsiburada", fullPath: "Dijital Ürünler > Dijital Ürünler 2", commissionRate: 8.47, commissionLabel: "%8,47" },
+
+  { id: "hb-cep-aks-1", platform: "hepsiburada", fullPath: "Cep Telefonu Aksesuarları > Cep Telefonu Aksesuarları 1", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-cep-aks-2", platform: "hepsiburada", fullPath: "Cep Telefonu Aksesuarları > Cep Telefonu Aksesuarları 2", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-cep-aks-3", platform: "hepsiburada", fullPath: "Cep Telefonu Aksesuarları > Cep Telefonu Aksesuarları 3", commissionRate: 20.0, commissionLabel: "%20,00" },
+  { id: "hb-cep-aks-4", platform: "hepsiburada", fullPath: "Cep Telefonu Aksesuarları > Cep Telefonu Aksesuarları 4", commissionRate: 20.0, commissionLabel: "%20,00" },
+  { id: "hb-cep-aks-5", platform: "hepsiburada", fullPath: "Cep Telefonu Aksesuarları > Cep Telefonu Aksesuarları 5", commissionRate: 25.0, commissionLabel: "%25,00" },
+  { id: "hb-telsiz-masaustu-telefon", platform: "hepsiburada", fullPath: "Cep Telefonu Aksesuarları > Telsiz Masaüstü Telefonlar", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-akilli-saat-bileklik", platform: "hepsiburada", fullPath: "Cep Telefonu Aksesuarları > Akıllı Saat-Bileklik & Bluetooth Kulaklıklar", commissionRate: 15.0, commissionLabel: "%15,00" },
+
+  { id: "hb-oyun-konsolu-yeni", platform: "hepsiburada", fullPath: "Oyun Konsol > Oyun Konsolu > Xbox / PS4 / PS5 / Nintendo", commissionRate: 6.0, commissionLabel: "%6,00" },
+  { id: "hb-oyun-konsolu-eski", platform: "hepsiburada", fullPath: "Oyun Konsol > Oyun Konsolu > PS2 / PS3 / İkinci El", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-oyun-konsolu-diger", platform: "hepsiburada", fullPath: "Oyun Konsol > Oyun Konsolu > Diğer Oyun Konsolları", commissionRate: 8.5, commissionLabel: "%8,50" },
+  { id: "hb-konsol-oyunlari-yeni", platform: "hepsiburada", fullPath: "Oyun Konsol > Konsol Oyunları > PS5 / PS4 / Xbox / Nintendo / PC", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-konsol-oyunlari-eski", platform: "hepsiburada", fullPath: "Oyun Konsol > Konsol Oyunları > PS2 / PS3 / PSP Vita / Xbox 360", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-konsol-aks-yeni", platform: "hepsiburada", fullPath: "Oyun Konsol > Konsol Aksesuarları > PS4 / PS5 / Xbox / Nintendo / PC", commissionRate: 10.0, commissionLabel: "%10,00" },
+  { id: "hb-konsol-aks-eski", platform: "hepsiburada", fullPath: "Oyun Konsol > Konsol Aksesuarları > PS3 / PSP / PS2", commissionRate: 15.0, commissionLabel: "%15,00" },
+  { id: "hb-oyun-odeme-kartlari", platform: "hepsiburada", fullPath: "Oyun Konsol > Oyun Ödeme Kartları", commissionRate: 8.5, commissionLabel: "%8,50" },
+
+  { id: "hb-nontv-kablolar-guvenlik", platform: "hepsiburada", fullPath: "NonTV > Televizyon ve Elektronik Aksesuarları > Alarm / Kablo / Uydu / Güvenlik", commissionRate: 16.67, commissionLabel: "%16,67" },
+  { id: "hb-nontv-uydu-aksesuar", platform: "hepsiburada", fullPath: "NonTV > Televizyon ve Elektronik Aksesuarları > Uydu Alıcısı Aksesuarları / Ekran Temizleme", commissionRate: 18.0, commissionLabel: "%18,00" },
+  { id: "hb-nontv-tv-aksesuar", platform: "hepsiburada", fullPath: "NonTV > Televizyon ve Elektronik Aksesuarları > Kablo / Soket / Mikrofon / Receiver / TV Askı", commissionRate: 16.67, commissionLabel: "%16,67" },
+  { id: "hb-nontv-dijital-paket", platform: "hepsiburada", fullPath: "NonTV > Dijital ve Güvence Paketleri", commissionRate: 20.0, commissionLabel: "%20,00" },
+  { id: "hb-ev-guvenlik", platform: "hepsiburada", fullPath: "NonTV > Ev Güvenlik Ürünleri", commissionRate: 14.0, commissionLabel: "%14,00" },
+  { id: "hb-ev-sinema-ses", platform: "hepsiburada", fullPath: "NonTV > Ev Sinema ve Ses Sistemleri", commissionRate: 16.67, commissionLabel: "%16,67" },
+
+  { id: "hb-hobi-oyun", platform: "hepsiburada", fullPath: "Hobi-Oyun > Hobi, Oyun Eğlence Ürünleri", commissionRate: 18.0, commissionLabel: "%18,00" },
+];

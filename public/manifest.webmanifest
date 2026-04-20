@@ -1,0 +1,25 @@
+{
+  "name": "Pazaryeri Kâr Hesabı",
+  "short_name": "Kâr Hesabı",
+  "description": "Trendyol ve Hepsiburada için komisyon, kargo ve giderler dahil net kâr ve satış fiyatı hesaplama.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f5f9",
+  "theme_color": "#0B1F3B",
+  "lang": "tr",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/pazarkar-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pazarkar-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
