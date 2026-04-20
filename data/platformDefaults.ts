@@ -18,7 +18,8 @@ export type PlatformDefaultProfile = {
  */
 export const platformDefaults: Record<MarketplacePlatform, PlatformDefaultProfile> = {
   trendyol: {
-    serviceFee: 0,
+    /** Sipariş bazlı platform hizmet bedeli (satıcı paneli / sözleşmeye göre güncellenir) */
+    serviceFee: 13.19,
     packaging: 0,
     stopajRate: 1,
     paymentFeeRate: 1.2,

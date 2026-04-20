@@ -27,7 +27,7 @@ export function BrandLogo({
 }: BrandLogoProps) {
   const sizeClass =
     variant === "hero"
-      ? "h-auto w-[min(220px,72vw)] max-w-[240px] sm:max-w-[260px]"
+      ? "h-auto w-[min(320px,85vw)] max-w-[340px] sm:max-w-[360px]"
       : "h-9 w-auto max-w-[200px] sm:h-10 sm:max-w-[220px]";
 
   const blendClass =

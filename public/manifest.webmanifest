@@ -10,16 +10,10 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/pazarkar-logo.png",
-      "sizes": "512x512",
+      "src": "/favicon.png",
+      "sizes": "114x127",
       "type": "image/png",
       "purpose": "any"
-    },
-    {
-      "src": "/pazarkar-logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
     }
   ]
 }

@@ -17,7 +17,6 @@ import { enrichBreakdown } from "@/lib/enrichBreakdown";
 import { getPaymentFeeRateByOrderAmount } from "@/lib/getPaymentFeeTier";
 import { applyPlatformDefaultsToInputs } from "@/lib/getPlatformDefaults";
 import { getCargoPrice } from "@/lib/cargoPrice";
-import { BrandLogo } from "@/components/BrandLogo";
 import { LandingHero } from "@/components/landing/LandingHero";
 import { PsychologyCard } from "@/components/landing/PsychologyCard";
 import {
@@ -335,15 +334,12 @@ export function ProfitCalculator() {
     <div className="min-h-screen bg-[#f3f5f9]">
       <LandingHero onPrimaryCta={scrollToCalculator} />
 
-      <div className="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 sm:pb-24 sm:pt-12 lg:px-10">
+      <div className="mx-auto max-w-6xl px-4 pb-8 pt-10 sm:px-6 sm:pb-10 sm:pt-12 lg:px-10">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start lg:gap-12">
           <section
             id="hesaplama-basla"
             className="scroll-mt-24 rounded-3xl border border-slate-200/70 bg-white p-7 shadow-premium sm:p-9 lg:p-11"
           >
-            <div className="mb-8 flex justify-center border-b border-slate-100 pb-7 sm:mb-9 sm:pb-8">
-              <BrandLogo variant="inline" plate="soft" />
-            </div>
             <FormStep
               step={1}
               title="Pazaryeri"
@@ -865,6 +861,11 @@ export function ProfitCalculator() {
                   <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
                     Hepsiburada&apos;da genellikle sabit hizmet bedelidir. Hesabınıza göre değişebilir.
                   </p>
+                ) : inputs.platform === "trendyol" ? (
+                  <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
+                    Trendyol&apos;da sipariş başına platform hizmet bedeli hesabınıza göre değişebilir;
+                    varsayılan yaklaşık tutar kullanılır.
+                  </p>
                 ) : null}
               </div>
               <div className="flex items-end">
@@ -942,7 +943,7 @@ export function ProfitCalculator() {
         </aside>
       </div>
 
-      <footer className="mt-16 border-t border-slate-200/80 pt-10 text-center text-xs text-slate-500 sm:text-left">
+      <footer className="mt-5 border-t border-slate-200/80 pt-4 text-center text-xs text-slate-500 sm:text-left">
         <p>
           Sonuç tahminidir. Kesin rakam için pazaryeri hakediş ve mali müşavirinizi kullanın.
         </p>

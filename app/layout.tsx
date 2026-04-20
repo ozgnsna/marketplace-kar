@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
   icons: {
-    icon: [{ url: "/pazarkar-logo.png", type: "image/png", sizes: "any" }],
-    apple: [{ url: "/pazarkar-logo.png", sizes: "180x180", type: "image/png" }],
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/favicon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
 };

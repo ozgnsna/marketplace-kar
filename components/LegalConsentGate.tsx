@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { LegalConsentModal } from "@/components/LegalConsentModal";
-import { readLegalAccepted } from "@/lib/legalStorage";
+import { LEGAL_ACCEPTED_KEY, readLegalAccepted } from "@/lib/legalStorage";
 
 type LegalConsentGateProps = {
   children: React.ReactNode;
@@ -21,23 +21,30 @@ export function LegalConsentGate({ children }: LegalConsentGateProps) {
 
   useLayoutEffect(() => {
     try {
+      if (process.env.NODE_ENV === "development" && typeof window !== "undefined") {
+        const reset = new URLSearchParams(window.location.search).get("resetConsent");
+        if (reset === "1") {
+          window.localStorage.removeItem(LEGAL_ACCEPTED_KEY);
+        }
+      }
       setStatus(readLegalAccepted() ? "done" : "need");
     } catch {
       setStatus("need");
     }
   }, []);
 
-  const blockInteraction = status !== "done";
   const showModal = status === "need";
+  /** Sadece modal açıkken arkayı kilitle. `loading` iken modal yok — pointer-events kapalı bırakılırsa hiçbir şeye tıklanamaz. */
+  const blockInteraction = status === "need";
 
   useEffect(() => {
-    if (!blockInteraction) return;
+    if (!showModal) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = prev;
     };
-  }, [blockInteraction]);
+  }, [showModal]);
 
   const handleAccept = useCallback(() => {
     setStatus("done");
