@@ -349,13 +349,10 @@ export function ProfitCalculator() {
               title="Pazaryeri"
               hint="Hesaplamanın hangi pazaryeri kurallarına göre yapılacağını seçin."
             >
-              <div>
-                <p className="mb-3 text-sm font-medium text-slate-600">Pazaryeri</p>
-                <PlatformLogoCards
-                  value={inputs.platform}
-                  onChange={(v: MarketplacePlatform) => setInput("platform", v, { fromUser: true })}
-                />
-              </div>
+              <PlatformLogoCards
+                value={inputs.platform}
+                onChange={(v: MarketplacePlatform) => setInput("platform", v, { fromUser: true })}
+              />
             </FormStep>
 
             <FormStep
