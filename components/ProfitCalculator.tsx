@@ -971,7 +971,10 @@ export function ProfitCalculator() {
         className="floating-badge-enter fixed bottom-4 right-4 z-50 w-[calc(100vw-2rem)] max-w-[220px] rounded-xl border border-white/30 bg-white/10 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 px-3 py-2 text-left text-xs font-medium text-white shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl sm:px-4 sm:py-3 sm:text-sm"
       >
         <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400 align-middle animate-pulse" />
-        Yeni pazaryerleri ekleniyor… çok yakında 🚀
+        <span className="inline-block align-middle">
+          <span className="block">Yeni pazaryerleri ekleniyor…</span>
+          <span className="block">Shopier, PttAVM, ÇiçekSepeti 🚀</span>
+        </span>
       </button>
 
       {isEarlyAccessOpen ? (
