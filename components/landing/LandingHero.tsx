@@ -3,7 +3,7 @@
 import { BrandLogo } from "@/components/BrandLogo";
 
 /** A/B: "Gerçek kârını gör" */
-const HERO_CTA_LABEL = "Kâr mı zarar mı? Hemen öğren [DEBUG]";
+const HERO_CTA_LABEL = "Kâr mı zarar mı? Hemen öğren";
 
 interface LandingHeroProps {
   onPrimaryCta: () => void;

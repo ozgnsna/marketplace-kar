@@ -948,6 +948,13 @@ export function ProfitCalculator() {
           Sonuç tahminidir. Kesin rakam için pazaryeri hakediş ve mali müşavirinizi kullanın.
         </p>
       </footer>
+      <div
+        className="floating-badge-enter fixed bottom-4 right-4 z-50 w-[calc(100vw-2rem)] max-w-[220px] rounded-xl border border-white/20 bg-white/10 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 px-3 py-2 text-xs font-medium text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 hover:shadow-xl sm:px-4 sm:py-3 sm:text-sm"
+        aria-hidden="true"
+      >
+        <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400 align-middle animate-pulse" />
+        Yeni pazaryerleri ekleniyor… çok yakında 🚀
+      </div>
       </div>
     </div>
   );

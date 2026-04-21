@@ -35,6 +35,21 @@
   animation: footer-social-enter 0.45s ease-out both;
 }
 
+@keyframes floating-badge-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-badge-enter {
+  animation: floating-badge-enter 0.55s ease-out both;
+}
+
 :root {
   --background: #f3f5f9;
   --foreground: #0b1f3b;
