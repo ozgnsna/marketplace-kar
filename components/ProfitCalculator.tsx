@@ -83,6 +83,8 @@ export function ProfitCalculator() {
   const [cargoCarrier, setCargoCarrier] = useState("average");
   const [kargoAuto, setKargoAuto] = useState(true);
   const [paymentFeeAuto, setPaymentFeeAuto] = useState(true);
+  const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false);
+  const [earlyAccessEmail, setEarlyAccessEmail] = useState("");
   const prevPlatformRef = useRef<MarketplacePlatform | null>(null);
 
   useEffect(() => {
@@ -328,6 +330,21 @@ export function ProfitCalculator() {
       warehouseShippingFee: "platform_default",
       otherFixed: "platform_default",
     });
+  }
+
+  function openEarlyAccessModal() {
+    setIsEarlyAccessOpen(true);
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "open_early_access");
+    }
+  }
+
+  function submitEarlyAccess() {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "submit_early_access");
+    }
+    setIsEarlyAccessOpen(false);
+    setEarlyAccessEmail("");
   }
 
   return (
@@ -948,13 +965,60 @@ export function ProfitCalculator() {
           Sonuç tahminidir. Kesin rakam için pazaryeri hakediş ve mali müşavirinizi kullanın.
         </p>
       </footer>
-      <div
-        className="floating-badge-enter fixed bottom-4 right-4 z-50 w-[calc(100vw-2rem)] max-w-[220px] rounded-xl border border-white/20 bg-white/10 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 px-3 py-2 text-xs font-medium text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 hover:shadow-xl sm:px-4 sm:py-3 sm:text-sm"
-        aria-hidden="true"
+      <button
+        type="button"
+        onClick={openEarlyAccessModal}
+        className="floating-badge-enter fixed bottom-4 right-4 z-50 w-[calc(100vw-2rem)] max-w-[220px] rounded-xl border border-white/30 bg-white/10 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 px-3 py-2 text-left text-xs font-medium text-white shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl sm:px-4 sm:py-3 sm:text-sm"
       >
         <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400 align-middle animate-pulse" />
         Yeni pazaryerleri ekleniyor… çok yakında 🚀
-      </div>
+      </button>
+
+      {isEarlyAccessOpen ? (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/55 p-4 backdrop-blur-sm"
+          onClick={() => setIsEarlyAccessOpen(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl border border-white/20 bg-slate-900/90 p-5 text-white shadow-2xl sm:p-6"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="early-access-title"
+          >
+            <h3 id="early-access-title" className="text-lg font-semibold sm:text-xl">
+              Yeni pazaryerleri için erken erişim
+            </h3>
+            <p className="mt-2 text-sm text-slate-200">
+              Amazon, Etsy ve diğer pazaryerleri için hesaplama araçları çok yakında geliyor.
+              İlk sen kullan.
+            </p>
+
+            <label htmlFor="early-access-email" className="mt-4 block text-xs text-slate-300">
+              E-posta
+            </label>
+            <input
+              id="early-access-email"
+              type="email"
+              value={earlyAccessEmail}
+              onChange={(e) => setEarlyAccessEmail(e.target.value)}
+              placeholder="ornek@mail.com"
+              className="mt-1 w-full rounded-xl border border-white/25 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-slate-300/80 outline-none ring-0 transition focus:border-emerald-400"
+            />
+
+            <button
+              type="button"
+              onClick={submitEarlyAccess}
+              className="mt-4 w-full rounded-xl bg-gradient-to-r from-emerald-500 to-blue-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"
+            >
+              Erken erişim al
+            </button>
+            <p className="mt-2 text-center text-xs text-slate-300">
+              Spam yok. Sadece lansman haberi.
+            </p>
+          </div>
+        </div>
+      ) : null}
       </div>
     </div>
   );
