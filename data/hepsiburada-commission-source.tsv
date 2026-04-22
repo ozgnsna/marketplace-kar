@@ -1,0 +1,156 @@
+id	Ana Kategori	Kategori	Ürün Grubu	Komisyon % (KDV Dahil)
+hb-altin-yatirim	Altın	Altın Yatırım		1.00%
+hb-taki-mucevher	Aksesuar	Altın / Takı / Mücevher		18.00%
+hb-saat-gozluk	Aksesuar	Saat/Gözlük		18.00%
+hb-aksesuar-genel	Aksesuar	Aksesuar		18.00%
+hb-valiz	Çanta	Valiz		18.00%
+hb-canta	Çanta	Çanta		18.00%
+hb-ayakkabi	Ayakkabı	Ayakkabı		19.49%
+hb-giyim	Giyim	Giyim		18.00%
+hb-bebek-giyim	Giyim	Bebek Giyim		18.00%
+hb-parfum	Parfüm	Parfümler		17.00%
+hb-outdoor-kamp	Outdoor- Deniz	Outdoor-Deniz Ekipmanları	Kamp / Deniz / Doğa	14.00%
+hb-outdoor-balik	Outdoor- Deniz	Outdoor-Deniz Ekipmanları	Balık Av Malzemeleri	16.00%
+hb-outdoor-tekne-gps	Outdoor- Deniz	Outdoor-Deniz Ekipmanları	Tekne Ürünleri / GPS / Teleskop / Dürbün	12.00%
+hb-spor-giyim-ayakkabi	Spor & Outdoor	Giyim & Ayakkabı		18.00%
+hb-spor-tekne-motor	Spor & Outdoor	Outdoor-Deniz Ekipmanları	Tekne / Motor / Balık Bulucu	8.47%
+hb-spor-aletleri	Spor & Outdoor	Spor Aletleri		10.00%
+hb-fitness-kondisyon	Spor & Outdoor	Fitness ve Kondisyon Ekipmanları		13.00%
+hb-bisiklet-paten	Spor & Outdoor	Bisikletler ve Paten		10.00%
+hb-spor-branslari	Spor Branşları	Spor Branşları		13.00%
+hb-taraftar	Taraftar Ürünleri	Taraftar Ürünleri		18.00%
+hb-cep-telefonu	Cep Telefonu	Cep Telefonu		8.00%
+hb-cep-telefonu-ikinci-el	Cep Telefonu	Cep Telefonu	Yenilenmiş / İkinci El / Tuşlu	8.50%
+hb-tablet	Bilgisayar	Tablet		7.00%
+hb-tasinabilir-bilgisayar	Bilgisayar	Taşınabilir Bilgisayar		4.00%
+hb-bilgisayar-ssd	Bilgisayar	Bilgisayar Bileşenleri & Çevre Birimleri	SSD	13.00%
+hb-bilgisayar-bilesenleri	Bilgisayar	Bilgisayar Bileşenleri	Anakart / Ekran Kartı / RAM / İşlemci / Kasa	13.00%
+hb-barkod-etiket-ribon	Bilgisayar	Bilgisayar Bileşenleri	Barkod Etiketi / Ribon / Yazıcı Şeridi	13.00%
+hb-ek-guvence-tv-dijital	Bilgisayar	Bilgisayar Bileşenleri	Ek Güvence Paketleri TV / Dijital Yayın	15.00%
+hb-masaustu-server	Bilgisayar	Bilgisayar Bileşenleri	Masaüstü Bilgisayar / Server	4.00%
+hb-dokunmatik-pos-pc	Bilgisayar	Bilgisayar Bileşenleri	Dokunmatik Pos PC	17.00%
+hb-projeksiyon-aks	Bilgisayar	Projeksiyon & Aksesuarları	Projeksiyon Aksesuarları	12.00%
+hb-projeksiyon-cihaz	Bilgisayar	Projeksiyon & Aksesuarları	Projeksiyon Cihazı	11.00%
+hb-yazicilar	Bilgisayar	Yazıcılar ve Aksesuarları	Yazıcılar	10.00%
+hb-yazici-aksesuar	Bilgisayar	Yazıcılar ve Aksesuarları	Drum / Kartuş / Toner / Yedek Parça	12.00%
+hb-ag-modem	Bilgisayar	Ağ/Modem, Akıllı Ev		10.00%
+hb-cevre-birimleri-disk-klavye	Bilgisayar	Çevre Birimleri	Disk / Klavye / Mouse / USB	13.00%
+hb-cevre-birimleri-adaptor	Bilgisayar	Çevre Birimleri	Adaptör / HDD Kutusu / Mouse Pad	12.00%
+hb-yazilim	Bilgisayar	Yazılım		10.00%
+hb-aynasiz-slr	Foto-Kamera	Aynasız SLR Fotoğraf Makineleri		10.00%
+hb-foto-kamera-aks	Foto-Kamera	Fotoğraf ve Kamera Aksesuarları		10.00%
+hb-drone	Foto-Kamera	Drone & Drone Aksesuarları	Drone	10.00%
+hb-drone-aks	Foto-Kamera	Drone Aksesuarları		15.00%
+hb-fotograf-video-kamera	Foto-Kamera	Fotoğraf Makineleri & Video Kameralar		10.00%
+hb-oto-transmitter	Oto Aksesuar	Oto Aksesuarları & Ses ve Navigasyon Sistemleri	Transmitter	14.00%
+hb-oto-ses-goruntu	Oto Aksesuar	Oto Aksesuarları & Ses ve Navigasyon Sistemleri		12.00%
+hb-oto-teyp-cerceve	Oto Aksesuar	Oto Aksesuarları & Ses ve Navigasyon Sistemleri	Teyp Çerçeveleri / Navigasyon Harita	18.00%
+hb-karavan	Oto Aksesuar	Oto Aksesuar	Karavan & Aksesuarları	12.00%
+hb-trafik-setleri	Oto Aksesuar	Oto Aksesuar	Trafik Setleri ve Ürünleri	19.00%
+hb-arac-ici-cam-guneslik	Oto Aksesuar	Araç İçi Ekipman & Aksesuarlar	Cam ve Güneşlik	20.00%
+hb-arac-ici-seyahat	Oto Aksesuar	Araç İçi Ekipman & Aksesuarlar	Seyahat Ürünleri	17.00%
+hb-arac-ici-mobil-elektrik	Oto Aksesuar	Araç İçi Ekipman & Aksesuarlar	Mobil Elektrik	16.00%
+hb-arac-ici-aksesuarlar	Oto Aksesuar	Araç İçi Ekipman & Aksesuarlar		18.00%
+hb-arac-dis-aksesuar	Oto Aksesuar	Araç Dış Aksesuarlar & Temizlik Ürünleri & Oto Aksesuar		18.00%
+hb-brandalar	Oto Aksesuar	Araç Dış Aksesuarlar & Temizlik Ürünleri & Oto Aksesuar	Brandalar	17.00%
+hb-jant-zincir	Oto Aksesuar	Araç Dış Aksesuarlar & Temizlik Ürünleri & Oto Aksesuar	Jant / Zincir / El Aleti	16.00%
+hb-arac-bakim-temizlik	Oto Aksesuar	Araç Dış Aksesuarlar & Temizlik Ürünleri	Araç Bakım / Temizlik	14.00%
+hb-motosiklet-lastik	Oto Aksesuar	Motosiklet Lastik		9.00%
+hb-oto-lastik	Oto Aksesuar	Oto Lastik		9.00%
+hb-oto-yedek-parca	Oto Aksesuar	Oto Yedek Parça		20.00%
+hb-aku	Oto Aksesuar	Oto Aksesuar	Akü	12.00%
+hb-motosiklet-aksesuar	Oto Aksesuar	Motosiklet Aksesuarları		12.00%
+hb-motosiklet-modelleri	Oto Aksesuar	Motosiklet Aksesuarları	Motosiklet Modelleri	6.00%
+hb-yakit-yag	Oto Aksesuar	Yakıt ve Yağ Katkıları		12.00%
+hb-traktor-lastik	Oto Aksesuar	Traktör Lastikleri		12.00%
+hb-sda-supurge-utuler	SDA	Süpürge & Ütüler		12.00%
+hb-sda-supurgeler	SDA	Süpürgeler		11.00%
+hb-sda-buharli-temizlik	SDA	Süpürgeler	Buharlı Temizlik / Halı Yıkama	13.00%
+hb-sda-aksesuar-yedek	SDA	Aksesuar, Yedek Parça		18.00%
+hb-sda-mutfak	SDA	Mutfak Gereçleri & Pişirme-Hazırlama		13.00%
+hb-sda-endustriyel-mutfak	SDA	Mutfak Gereçleri & Pişirme-Hazırlama	Endüstriyel Mutfak / Mutfak Tartıları	15.00%
+hb-kisisel-bakim-aletleri	SDA	Elektrikli Kişisel Bakım Aletleri		15.00%
+hb-beyaz-esya-ana	MDA- Beyaz Eşya	Bulaşık, Çamaşır, Kurutma Makinesi ve Buzdolabı		10.00%
+hb-ev-isitma-sogutma	MDA- Beyaz Eşya	Ev Isıtma & Soğutma Sistemleri		12.00%
+hb-ankastre	MDA- Beyaz Eşya	Ankastre & Pişirme Grubu		12.00%
+hb-beyaz-esya-yedek	MDA- Beyaz Eşya	Beyaz Eşya Yedek Parça & Aksesuar		15.00%
+hb-beyaz-esya-ek-guvence	MDA- Beyaz Eşya	Beyaz Eşya Yedek Parça & Aksesuar	Ek Güvence Paketleri	8.50%
+hb-tv	TV	LCD Televizyon		8.34%
+hb-anne-bebek-bakim	Anne Bebek Ürünleri	Anne / Bebek Bakım	Bez / Islak Mendil	13.00%
+hb-anne-bebek-genel	Anne Bebek Ürünleri	Anne / Bebek		18.00%
+hb-bebek-bakim-marka	Anne Bebek Ürünleri	Anne / Bebek Bakım	Bebek Kremi / Yağ / Şampuan	18.00%
+hb-bebek-mama	Anne Bebek Ürünleri	Anne / Bebek Beslenme	Bebek Mamaları	11.00%
+hb-cilt-bakimi	Cilt Bakımı	Cilt Bakım		17.00%
+hb-hindistan-cevizi-yagi	Cilt Bakımı	Cilt Bakım / Saç Bakım	Hindistan Cevizi Yağı	17.00%
+hb-sac-bakim	Saç Bakım	Saç Bakım		17.00%
+hb-makyaj	Makyaj	Makyaj Ürünleri		17.00%
+hb-petshop-mama-kum	Petshop	Petshop Beslenme	Kedi/Köpek Maması / Kedi Kumu	14.00%
+hb-petshop-beslenme	Petshop	Petshop Beslenme	Yem / Bisküvi / Ödül / Vitamin	17.00%
+hb-petshop-aksesuar	Petshop	Petshop Aksesuar		17.00%
+hb-agiz-bakim	Sağlık Kişisel Bakım Ürünleri	Ağız Bakım Ürünleri		17.00%
+hb-sarjli-dis-fircasi	Sağlık Kişisel Bakım Ürünleri	Ağız Bakım Ürünleri	Şarj Edilebilir/Pilli Diş Fırçası	14.50%
+hb-saglik-kisisel-bakim	Sağlık Kişisel Bakım Ürünleri	Sağlık / Kişisel Bakım Ürünleri		17.00%
+hb-hasta-bezi	Sağlık Kişisel Bakım Ürünleri	Sağlık / Kişisel Bakım Ürünleri	Hasta Bezi	13.00%
+hb-aile-planlama	Sağlık Kişisel Bakım Ürünleri	Sağlık / Kişisel Bakım Ürünleri	Aile Planlaması / +18	17.00%
+hb-kuafor	Sağlık Kişisel Bakım Ürünleri	Güzellik Salonu & Kuaför Ürünleri		17.00%
+hb-ev-bakim-temizlik	Ev Bakım ve Temizlik	Deterjanlar, Temizlik Malzemeleri, Kağıt Ürünleri ve Mutfak Sarf Malzemeleri		15.00%
+hb-gida	Temel Tüketim ve Gıda	İçecek ve Gıda Ürünleri		17.00%
+hb-bungalov-ev	Bahçe	Bungalov Ev		9.00%
+hb-bahce-dekorasyon	Bahçe	Bahçe Dekorasyon ve Bakım		17.00%
+hb-cicek-bakim	Bahçe	Bahçe Dekorasyon ve Bakım	Çiçek Bakım & Bitki Yetiştirme	20.00%
+hb-bahce-mobilyasi	Bahçe	Bahçe Mobilyası		18.00%
+hb-mangal	Bahçe	Mangal / Barbekü		15.00%
+hb-bahce-makineleri	Bahçe	Bahçe Makineleri		14.00%
+hb-banyo-ev-gerecleri	Yapı Market	Banyo & Ev Gereçleri	Batarya / Musluk / Duş	15.00%
+hb-boya-aksesuar	Yapı Market	Banyo & Ev Gereçleri	Boya ve Aksesuarları	16.00%
+hb-banyo-dolap	Yapı Market	Banyo & Ev Gereçleri	Banyo Dolap / Banyo Aksesuar	16.00%
+hb-hirdavat-temizlik	Yapı Market	Hırdavat	Endüstriyel Temizlik / Mekanik El Aletleri / Seramik	20.00%
+hb-hirdavat-genel	Yapı Market	Hırdavat	Merdiven / İş Güvenliği / Nalburiye	18.00%
+hb-aydinlatma-urunleri	Yapı Market	Aydınlatma Ürünleri		18.00%
+hb-elektrik-aydinlatma	Yapı Market	Elektrik ve Aydınlatma Ürünleri		18.00%
+hb-jenerator	Yapı Market	Jeneratör		14.00%
+hb-yatak-odasi-tekstili	Ev Tekstili	Yatak Odası Tekstili		18.00%
+hb-hali-kilim	Ev Tekstili	Halı & Kilim		18.00%
+hb-banyo-tekstili	Ev Tekstili	Banyo Tekstili		18.00%
+hb-mutfak-tekstil	Ev Tekstili	Mutfak Tekstil		18.00%
+hb-mobilya-dekorasyon	Mobilya	Dekorasyon		22.00%
+hb-ofis-dekorasyon	Mobilya	Ofis Dekorasyon		18.00%
+hb-ev-mobilya	Mobilya	Ev Mobilya		18.00%
+hb-yatak-odasi-takimlari	Mobilya	Yatak Odası Takımları		18.00%
+hb-zuccaciye	Züccaciye	Sofra & Mutfak Gereçleri		18.00%
+hb-oyuncak	Oyuncak	Oyuncak		18.00%
+hb-ofis-makineleri	Kırtasiye ve Ofis	Ofis Makineleri		12.71%
+hb-fotokopi-kagitlari	Kırtasiye ve Ofis	Fotokopi Kağıtları		7.00%
+hb-para-kasasi	Kırtasiye ve Ofis	Ofis Makineleri	Para Kasası	17.00%
+hb-piller-sarj	Kırtasiye ve Ofis	Piller ve Şarj Cihazları		13.56%
+hb-kirtasiye-sanat	Kırtasiye ve Ofis	Kırtasiye ve Ofis Ürünleri ve Sanatsal Malzeme		17.00%
+hb-ajandalar	Kırtasiye ve Ofis	Kırtasiye ve Ofis Ürünleri ve Sanatsal Malzeme	Ajandalar	17.00%
+hb-film	Film	Film		8.50%
+hb-kitap	Kitap	Kitap		15.30%
+hb-muzik-aletleri	Müzik	Müzik Alet ve Ekipmanları	Amfi / Bateri / Davul / Pikap / Telli / Yaylı / Tuşlu	12.00%
+hb-muzik-mikrofon-kulaklik	Müzik	Müzik Alet ve Ekipmanları	Mikrofon / Kulaklık / Nefesli / Perküsyon	14.00%
+hb-muzik-album-isik	Müzik	Müzik Alet ve Ekipmanları	Albüm / Işık Sistemleri / Poster	15.00%
+hb-dijital-urunler-1	Dijital Ürünler	Dijital Ürünler 1		8.05%
+hb-dijital-urunler-2	Dijital Ürünler	Dijital Ürünler 2		8.47%
+hb-cep-aks-1	Cep Telefonu Aksesuarları	Cep Telefonu Aksesuarları 1		15.00%
+hb-cep-aks-2	Cep Telefonu Aksesuarları	Cep Telefonu Aksesuarları 2		15.00%
+hb-cep-aks-3	Cep Telefonu Aksesuarları	Cep Telefonu Aksesuarları 3		20.00%
+hb-cep-aks-4	Cep Telefonu Aksesuarları	Cep Telefonu Aksesuarları 4		20.00%
+hb-cep-aks-5	Cep Telefonu Aksesuarları	Cep Telefonu Aksesuarları 5		25.00%
+hb-telsiz-masaustu-telefon	Cep Telefonu Aksesuarları	Telsiz Masaüstü Telefonlar		15.00%
+hb-akilli-saat-bileklik	Cep Telefonu Aksesuarları	Akıllı Saat-Bileklik & Bluetooth Kulaklıklar		15.00%
+hb-oyun-konsolu-yeni	Oyun Konsol	Oyun Konsolu	Xbox / PS4 / PS5 / Nintendo	5.00%
+hb-oyun-konsolu-eski	Oyun Konsol	Oyun Konsolu	PS2 / PS3 / İkinci El	15.00%
+hb-oyun-konsolu-diger	Oyun Konsol	Oyun Konsolu	Diğer Oyun Konsolları	8.50%
+hb-konsol-oyunlari-yeni	Oyun Konsol	Konsol Oyunları	PS5 / PS4 / Xbox / Nintendo / PC	10.00%
+hb-konsol-oyunlari-eski	Oyun Konsol	Konsol Oyunları	PS2 / PS3 / PSP Vita / Xbox 360	15.00%
+hb-konsol-aks-yeni	Oyun Konsol	Konsol Aksesuarları	PS4 / PS5 / Xbox / Nintendo / PC	10.00%
+hb-konsol-aks-eski	Oyun Konsol	Konsol Aksesuarları	PS3 / PSP / PS2	15.00%
+hb-oyun-odeme-kartlari	Oyun Konsol	Oyun Ödeme Kartları		8.50%
+hb-nontv-kablolar-guvenlik	NonTV	Televizyon ve Elektronik Aksesuarları	Alarm / Kablo / Uydu / Güvenlik	16.67%
+hb-nontv-uydu-aksesuar	NonTV	Televizyon ve Elektronik Aksesuarları	Uydu Alıcısı Aksesuarları / Ekran Temizleme	18.00%
+hb-nontv-tv-aksesuar	NonTV	Televizyon ve Elektronik Aksesuarları	Kablo / Soket / Mikrofon / Receiver / TV Askı	16.67%
+hb-nontv-dijital-paket	NonTV	Dijital ve Güvence Paketleri		20.00%
+hb-ev-guvenlik	NonTV	Ev Güvenlik Ürünleri		14.00%
+hb-ev-sinema-ses	NonTV	Ev Sinema ve Ses Sistemleri		16.67%
+hb-hobi-oyun	Hobi-Oyun	Hobi, Oyun Eğlence Ürünleri		18.00%

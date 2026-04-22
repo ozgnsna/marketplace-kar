@@ -8,7 +8,8 @@ import {
 /**
  * Komisyon kategorileri:
  * - Trendyol: `commissionCategories.generated.json` (`npm run generate:commission`, PDF).
- * - Hepsiburada: `hepsiburadaCommissionCategories.ts` (temiz, elle düzenlenen liste).
+ * - Hepsiburada: `hepsiburada-commission-source.tsv` → `hepsiburadaCommissionCategories.generated.json`
+ *   (`npm run generate:hepsiburada-commission`).
  */
 
 export type CommissionCategoryRow = {

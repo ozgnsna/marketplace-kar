@@ -644,7 +644,10 @@ export function ProfitCalculator() {
             <div className="mt-4">
               <NumberField
                 id="salePrice"
-                label="Listede gördüğünüz satış fiyatı (KDV dahil)"
+                label="Ürünün satış fiyatı (KDV dahil)"
+                hint="Evet — pazaryerinde ürün sayfasında gördüğünüz satış tutarını TL olarak buraya yazın; hesaplama bu fiyat üzerinden yapılır."
+                placeholder="Örn. 2.633"
+                showEmptyWhenZero
                 suffix="₺"
                 value={inputs.salePrice}
                 onChange={(v) => setInput("salePrice", v)}

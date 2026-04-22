@@ -9,6 +9,8 @@
     "build": "next build",
     "generate:commission": "node scripts/parse-commission-pdfs.mjs",
     "generate:trendyol-commission": "node scripts/build-trendyol-commission-from-tsv.mjs",
+    "export:hepsiburada-commission-tsv": "node scripts/export-hepsiburada-ts-to-tsv.mjs",
+    "generate:hepsiburada-commission": "node scripts/build-hepsiburada-commission-from-tsv.mjs",
     "start": "next start",
     "lint": "next lint"
   },

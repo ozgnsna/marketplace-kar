@@ -13,6 +13,9 @@ interface NumberFieldProps {
   step?: string;
   min?: number;
   hint?: string;
+  /** value 0 iken boş göster; placeholder görünsün (ör. fiyat alanları) */
+  showEmptyWhenZero?: boolean;
+  placeholder?: string;
   /** Etiket satırının sağında (ör. bilgi ikonu) */
   labelAccessory?: ReactNode;
 }
@@ -36,6 +39,8 @@ export function NumberField({
   suffix,
   min,
   hint,
+  showEmptyWhenZero,
+  placeholder,
   labelAccessory,
 }: NumberFieldProps) {
   const [draft, setDraft] = useState<string | null>(null);
@@ -43,7 +48,8 @@ export function NumberField({
   const display =
     draft !== null
       ? draft
-      : Number.isFinite(value)
+      : Number.isFinite(value) &&
+          !(showEmptyWhenZero && value === 0)
         ? String(value).replace(".", ",")
         : "";
 
@@ -64,6 +70,7 @@ export function NumberField({
           inputMode="decimal"
           autoComplete="off"
           spellCheck={false}
+          placeholder={placeholder}
           value={display}
           onFocus={() => {
             if (Number.isFinite(value) && value === 0) {
