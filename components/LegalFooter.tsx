@@ -74,6 +74,34 @@ export function LegalFooter() {
 
         <div className="my-2 h-px w-full bg-gradient-to-r from-transparent via-slate-200/95 to-transparent sm:my-2.5" aria-hidden="true" />
 
+        <nav aria-label="SEO rehber sayfaları">
+          <p className="mb-2 text-xs font-semibold tracking-wide text-slate-600 sm:text-[13px]">
+            Rehberler
+          </p>
+          <ul className="flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-1.5">
+            <li>
+              <Link href="/trendyol-kar-hesaplama" className={legalLinkClass}>
+                Trendyol Kâr Hesaplama
+              </Link>
+            </li>
+            <li>
+              <Link href="/hepsiburada-komisyon-hesaplama" className={legalLinkClass}>
+                Hepsiburada Komisyon Hesaplama
+              </Link>
+            </li>
+            <li>
+              <Link href="/pazaryeri-komisyon-oranlari" className={legalLinkClass}>
+                Pazaryeri Komisyon Oranları
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        <div
+          className="my-2 h-px w-full bg-gradient-to-r from-transparent via-slate-200/95 to-transparent sm:my-2.5"
+          aria-hidden="true"
+        />
+
         <nav aria-label="Yasal bağlantılar">
           <ul className="flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-1.5">
             <li>
