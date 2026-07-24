@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPageShell } from "@/components/legal/LegalPageShell";
+import { pageMetadata } from "@/lib/seoMetadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Yasal Bilgilendirme",
   description: "Marka bağımsızlığı ve tarife uyarısı.",
-};
+  path: "/yasal-bilgilendirme",
+});
 
 export default function YasalBilgilendirmePage() {
   return (

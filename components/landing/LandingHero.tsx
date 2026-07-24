@@ -58,11 +58,11 @@ export function LandingHero({ onPrimaryCta }: LandingHeroProps) {
 
         <div className="relative z-10 mx-auto flex w-full max-w-[700px] flex-col items-center px-0 text-center">
           <h1 className="w-full text-balance text-[1.75rem] font-semibold leading-[1.18] tracking-[-0.03em] text-white sm:text-[2rem] md:text-[clamp(2.25rem,4.2vw,3rem)] md:leading-[1.14] [text-shadow:0_1px_40px_rgba(0,0,0,0.25)]">
-            Zarar ettiğini fark etmeden satış yapıyor olabilirsin.
+            Pazaryeri kâr hesaplama: zararını satmadan önce gör.
           </h1>
 
           <p className="mt-4 w-full max-w-none text-pretty text-base leading-relaxed text-white/70 md:text-lg md:leading-relaxed">
-            Trendyol & Hepsiburada satışlarında gerçek NET kazancını saniyeler içinde hesapla.
+            Trendyol komisyon hesaplama, Hepsiburada ve Shopier için net kârını saniyeler içinde hesapla.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-center text-center">

@@ -78,7 +78,17 @@ export function LegalFooter() {
           <p className="mb-2 text-xs font-semibold tracking-wide text-slate-600 sm:text-[13px]">
             Rehberler
           </p>
-          <ul className="flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-1.5">
+          <ul className="flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-5 sm:gap-y-1.5">
+            <li>
+              <Link href="/pazaryeri-kar-hesaplama" className={legalLinkClass}>
+                Pazaryeri Kâr Hesaplama
+              </Link>
+            </li>
+            <li>
+              <Link href="/trendyol-komisyon-hesaplama" className={legalLinkClass}>
+                Trendyol Komisyon Hesaplama
+              </Link>
+            </li>
             <li>
               <Link href="/trendyol-kar-hesaplama" className={legalLinkClass}>
                 Trendyol Kâr Hesaplama
@@ -86,12 +96,17 @@ export function LegalFooter() {
             </li>
             <li>
               <Link href="/hepsiburada-komisyon-hesaplama" className={legalLinkClass}>
-                Hepsiburada Komisyon Hesaplama
+                Hepsiburada Komisyon
+              </Link>
+            </li>
+            <li>
+              <Link href="/shopier-komisyon-hesaplama" className={legalLinkClass}>
+                Shopier Komisyon
               </Link>
             </li>
             <li>
               <Link href="/pazaryeri-komisyon-oranlari" className={legalLinkClass}>
-                Pazaryeri Komisyon Oranları
+                Komisyon Oranları
               </Link>
             </li>
           </ul>

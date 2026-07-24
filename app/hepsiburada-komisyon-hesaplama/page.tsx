@@ -1,11 +1,18 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { GuideCta } from "@/components/seo/GuideCta";
+import { RelatedGuides } from "@/components/seo/RelatedGuides";
+import { pageMetadata } from "@/lib/seoMetadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Hepsiburada Komisyon Hesaplama Rehberi",
   description:
-    "Hepsiburada komisyon oranlarıyla net kâr hesaplama adımları: kategori seçimi, iade etkisi, kargo maliyeti ve minimum satış fiyatı planı.",
-};
+    "Hepsiburada komisyon hesaplama: kategori oranı, kargo, iade ve kampanya ile net kâr. Pazaryeri kâr hesaplama aracıyla minimum satış fiyatını planlayın.",
+  path: "/hepsiburada-komisyon-hesaplama",
+  keywords: [
+    "hepsiburada komisyon hesaplama",
+    "pazaryeri kar hesaplama",
+    "hepsiburada net kâr",
+  ],
+});
 
 export default function HepsiburadaKomisyonHesaplamaPage() {
   return (
@@ -21,7 +28,15 @@ export default function HepsiburadaKomisyonHesaplamaPage() {
             Gerçek sonuç, platform kesintileri ile operasyon maliyetlerinin birlikte değerlendirilmesiyle
             ortaya çıkar. Satış fiyatı, komisyon, kargo, paketleme, tahsilat ve kampanya etkisini tek
             tabloda görmeden karar veren satıcılar çoğu zaman ciro büyütse de net marjda beklenen sonuca
-            ulaşamaz. Bu sayfa, Hepsiburada odaklı kârlılık hesabını anlaşılır adımlarla ele alır.
+            ulaşamaz. Bu sayfa, Hepsiburada odaklı kârlılık hesabını anlaşılır adımlarla ele alır; genel
+            çerçeve için{" "}
+            <a
+              href="/pazaryeri-kar-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              pazaryeri kâr hesaplama
+            </a>{" "}
+            rehberine de bakabilirsiniz.
           </p>
 
           <h2 className="text-xl font-semibold text-[#0B1F3B]">
@@ -87,17 +102,8 @@ export default function HepsiburadaKomisyonHesaplamaPage() {
             Böylece fiyat kararlarını sezgi yerine veriye dayalı şekilde alırsınız.
           </p>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
-            <p className="text-sm font-medium text-[#0B1F3B]">
-              Hepsiburada komisyon ve net kârını hemen hesapla
-            </p>
-            <Link
-              href="/"
-              className="mt-3 inline-flex rounded-xl bg-[#0B1F3B] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#122b4f]"
-            >
-              Hesaplama aracına git
-            </Link>
-          </div>
+          <GuideCta title="Hepsiburada komisyon ve net kârını hemen hesapla" />
+          <RelatedGuides currentPath="/hepsiburada-komisyon-hesaplama" />
         </div>
       </div>
     </main>

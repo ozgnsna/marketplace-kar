@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { GuideCta } from "@/components/seo/GuideCta";
+import { RelatedGuides } from "@/components/seo/RelatedGuides";
+import { pageMetadata } from "@/lib/seoMetadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Trendyol Kâr Hesaplama Rehberi 2026",
   description:
-    "Trendyol satışlarında komisyon, kargo, iade, kampanya ve ek giderleri hesaba katarak net kârınızı doğru hesaplama adımları.",
-};
+    "Trendyol kâr hesaplama: komisyon, kargo, iade ve kampanya dahil net kâr adımları. Trendyol komisyon hesaplama ve pazaryeri kâr hesaplama aracıyla fiyatını planla.",
+  path: "/trendyol-kar-hesaplama",
+  keywords: [
+    "trendyol kâr hesaplama",
+    "trendyol komisyon hesaplama",
+    "pazaryeri kar hesaplama",
+  ],
+});
 
 export default function TrendyolKarHesaplamaPage() {
   return (
@@ -22,6 +30,14 @@ export default function TrendyolKarHesaplamaPage() {
             kampanya kesintileri ve iade etkisi gibi birçok kalem net sonucu ciddi şekilde değiştirir. Bu
             nedenle sağlıklı bir analiz için her siparişi bir mini gelir tablosu gibi ele almak gerekir.
             Özellikle hızlı büyümek isteyen satıcılar için cirodan çok net kârı izlemek kritik önemdedir.
+            Komisyon oranına odaklananlar için ayrıca{" "}
+            <a
+              href="/trendyol-komisyon-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              Trendyol komisyon hesaplama
+            </a>{" "}
+            rehberini inceleyebilirsiniz.
           </p>
 
           <h2 className="text-xl font-semibold text-[#0B1F3B]">
@@ -84,23 +100,21 @@ export default function TrendyolKarHesaplamaPage() {
             Hesaplama aracını kullanarak hızlı karar verin
           </h2>
           <p>
-            Tüm bu adımları tek ekranda pratik şekilde görmek için ana sayfadaki Trendyol ve Hepsiburada
-            uyumlu kâr hesaplama aracını kullanabilirsiniz. Araç; komisyon, kargo, kampanya, iade ve diğer
-            giderleri birlikte değerlendirerek net kâr ve marjı anında gösterir. Ayrıca hedef fiyat
-            planlaması yaparak ürününüzün hangi fiyatın altına düşmemesi gerektiğini hızlıca görebilirsiniz.
+            Tüm bu adımları tek ekranda pratik şekilde görmek için ana sayfadaki Trendyol, Hepsiburada ve
+            Shopier uyumlu{" "}
+            <a
+              href="/pazaryeri-kar-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              pazaryeri kâr hesaplama
+            </a>{" "}
+            aracını kullanabilirsiniz. Araç; komisyon, kargo, kampanya, iade ve diğer giderleri birlikte
+            değerlendirerek net kâr ve marjı anında gösterir. Ayrıca hedef fiyat planlaması yaparak
+            ürününüzün hangi fiyatın altına düşmemesi gerektiğini hızlıca görebilirsiniz.
           </p>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
-            <p className="text-sm font-medium text-[#0B1F3B]">
-              Trendyol için net kârını şimdi hesapla
-            </p>
-            <Link
-              href="/"
-              className="mt-3 inline-flex rounded-xl bg-[#0B1F3B] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#122b4f]"
-            >
-              Ana sayfadaki hesaplama aracına git
-            </Link>
-          </div>
+          <GuideCta title="Trendyol için net kârını şimdi hesapla" />
+          <RelatedGuides currentPath="/trendyol-kar-hesaplama" />
         </div>
       </div>
     </main>

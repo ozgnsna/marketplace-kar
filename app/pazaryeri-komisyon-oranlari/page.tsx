@@ -1,11 +1,18 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { GuideCta } from "@/components/seo/GuideCta";
+import { RelatedGuides } from "@/components/seo/RelatedGuides";
+import { pageMetadata } from "@/lib/seoMetadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Pazaryeri Komisyon Oranları ve Kâr Rehberi",
   description:
-    "Trendyol ve Hepsiburada komisyon oranlarının kârlılığa etkisi, kategori seçimi, gider yönetimi ve doğru fiyatlandırma stratejileri.",
-};
+    "Pazaryeri komisyon oranları ve kâr ilişkisi: Trendyol komisyon hesaplama, Hepsiburada oranları ve toplam kesintiyle net kâr planı.",
+  path: "/pazaryeri-komisyon-oranlari",
+  keywords: [
+    "pazaryeri komisyon oranları",
+    "trendyol komisyon hesaplama",
+    "pazaryeri kar hesaplama",
+  ],
+});
 
 export default function PazaryeriKomisyonOranlariPage() {
   return (
@@ -21,7 +28,14 @@ export default function PazaryeriKomisyonOranlariPage() {
             önemli olsa da tek başına yeterli değildir. Çünkü aynı komisyon oranına sahip iki ürün, farklı
             kargo yapısı, iade oranı, kampanya baskısı ve operasyon gideri nedeniyle tamamen farklı net kâr
             sonuçları üretebilir. Pazaryeri satışlarında doğru strateji, komisyonu merkezde tutup tüm
-            maliyetleri aynı tabloda değerlendirmektir.
+            maliyetleri aynı tabloda değerlendirmektir. Pratik hesap için{" "}
+            <a
+              href="/pazaryeri-kar-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              pazaryeri kâr hesaplama
+            </a>{" "}
+            rehberini kullanın.
           </p>
 
           <h2 className="text-xl font-semibold text-[#0B1F3B]">
@@ -38,7 +52,14 @@ export default function PazaryeriKomisyonOranlariPage() {
             Trendyol ve Hepsiburada gibi platformlarda komisyon listeleri zaman içinde güncellenebilir.
             Bu yüzden birkaç ay önce çalışan bir marj modeli bugün geçersiz olabilir. Sağlıklı süreç için
             komisyon güncellemelerini düzenli takip etmek, fiyatlama modelinizi belirli aralıklarla revize
-            etmek ve yeni oranları satış kararına hızlı yansıtmak gerekir.
+            etmek ve yeni oranları satış kararına hızlı yansıtmak gerekir. Trendyol özelinde{" "}
+            <a
+              href="/trendyol-komisyon-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              Trendyol komisyon hesaplama
+            </a>{" "}
+            adımlarını da inceleyebilirsiniz.
           </p>
 
           <h2 className="text-xl font-semibold text-[#0B1F3B]">
@@ -87,17 +108,8 @@ export default function PazaryeriKomisyonOranlariPage() {
             fiyatlama nedeniyle oluşan görünmez zararları engelleyebilirsiniz.
           </p>
 
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
-            <p className="text-sm font-medium text-[#0B1F3B]">
-              Pazaryeri komisyonlarını net kâra çevirerek analiz et
-            </p>
-            <Link
-              href="/"
-              className="mt-3 inline-flex rounded-xl bg-[#0B1F3B] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#122b4f]"
-            >
-              Ana sayfa hesaplama aracını aç
-            </Link>
-          </div>
+          <GuideCta title="Pazaryeri komisyonlarını net kâra çevirerek analiz et" />
+          <RelatedGuides currentPath="/pazaryeri-komisyon-oranlari" />
         </div>
       </div>
     </main>

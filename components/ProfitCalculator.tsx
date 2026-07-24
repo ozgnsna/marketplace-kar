@@ -18,6 +18,7 @@ import { getPaymentFeeRateByOrderAmount } from "@/lib/getPaymentFeeTier";
 import { applyPlatformDefaultsToInputs } from "@/lib/getPlatformDefaults";
 import { getCargoPrice } from "@/lib/cargoPrice";
 import { LandingHero } from "@/components/landing/LandingHero";
+import { HomeGuideLinks } from "@/components/seo/HomeGuideLinks";
 import { PsychologyCard } from "@/components/landing/PsychologyCard";
 import {
   computeEffectiveCustomerPrice,
@@ -978,6 +979,8 @@ export function ProfitCalculator() {
           <PsychologyCard onCta={scrollToCalculator} />
         </aside>
       </div>
+
+      <HomeGuideLinks />
 
       <footer className="mt-5 border-t border-slate-200/80 pt-4 text-center text-xs text-slate-500 sm:text-left">
         <p>

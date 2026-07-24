@@ -1,7 +1,7 @@
 {
-  "name": "Pazaryeri Kâr Hesabı",
-  "short_name": "Kâr Hesabı",
-  "description": "Trendyol ve Hepsiburada için komisyon, kargo ve giderler dahil net kâr ve satış fiyatı hesaplama.",
+  "name": "Pazarkar — Pazaryeri Kâr Hesaplama",
+  "short_name": "Pazarkar",
+  "description": "Pazaryeri kâr hesaplama ve Trendyol komisyon hesaplama. Trendyol, Hepsiburada ve Shopier için net kâr.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f3f5f9",

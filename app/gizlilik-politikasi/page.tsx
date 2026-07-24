@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import { LegalPageShell } from "@/components/legal/LegalPageShell";
+import { pageMetadata } from "@/lib/seoMetadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Gizlilik Politikası",
   description: "Pazarkar gizlilik ve veri işleme bilgilendirmesi.",
-};
+  path: "/gizlilik-politikasi",
+});
 
 export default function GizlilikPolitikasiPage() {
   return (
