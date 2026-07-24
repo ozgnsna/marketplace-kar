@@ -19,7 +19,8 @@ export function applyPlatformDefaultsToInputs(
     hizmetBedeli: d.serviceFee,
     paketleme: d.packaging,
     stopajRate: d.stopajRate,
-    paymentFeeRate: getPaymentFeeRateByOrderAmount(prev.salePrice),
+    paymentFeeRate:
+      platform === "shopier" ? d.paymentFeeRate : getPaymentFeeRateByOrderAmount(prev.salePrice),
     advertisingRate: d.advertisingRate,
     listingFee: d.listingFee,
     warehouseShippingFee: d.warehouseShippingFee,

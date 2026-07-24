@@ -2,7 +2,7 @@ import type { CommissionCategoryRow } from "@/data/commissionCategories";
 import { normalizeSearchText } from "@/lib/normalizeSearchText";
 
 /** Varsayılan sonuç üst sınırı */
-export const DEFAULT_SEARCH_LIMIT = 10;
+export const DEFAULT_SEARCH_LIMIT = 25;
 
 /** `needle` karakterleri `haystack` içinde sırayla geçiyorsa true (basit fuzzy). */
 export function subsequenceMatch(haystack: string, needle: string): boolean {
@@ -36,10 +36,11 @@ function significantTokens(normalizedQuery: string): string[] {
 
 /**
  * Çok kelimeli sorguda listelemek için minimum skor (zayıf/bağlantısız eşleşmeler elenir).
+ * Eşikler bilinçli düşük tutulur: ürün grubu adları (virgüllü listeler) kaçmasın.
  */
 function minScoreThreshold(sig: string[], _q: string): number {
-  if (sig.length >= 2) return 85_000;
-  if (sig.length === 1) return 18_000;
+  if (sig.length >= 2) return 40_000;
+  if (sig.length === 1) return 8_000;
   return 0;
 }
 
@@ -104,6 +105,11 @@ export function scoreCategoryMatch(row: CommissionCategoryRow, queryNormalized: 
     }
   } else if (sig.length >= 2 && score < 200_000) {
     if (subsequenceMatch(pathNorm, q)) score += 25_000;
+  }
+
+  // Virgüllü ürün grubunda tek ürün adı (örn. tişört, biberon)
+  if (sig.length === 1 && pathNorm.includes(sig[0])) {
+    score += 15_000;
   }
 
   const threshold = minScoreThreshold(sig, q);

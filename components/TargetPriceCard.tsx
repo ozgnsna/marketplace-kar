@@ -18,6 +18,7 @@ const tryCurrency = new Intl.NumberFormat("tr-TR", {
 const PLATFORM_LABEL: Record<MarketplacePlatform, string> = {
   trendyol: "Trendyol",
   hepsiburada: "Hepsiburada",
+  shopier: "Shopier",
 };
 
 const QUICK_MARGINS = [10, 20, 30, 50, 100] as const;

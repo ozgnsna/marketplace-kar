@@ -8,6 +8,7 @@ import { getProfitStatus } from "@/lib/getProfitStatus";
 const PLATFORM_LABEL: Record<MarketplacePlatform, string> = {
   trendyol: "Trendyol",
   hepsiburada: "Hepsiburada",
+  shopier: "Shopier",
 };
 
 const tryCurrency = new Intl.NumberFormat("tr-TR", {

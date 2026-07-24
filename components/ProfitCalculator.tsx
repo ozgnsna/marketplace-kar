@@ -139,7 +139,7 @@ export function ProfitCalculator() {
     }
     if (prevPlatformRef.current === inputs.platform) return;
     prevPlatformRef.current = inputs.platform;
-    setPaymentFeeAuto(true);
+    setPaymentFeeAuto(inputs.platform !== "shopier");
     setInputs((prev) =>
       applyPlatformDefaultsToInputs(inputs.platform, {
         ...prev,
@@ -151,7 +151,7 @@ export function ProfitCalculator() {
       hizmetBedeli: "platform_default",
       paketleme: "platform_default",
       stopajRate: "platform_default",
-      paymentFeeRate: "auto",
+      paymentFeeRate: inputs.platform === "shopier" ? "platform_default" : "auto",
       advertisingRate: "platform_default",
       listingFee: "platform_default",
       warehouseShippingFee: "platform_default",
@@ -163,11 +163,11 @@ export function ProfitCalculator() {
   }, [inputs.platform]);
 
   useEffect(() => {
-    if (!paymentFeeAuto) return;
+    if (!paymentFeeAuto || inputs.platform === "shopier") return;
     const rate = getPaymentFeeRateByOrderAmount(inputs.salePrice);
     setInputs((p) => (p.paymentFeeRate === rate ? p : { ...p, paymentFeeRate: rate }));
     setFieldSources((s) => ({ ...s, paymentFeeRate: "auto" }));
-  }, [inputs.salePrice, paymentFeeAuto]);
+  }, [inputs.salePrice, paymentFeeAuto, inputs.platform]);
 
   useEffect(() => {
     const id = inputs.commissionCategoryId.trim();
@@ -370,14 +370,25 @@ export function ProfitCalculator() {
 
             <FormStep
               step={2}
-              title="Kategori"
-              hint="Pazaryerine göre güncel komisyon listesinden arayın; komisyonu aşağıdan manuel değiştirebilirsiniz."
+              title={inputs.platform === "shopier" ? "Ciro dilimi" : "Kategori"}
+              hint={
+                inputs.platform === "shopier"
+                  ? "Önceki ay toplam satışınıza göre Shopier işlem ücreti dilimini seçin; oranı aşağıdan manuel değiştirebilirsiniz."
+                  : "Pazaryerine göre güncel komisyon listesinden arayın; komisyonu aşağıdan manuel değiştirebilirsiniz."
+              }
             >
               <CategorySearchCombobox
                 platform={inputs.platform}
                 value={inputs.commissionCategoryId}
                 onValueChange={(id) => setInputs((p) => ({ ...p, commissionCategoryId: id }))}
               />
+              {inputs.platform === "shopier" ? (
+                <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+                  Shopier kategori komisyonu almaz; dilim oranı KDV dahildir. Her satışa ek{" "}
+                  <span className="font-medium">0,49 TL + KDV</span> sabit işlem bedeli hizmet bedeli
+                  alanına yansıtılır.
+                </p>
+              ) : null}
             </FormStep>
 
             <FormStep
@@ -886,7 +897,12 @@ export function ProfitCalculator() {
                     Trendyol&apos;da sipariş başına platform hizmet bedeli hesabınıza göre değişebilir;
                     varsayılan yaklaşık tutar kullanılır.
                   </p>
-                ) : null}
+                ) : (
+                  <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
+                    Shopier işlem başına 0,49 TL (+KDV) sabit ücret keser; varsayılan 0,59 TL KDV
+                    dahildir.
+                  </p>
+                )}
               </div>
               <div className="flex items-end">
                 <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm">
@@ -976,7 +992,7 @@ export function ProfitCalculator() {
         <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400 align-middle animate-pulse" />
         <span className="inline-block align-middle">
           <span className="block">Yeni pazaryerleri ekleniyor…</span>
-          <span className="block">Shopier, PttAVM, ÇiçekSepeti 🚀</span>
+          <span className="block">PttAVM, ÇiçekSepeti 🚀</span>
         </span>
       </button>
 

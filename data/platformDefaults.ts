@@ -38,6 +38,18 @@ export const platformDefaults: Record<MarketplacePlatform, PlatformDefaultProfil
     warehouseShippingFee: 0,
     otherFixed: 0,
   },
+  shopier: {
+    /** 0,49 TL işlem bedeli + %20 KDV */
+    serviceFee: 0.59,
+    packaging: 0,
+    stopajRate: 1,
+    /** Shopier işlem ücretine dahil; ayrı tahsilat oranı yok */
+    paymentFeeRate: 0,
+    advertisingRate: 0,
+    listingFee: 0,
+    warehouseShippingFee: 0,
+    otherFixed: 0,
+  },
 };
 
 export const PLATFORM_DEFAULTS_PLACEHOLDER =

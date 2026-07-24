@@ -26,7 +26,7 @@ function keywordsFromPath(fullPath) {
         .map((x) => x.trim().toLocaleLowerCase("tr-TR"))
         .filter((w) => w.length > 1)
     ),
-  ].slice(0, 45);
+  ].slice(0, 100);
 }
 
 function parsePct(cell) {
@@ -64,10 +64,10 @@ function buildRows(tsvText) {
     const segments = [kategori, alt, urun].filter(Boolean);
     const fullPathRaw = segments.join(" > ");
     const fullPath =
-      fullPathRaw.length > 220 ? fullPathRaw.slice(0, 217) + "…" : fullPathRaw;
+      fullPathRaw.length > 360 ? fullPathRaw.slice(0, 357) + "…" : fullPathRaw;
     const subCatRaw = urun;
     const subCategory =
-      subCatRaw.length > 90 ? subCatRaw.slice(0, 87) + "…" : subCatRaw;
+      subCatRaw.length > 120 ? subCatRaw.slice(0, 117) + "…" : subCatRaw;
 
     seq += 1;
     rows.push({

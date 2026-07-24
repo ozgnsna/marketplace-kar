@@ -9,7 +9,7 @@ interface PlatformLogoCardsProps {
 }
 
 const cardBase =
-  "group relative flex min-h-0 cursor-pointer items-center justify-center overflow-hidden rounded-xl border bg-white px-1.5 py-1.5 sm:px-2 sm:py-2 transition duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-1";
+  "group relative flex min-h-[4.5rem] cursor-pointer flex-col items-center justify-center gap-1 overflow-hidden rounded-xl border bg-white px-2 py-2 transition duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-1 sm:min-h-[5.25rem]";
 
 const cardIdle =
   "border-slate-200/90 shadow-[0_1px_2px_rgba(15,23,42,0.05)] hover:scale-[1.02] hover:border-slate-300/95 hover:shadow-[0_4px_14px_rgba(15,23,42,0.07)] active:scale-[0.99]";
@@ -17,48 +17,58 @@ const cardIdle =
 const cardSelected =
   "border-emerald-500 shadow-[0_0_0_1px_rgba(34,197,94,0.12),0_4px_18px_rgba(34,197,94,0.18)] ring-1 ring-emerald-400/40 hover:scale-[1.02] hover:shadow-[0_0_0_1px_rgba(34,197,94,0.18),0_6px_22px_rgba(34,197,94,0.24)] active:scale-[0.99]";
 
-/** Tıklanabilir pazaryeri seçimi — tek satırda büyük logo, minimal kart. */
+const PLATFORMS: {
+  id: MarketplacePlatform;
+  label: string;
+  src: string;
+  width: number;
+  height: number;
+}[] = [
+  { id: "trendyol", label: "Trendyol", src: "/logos/trendyol.png", width: 280, height: 78 },
+  { id: "hepsiburada", label: "Hepsiburada", src: "/logos/hepsiburada.png", width: 320, height: 85 },
+  { id: "shopier", label: "Shopier", src: "/logos/shopier.png", width: 400, height: 240 },
+];
+
+/** Tıklanabilir pazaryeri seçimi — logo + okunaklı etiket. */
 export function PlatformLogoCards({ value, onChange }: PlatformLogoCardsProps) {
   return (
     <div
-      className="grid max-w-md grid-cols-2 gap-1.5 sm:gap-2"
+      className="grid w-full max-w-2xl grid-cols-3 gap-2 sm:gap-3"
       role="radiogroup"
       aria-label="Pazaryeri seçin"
     >
-      <button
-        type="button"
-        role="radio"
-        aria-checked={value === "trendyol"}
-        onClick={() => onChange("trendyol")}
-        className={`${cardBase} ${value === "trendyol" ? cardSelected : cardIdle}`}
-      >
-        <span className="sr-only">Trendyol</span>
-        <Image
-          src="/logos/trendyol.png"
-          alt=""
-          width={280}
-          height={78}
-          className="h-14 w-auto max-w-[min(100%,14rem)] object-contain object-center sm:h-16 md:h-[72px]"
-          priority
-        />
-      </button>
-
-      <button
-        type="button"
-        role="radio"
-        aria-checked={value === "hepsiburada"}
-        onClick={() => onChange("hepsiburada")}
-        className={`${cardBase} ${value === "hepsiburada" ? cardSelected : cardIdle}`}
-      >
-        <span className="sr-only">Hepsiburada</span>
-        <Image
-          src="/logos/hepsiburada.png"
-          alt=""
-          width={320}
-          height={85}
-          className="h-14 w-auto max-w-[min(100%,14.5rem)] object-contain object-center sm:h-16 md:h-[72px]"
-        />
-      </button>
+      {PLATFORMS.map((p) => {
+        const selected = value === p.id;
+        return (
+          <button
+            key={p.id}
+            type="button"
+            role="radio"
+            aria-checked={selected}
+            aria-label={p.label}
+            onClick={() => onChange(p.id)}
+            className={`${cardBase} ${selected ? cardSelected : cardIdle}`}
+          >
+            <span className="flex h-10 w-full items-center justify-center sm:h-12">
+              <Image
+                src={p.src}
+                alt={p.label}
+                width={p.width}
+                height={p.height}
+                className="max-h-full w-auto max-w-[95%] object-contain object-center"
+                priority={p.id !== "hepsiburada"}
+              />
+            </span>
+            <span
+              className={`text-[11px] font-semibold leading-none sm:text-xs ${
+                selected ? "text-emerald-700" : "text-slate-600"
+              }`}
+            >
+              {p.label}
+            </span>
+          </button>
+        );
+      })}
     </div>
   );
 }

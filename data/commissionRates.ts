@@ -21,6 +21,6 @@ export const commissionRates: Record<
     Kitap: 12,
     Oyuncak: 15,
   },
-  /** Eski düz liste — yeni kategoriler için `commissionCategories.ts` kullanın */
   hepsiburada: {},
+  shopier: {},
 };

@@ -1,4 +1,4 @@
-export type MarketplacePlatform = "trendyol" | "hepsiburada";
+export type MarketplacePlatform = "trendyol" | "hepsiburada" | "shopier";
 
 /** E-tablo: liste matrahı + risk satırı. Basit: indirimli satış üzerinden çarpan iade. */
 export type CalculationMode = "sheet" | "cashflow";
@@ -8,7 +8,7 @@ export type FeePercentBase = "listPrice" | "discountedPrice";
 
 export interface ProfitInputs {
   platform: MarketplacePlatform;
-  /** data/commissionCategories.ts kayıt id (ty-* / hb-*); boşsa komisyon manuel */
+  /** data/commissionCategories.ts kayıt id (ty-* / hb-* / shopier-*); boşsa komisyon manuel */
   commissionCategoryId: string;
   calculationMode: CalculationMode;
   feePercentBase: FeePercentBase;

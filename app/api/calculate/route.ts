@@ -9,7 +9,12 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 function parseInputs(body: unknown): ProfitInputs | null {
   if (!isRecord(body)) return null;
 
-  const platform = body.platform === "hepsiburada" ? "hepsiburada" : "trendyol";
+  const platform =
+    body.platform === "hepsiburada"
+      ? "hepsiburada"
+      : body.platform === "shopier"
+        ? "shopier"
+        : "trendyol";
   const commissionCategoryId =
     typeof body.commissionCategoryId === "string" ? body.commissionCategoryId : "";
   const calculationMode =

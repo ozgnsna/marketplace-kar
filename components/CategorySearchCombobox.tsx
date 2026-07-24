@@ -170,7 +170,7 @@ export function CategorySearchCombobox({
   return (
     <div ref={containerRef} className={`relative ${className}`}>
       <label htmlFor={`${baseId}-input`} className="mb-2 block text-sm font-medium text-slate-700">
-        Kategori veya ürün tipi ara
+        {platform === "shopier" ? "Ciro dilimi ara" : "Kategori veya ürün tipi ara"}
       </label>
       <input
         ref={inputRef}
@@ -185,7 +185,11 @@ export function CategorySearchCombobox({
         aria-autocomplete="list"
         autoComplete="off"
         spellCheck={false}
-        placeholder="Örn: küpe, barkod yazıcı, pos çantası"
+        placeholder={
+          platform === "shopier"
+            ? "Örn: 25.000 altı, yüksek ciro, dilim"
+            : "Örn: küpe, barkod yazıcı, pos çantası"
+        }
         value={query}
         onChange={handleInputChange}
         onFocus={handleInputFocus}
@@ -243,7 +247,9 @@ export function CategorySearchCombobox({
               className="rounded-2xl border border-amber-100 bg-amber-50/95 px-4 py-3 text-sm text-amber-950 shadow-lg"
               role="status"
             >
-              Kategori bulunamadı, komisyonu manuel girebilirsiniz.
+              {platform === "shopier"
+                ? "Dilim bulunamadı, işlem ücretini manuel girebilirsiniz."
+                : "Kategori bulunamadı, komisyonu manuel girebilirsiniz."}
             </p>
           ) : null}
         </div>

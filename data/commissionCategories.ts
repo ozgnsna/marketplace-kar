@@ -4,12 +4,13 @@ import {
   HB_COMMISSION_CATEGORIES,
   type HbCommissionCategoryRaw,
 } from "./hepsiburadaCommissionCategories";
+import { SHOPIER_COMMISSION_CATEGORIES } from "./shopierCommissionTiers";
 
 /**
  * Komisyon kategorileri:
- * - Trendyol: `commissionCategories.generated.json` (`npm run generate:commission`, PDF).
+ * - Trendyol: `trendyol-commission-source.tsv` → `commissionCategories.generated.json`
  * - Hepsiburada: `hepsiburada-commission-source.tsv` → `hepsiburadaCommissionCategories.generated.json`
- *   (`npm run generate:hepsiburada-commission`).
+ * - Shopier: `shopierCommissionTiers.ts` (aylık ciro dilimleri; kategori komisyonu yok)
  */
 
 export type CommissionCategoryRow = {
@@ -27,11 +28,11 @@ function keywordsFromHbPath(fullPath: string): string[] {
   return [
     ...new Set(
       fullPath
-        .split(/[,>&]|\s+/)
+        .split(/[,>&/|]+|\s+/)
         .map((x) => x.trim().toLocaleLowerCase("tr-TR"))
-        .filter((w) => w.length > 1)
+        .filter((w) => w.length > 1 && !["ve", "veya", "ile", "icin", "için"].includes(w))
     ),
-  ].slice(0, 45);
+  ].slice(0, 100);
 }
 
 function mapHbRawToRow(raw: HbCommissionCategoryRaw): CommissionCategoryRow {
@@ -55,17 +56,16 @@ function mapHbRawToRow(raw: HbCommissionCategoryRaw): CommissionCategoryRow {
 
 const ty = generated.trendyol as CommissionCategoryRow[];
 const hb = HB_COMMISSION_CATEGORIES.map(mapHbRawToRow);
+const shopier = SHOPIER_COMMISSION_CATEGORIES as CommissionCategoryRow[];
 
 export const COMMISSION_CATEGORIES: Record<MarketplacePlatform, CommissionCategoryRow[]> = {
   trendyol: ty,
   hepsiburada: hb,
+  shopier,
 };
 
 const BY_ID = new Map<string, CommissionCategoryRow>();
-for (const row of ty) {
-  BY_ID.set(row.id, row);
-}
-for (const row of hb) {
+for (const row of [...ty, ...hb, ...shopier]) {
   BY_ID.set(row.id, row);
 }
 
