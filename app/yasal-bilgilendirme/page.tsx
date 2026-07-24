@@ -11,9 +11,9 @@ export default function YasalBilgilendirmePage() {
   return (
     <LegalPageShell title="Yasal Bilgilendirme">
       <p>
-        Pazarkar, Trendyol, Hepsiburada veya diğer pazaryeri markalarının resmi temsilcisi, iştiraki veya
-        iş ortağı değildir. Bu platform üzerinde geçen ticari markalar ilgili hak sahiplerine aittir;
-        yalnızca kullanıcıyı bilgilendirme amacıyla anılmaktadır.
+        Pazarkar; Trendyol, Hepsiburada, Shopier veya diğer pazaryeri markalarının resmi temsilcisi,
+        iştiraki veya iş ortağı değildir. Bu platform üzerinde geçen ticari markalar ilgili hak
+        sahiplerine aittir; yalnızca kullanıcıyı bilgilendirme amacıyla anılmaktadır.
       </p>
       <p>
         Pazaryerlerinde uygulanan komisyon oranları, hizmet bedelleri, kargo ücretleri ve kampanya

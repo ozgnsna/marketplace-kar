@@ -38,7 +38,7 @@ export function HomeGuideLinks() {
           Pazaryeri kâr ve komisyon rehberleri
         </h2>
         <p className="mt-1 text-sm text-slate-600">
-          Trendyol komisyon hesaplama ve pazaryeri kâr hesaplama konularında kısa rehberler.
+          Trendyol, Hepsiburada ve Shopier için komisyon / kâr hesaplama rehberleri.
         </p>
         <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {GUIDES.map((g) => (

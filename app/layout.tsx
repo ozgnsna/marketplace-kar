@@ -38,13 +38,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Pazaryeri Kâr Hesaplama | Trendyol Komisyon Hesaplama",
     description:
-      "Trendyol komisyon hesaplama ve pazaryeri kâr hesaplama. Komisyon, kargo ve kampanya dahil net kârı saniyeler içinde görün.",
+      "Pazaryeri kâr hesaplama: Trendyol, Hepsiburada ve Shopier. Komisyon, kargo ve kampanya dahil net kârı saniyeler içinde görün.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Pazaryeri Kâr Hesaplama | Trendyol Komisyon Hesaplama",
     description:
-      "Trendyol komisyon hesaplama ve pazaryeri kâr hesaplama aracı. Ücretsiz, kayıtsız.",
+      "Trendyol, Hepsiburada ve Shopier için pazaryeri kâr hesaplama. Ücretsiz, kayıtsız.",
   },
   robots: {
     index: true,

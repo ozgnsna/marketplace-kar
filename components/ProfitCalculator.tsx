@@ -342,6 +342,18 @@ export function ProfitCalculator() {
     }
   }
 
+  useEffect(() => {
+    if (!isEarlyAccessOpen) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setIsEarlyAccessOpen(false);
+        setEarlyAccessFeedback(null);
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isEarlyAccessOpen]);
+
   function submitEarlyAccess() {
     const email = earlyAccessEmail.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {

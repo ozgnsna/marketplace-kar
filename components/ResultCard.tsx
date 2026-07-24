@@ -363,6 +363,13 @@ export function ResultCard({
       <p className="mt-6 text-xs leading-relaxed text-slate-500">
         Bu hesaplama gerçek pazaryeri verilerine dayalı tahmini sonuçlar sunar. Nihai değerler değişiklik
         gösterebilir.
+        {platform === "shopier" ? (
+          <>
+            {" "}
+            Shopier için seçtiğiniz ciro dilimi oranı, işlem başına sabit ücret (varsayılan 0,59 ₺ KDV
+            dahil) ve panel kargo tarifesi kullanılır; dilim değişirse net kâr da değişir.
+          </>
+        ) : null}
       </p>
     </div>
   );

@@ -54,7 +54,7 @@ export function LegalConsentGate({ children }: LegalConsentGateProps) {
     <>
       <div
         className={blockInteraction ? "pointer-events-none min-h-screen select-none" : undefined}
-        aria-hidden={blockInteraction ? true : undefined}
+        inert={blockInteraction ? true : undefined}
       >
         {children}
       </div>

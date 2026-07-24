@@ -85,6 +85,13 @@ export function TargetPriceCard({ inputs, emphasize = false }: TargetPriceCardPr
       <p className="mt-2 text-sm leading-relaxed text-slate-600">
         Belirlediğiniz kâr oranına ulaşmak için önerilen minimum liste fiyatı. Üstteki maliyet ve
         kesintilerle tutarlıdır ({PLATFORM_LABEL[inputs.platform]}).
+        {inputs.platform === "shopier" ? (
+          <>
+            {" "}
+            Shopier’de öneri, seçili ciro dilimine göredir; aylık hacim dilimi değişirse hedef fiyatı
+            yeniden hesaplayın.
+          </>
+        ) : null}
       </p>
 
       <div className="mt-5 flex flex-wrap gap-2">

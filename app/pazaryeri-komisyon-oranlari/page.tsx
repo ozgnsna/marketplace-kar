@@ -5,12 +5,13 @@ import { pageMetadata } from "@/lib/seoMetadata";
 export const metadata = pageMetadata({
   title: "Pazaryeri Komisyon Oranları ve Kâr Rehberi",
   description:
-    "Pazaryeri komisyon oranları ve kâr ilişkisi: Trendyol komisyon hesaplama, Hepsiburada oranları ve toplam kesintiyle net kâr planı.",
+    "Pazaryeri komisyon oranları: Trendyol, Hepsiburada kategori komisyonları ve Shopier ciro dilimi ile net kâr planı.",
   path: "/pazaryeri-komisyon-oranlari",
   keywords: [
     "pazaryeri komisyon oranları",
     "trendyol komisyon hesaplama",
     "pazaryeri kar hesaplama",
+    "shopier komisyon",
   ],
 });
 
@@ -60,6 +61,22 @@ export default function PazaryeriKomisyonOranlariPage() {
               Trendyol komisyon hesaplama
             </a>{" "}
             adımlarını da inceleyebilirsiniz.
+          </p>
+
+          <h2 className="text-xl font-semibold text-[#0B1F3B]">
+            Shopier farkı: kategori değil, ciro dilimi
+          </h2>
+          <p>
+            Shopier kategori bazlı komisyon yerine önceki ay cirosuna göre işlem ücreti dilimleri
+            uygular; ayrıca her satışta sabit bir işlem ücreti kesilir. Bu nedenle TY/HB komisyon
+            tablolarını Shopier’e birebir taşımak yanlış sonuç verir. Shopier senaryosu için{" "}
+            <a
+              href="/shopier-komisyon-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              Shopier komisyon hesaplama
+            </a>{" "}
+            rehberine bakın ve hesaplayıcıda doğru dilimi seçin.
           </p>
 
           <h2 className="text-xl font-semibold text-[#0B1F3B]">
