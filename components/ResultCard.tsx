@@ -1,9 +1,12 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { enrichBreakdown, sourceLabel, type EnrichedBreakdownRow } from "@/lib/enrichBreakdown";
 import type { MarketplacePlatform, ProfitInputs, ProfitResult } from "@/types/profit";
 import { getProfitStatus } from "@/lib/getProfitStatus";
+
+const SAVED_CALCS_KEY = "pazarkar.savedCalcs.v1";
+const MAX_SAVED = 20;
 
 const PLATFORM_LABEL: Record<MarketplacePlatform, string> = {
   trendyol: "Trendyol",
@@ -95,21 +98,62 @@ export function ResultCard({
         ? "bg-amber-50 text-amber-950 ring-1 ring-amber-200/90"
         : "bg-emerald-50 text-emerald-900 ring-1 ring-emerald-200/90";
 
-  function handleSave() {
-    console.log("Bu kârı kaydet", {
-      platform,
-      inputs,
-      result,
-      profitInsight: profitInsight.status,
-      savedAt: new Date().toISOString(),
-    });
+  const [actionFeedback, setActionFeedback] = useState<string | null>(null);
+
+  function showFeedback(message: string) {
+    setActionFeedback(message);
+    window.setTimeout(() => setActionFeedback(null), 2800);
   }
 
-  function handleShare() {
+  function handleSave() {
+    try {
+      const raw = window.localStorage.getItem(SAVED_CALCS_KEY);
+      const prev: unknown[] = raw ? (JSON.parse(raw) as unknown[]) : [];
+      const list = Array.isArray(prev) ? prev : [];
+      const entry = {
+        savedAt: new Date().toISOString(),
+        platform,
+        salePrice: inputs.salePrice,
+        netProfit,
+        profitStatus: profitInsight.status,
+      };
+      const next = [entry, ...list].slice(0, MAX_SAVED);
+      window.localStorage.setItem(SAVED_CALCS_KEY, JSON.stringify(next));
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "save_calculation", { platform });
+      }
+      showFeedback("Bu hesap cihazına kaydedildi.");
+    } catch {
+      showFeedback("Kayıt yapılamadı. Tarayıcı depolamasını kontrol et.");
+    }
+  }
+
+  async function handleShare() {
     const text = buildShareText(inputs.salePrice, netProfit);
-    console.log("Bu hesabı paylaş", text);
-    if (typeof window !== "undefined") {
-      window.alert(text);
+    const url = typeof window !== "undefined" ? window.location.origin : "https://www.pazarkar.com";
+    const sharePayload = { title: "Pazarkar kâr hesabı", text, url };
+
+    try {
+      if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+        await navigator.share(sharePayload);
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "share_calculation", { method: "native", platform });
+        }
+        return;
+      }
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(`${text}\n${url}`);
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "share_calculation", { method: "clipboard", platform });
+        }
+        showFeedback("Paylaşım metni panoya kopyalandı.");
+        return;
+      }
+      showFeedback("Paylaşım bu cihazda desteklenmiyor.");
+    } catch (err) {
+      // Kullanıcı paylaşımı iptal ettiyse sessiz geç
+      if (err instanceof DOMException && err.name === "AbortError") return;
+      showFeedback("Paylaşım tamamlanamadı.");
     }
   }
 
@@ -199,12 +243,19 @@ export function ResultCard({
             </button>
             <button
               type="button"
-              onClick={handleShare}
+              onClick={() => {
+                void handleShare();
+              }}
               className="inline-flex flex-1 items-center justify-center rounded-2xl bg-[#22C55E] px-4 py-3.5 text-sm font-semibold text-white shadow-md shadow-emerald-600/25 transition hover:bg-[#16a34a] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#22C55E] focus-visible:ring-offset-2"
             >
               Bu hesabı paylaş
             </button>
           </div>
+          {actionFeedback ? (
+            <p className="mt-2 text-center text-xs font-medium text-emerald-800" role="status">
+              {actionFeedback}
+            </p>
+          ) : null}
 
           <p className="mt-4 text-xs leading-relaxed text-slate-500">
             {sheet

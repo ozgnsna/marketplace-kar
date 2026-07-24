@@ -86,6 +86,7 @@ export function ProfitCalculator() {
   const [paymentFeeAuto, setPaymentFeeAuto] = useState(true);
   const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false);
   const [earlyAccessEmail, setEarlyAccessEmail] = useState("");
+  const [earlyAccessFeedback, setEarlyAccessFeedback] = useState<string | null>(null);
   const prevPlatformRef = useRef<MarketplacePlatform | null>(null);
 
   useEffect(() => {
@@ -335,17 +336,29 @@ export function ProfitCalculator() {
 
   function openEarlyAccessModal() {
     setIsEarlyAccessOpen(true);
+    setEarlyAccessFeedback(null);
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
       window.gtag("event", "open_early_access");
     }
   }
 
   function submitEarlyAccess() {
-    if (typeof window !== "undefined" && typeof window.gtag === "function") {
-      window.gtag("event", "submit_early_access");
+    const email = earlyAccessEmail.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEarlyAccessFeedback("Geçerli bir e-posta gir.");
+      return;
     }
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "submit_early_access", { method: "mailto" });
+    }
+    const subject = encodeURIComponent("Pazarkar erken erişim — Amazon / Etsy");
+    const body = encodeURIComponent(
+      `Merhaba,\n\nAmazon ve Etsy hesaplama araçları için erken erişim listesine eklenmek istiyorum.\nE-posta: ${email}\n`
+    );
+    window.location.href = `mailto:info@pazarkar.com?subject=${subject}&body=${body}`;
     setIsEarlyAccessOpen(false);
     setEarlyAccessEmail("");
+    setEarlyAccessFeedback(null);
   }
 
   return (
@@ -990,12 +1003,12 @@ export function ProfitCalculator() {
       <button
         type="button"
         onClick={openEarlyAccessModal}
-        className="floating-badge-enter fixed bottom-4 right-4 z-50 w-[calc(100vw-2rem)] max-w-[220px] rounded-xl border border-white/30 bg-white/10 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 px-3 py-2 text-left text-xs font-medium text-white shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl sm:px-4 sm:py-3 sm:text-sm"
+        className="floating-badge-enter fixed bottom-4 right-4 z-50 w-[calc(100vw-2rem)] max-w-[220px] rounded-xl border border-slate-800/20 bg-slate-900/95 px-3 py-2 text-left text-xs font-medium text-white shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:bg-slate-900 sm:px-4 sm:py-3 sm:text-sm"
       >
         <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400 align-middle animate-pulse" />
         <span className="inline-block align-middle">
-          <span className="block">Yeni pazaryerleri ekleniyor…</span>
-          <span className="block">PttAVM, ÇiçekSepeti 🚀</span>
+          <span className="block">Sıradaki: Amazon &amp; Etsy</span>
+          <span className="block text-white/75">Erken erişim listesi</span>
         </span>
       </button>
 
@@ -1012,11 +1025,11 @@ export function ProfitCalculator() {
             aria-labelledby="early-access-title"
           >
             <h3 id="early-access-title" className="text-lg font-semibold sm:text-xl">
-              Yeni pazaryerleri için erken erişim
+              Amazon &amp; Etsy için erken erişim
             </h3>
             <p className="mt-2 text-sm text-slate-200">
-              Amazon, Etsy ve diğer pazaryerleri için hesaplama araçları çok yakında geliyor.
-              İlk sen kullan.
+              Trendyol, Hepsiburada ve Shopier şu an hazır. Amazon ve Etsy hesaplama araçları
+              sırada — haber almak için e-posta bırak, mail uygulaman açılacak.
             </p>
 
             <label htmlFor="early-access-email" className="mt-4 block text-xs text-slate-300">
@@ -1026,20 +1039,28 @@ export function ProfitCalculator() {
               id="early-access-email"
               type="email"
               value={earlyAccessEmail}
-              onChange={(e) => setEarlyAccessEmail(e.target.value)}
+              onChange={(e) => {
+                setEarlyAccessEmail(e.target.value);
+                setEarlyAccessFeedback(null);
+              }}
               placeholder="ornek@mail.com"
               className="mt-1 w-full rounded-xl border border-white/25 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-slate-300/80 outline-none ring-0 transition focus:border-emerald-400"
             />
+            {earlyAccessFeedback ? (
+              <p className="mt-2 text-xs font-medium text-amber-300" role="status">
+                {earlyAccessFeedback}
+              </p>
+            ) : null}
 
             <button
               type="button"
               onClick={submitEarlyAccess}
               className="mt-4 w-full rounded-xl bg-gradient-to-r from-emerald-500 to-blue-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"
             >
-              Erken erişim al
+              Mail ile kaydol
             </button>
             <p className="mt-2 text-center text-xs text-slate-300">
-              Spam yok. Sadece lansman haberi.
+              Spam yok. Sadece lansman haberi — info@pazarkar.com
             </p>
           </div>
         </div>
