@@ -1015,7 +1015,7 @@ export function ProfitCalculator() {
       <button
         type="button"
         onClick={openEarlyAccessModal}
-        className="floating-badge-enter fixed bottom-4 right-4 z-50 w-[calc(100vw-2rem)] max-w-[220px] rounded-xl border border-slate-800/20 bg-slate-900/95 px-3 py-2 text-left text-xs font-medium text-white shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:bg-slate-900 sm:px-4 sm:py-3 sm:text-sm"
+        className="floating-badge-enter fixed bottom-5 right-3 z-50 max-w-[11.5rem] rounded-xl border border-slate-800/20 bg-slate-900/95 px-3 py-2 text-left text-[11px] font-medium leading-snug text-white shadow-lg backdrop-blur-lg transition hover:bg-slate-900 sm:bottom-6 sm:right-4 sm:max-w-[13rem] sm:px-3.5 sm:py-2.5 sm:text-xs"
       >
         <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400 align-middle animate-pulse" />
         <span className="inline-block align-middle">
