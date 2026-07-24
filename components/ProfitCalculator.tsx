@@ -1001,7 +1001,7 @@ export function ProfitCalculator() {
             breakdownEnriched={breakdownEnriched}
           />
           <TargetPriceCard inputs={inputsResolved} emphasize={emphasizeTargetPrice} />
-          <PsychologyCard onCta={scrollToCalculator} />
+          <PsychologyCard />
         </aside>
       </div>
 

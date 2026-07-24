@@ -38,7 +38,7 @@ export function BrandLogo({
   const img = (
     <Image
       src="/pazarkar-logo.png"
-      alt="pazarkar — Doğru fiyat, gerçek kâr"
+      alt="Pazarkar — Doğru fiyat, gerçek kâr"
       width={560}
       height={220}
       priority={priority}

@@ -1,22 +1,11 @@
-"use client";
-
-interface PsychologyCardProps {
-  onCta: () => void;
-}
-
-export function PsychologyCard({ onCta }: PsychologyCardProps) {
+/** Kısa yan bilgi — hero CTA’yı tekrarlamaz. */
+export function PsychologyCard() {
   return (
-    <div className="rounded-3xl border border-slate-200/70 bg-white p-6 shadow-premium sm:p-7">
-      <p className="text-sm font-medium leading-relaxed text-[#0B1F3B]">
-        Çoğu satıcı kâr ettiğini sanıyor, aslında zarar ediyor.
+    <aside className="rounded-3xl border border-slate-200/70 bg-slate-50/90 px-5 py-4 sm:px-6 sm:py-5">
+      <p className="text-sm leading-relaxed text-slate-700">
+        Komisyon düşük görünse bile kargo, kampanya ve iade net kârı bozabilir — tüm kesintileri birlikte
+        kontrol et.
       </p>
-      <button
-        type="button"
-        onClick={onCta}
-        className="mt-4 w-full rounded-2xl border-2 border-[#22C55E] bg-white py-3.5 text-sm font-semibold text-[#22C55E] transition hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#22C55E] focus-visible:ring-offset-2"
-      >
-        Ücretsiz Hesapla
-      </button>
-    </div>
+    </aside>
   );
 }

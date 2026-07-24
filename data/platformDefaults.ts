@@ -12,13 +12,10 @@ export type PlatformDefaultProfile = {
   otherFixed: number;
 };
 
-/**
- * Platform varsayılan gider profili.
- * TODO: Hepsiburada gerçek sabit gider profili buraya yazılacak.
- */
+/** Platform varsayılan gider profili (panel / sözleşmeye göre güncellenir). */
 export const platformDefaults: Record<MarketplacePlatform, PlatformDefaultProfile> = {
   trendyol: {
-    /** Sipariş bazlı platform hizmet bedeli (satıcı paneli / sözleşmeye göre güncellenir) */
+    /** Sipariş bazlı platform hizmet bedeli */
     serviceFee: 13.19,
     packaging: 0,
     stopajRate: 1,
@@ -51,6 +48,3 @@ export const platformDefaults: Record<MarketplacePlatform, PlatformDefaultProfil
     otherFixed: 0,
   },
 };
-
-export const PLATFORM_DEFAULTS_PLACEHOLDER =
-  "TODO: gerçek HB sabit gider profili ve TY kesintileri buradan güncellenecek";

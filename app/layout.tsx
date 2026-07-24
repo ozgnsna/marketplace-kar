@@ -59,12 +59,16 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: "Kâr Hesabı",
+    title: SITE_NAME,
     statusBarStyle: "default",
   },
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png" }],
-    apple: [{ url: "/favicon.png", sizes: "180x180", type: "image/png" }],
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
 };
