@@ -532,75 +532,40 @@ export function ProfitCalculator() {
             <FormStep
               step={4}
               title="Maliyet ve satış fiyatı"
-            hint="Maliyeti TL veya dolar olarak girin. Tutarlar KDV dahildir."
-          >
-            <div className="mb-5">
-              <SegmentedControl
-                ariaLabel="Alış maliyeti para birimi"
-                value={costMode}
-                onChange={(mode) => {
-                  setCostMode(mode);
-                  if (mode === "try") setUsdExcl(0);
-                }}
-                options={[
-                  {
-                    value: "try",
-                    label: "TL ile alış",
-                    icon: <IconLira />,
-                  },
-                  {
-                    value: "usd",
-                    label: "Dolar + Kur",
-                    icon: <IconDollar />,
-                  },
-                ]}
-              />
-            </div>
-
-            <div className="isolate grid min-h-0">
-              <div
-                className={`col-start-1 row-start-1 transition-all duration-300 ease-out will-change-transform ${
-                  costMode === "try"
-                    ? "relative z-10 translate-y-0 opacity-100"
-                    : "pointer-events-none relative z-0 -translate-y-1 opacity-0"
-                }`}
-                inert={costMode !== "try" ? true : undefined}
-              >
-                <div className="space-y-4">
-                  <NumberField
-                    id="purchasePrice"
-                    label="Ürünün size maliyeti (KDV dahil)"
-                    suffix="₺"
-                    value={inputs.purchasePrice}
-                    onChange={(v) => setInput("purchasePrice", v)}
-                  />
-                  {usdExcl === 0 ? (
-                    <div className="space-y-2 pt-0.5">
-                      <p className="text-xs leading-relaxed text-slate-500">
-                        Dilersen maliyeti dolar üzerinden de girebilirsin
-                      </p>
-                      <NumberField
-                        id="usdExclBridge"
-                        label="Alış (USD, KDV hariç)"
-                        suffix="$"
-                        value={usdExcl}
-                        onChange={(v) => {
-                          setUsdExcl(v);
-                          if (v > 0) setCostMode("usd");
-                        }}
-                      />
-                    </div>
-                  ) : null}
-                </div>
+              hint="Alış maliyetini TL veya dolar seçerek girin. Satış tutarı KDV dahildir."
+            >
+              <div className="mb-4">
+                <SegmentedControl
+                  ariaLabel="Alış maliyeti para birimi"
+                  value={costMode}
+                  onChange={(mode) => {
+                    setCostMode(mode);
+                    if (mode === "try") setUsdExcl(0);
+                  }}
+                  options={[
+                    {
+                      value: "try",
+                      label: "TL ile alış",
+                      icon: <IconLira />,
+                    },
+                    {
+                      value: "usd",
+                      label: "Dolar + Kur",
+                      icon: <IconDollar />,
+                    },
+                  ]}
+                />
               </div>
-              <div
-                className={`col-start-1 row-start-1 transition-all duration-300 ease-out will-change-transform ${
-                  costMode === "usd"
-                    ? "relative z-10 translate-y-0 opacity-100"
-                    : "pointer-events-none relative z-0 translate-y-1 opacity-0"
-                }`}
-                inert={costMode !== "usd" ? true : undefined}
-              >
+
+              {costMode === "try" ? (
+                <NumberField
+                  id="purchasePrice"
+                  label="Ürünün size maliyeti (KDV dahil)"
+                  suffix="₺"
+                  value={inputs.purchasePrice}
+                  onChange={(v) => setInput("purchasePrice", v)}
+                />
+              ) : (
                 <div className="space-y-4">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <NumberField
@@ -668,29 +633,28 @@ export function ProfitCalculator() {
                       </p>
                     ) : null}
                   </div>
-                  <div className="rounded-xl bg-amber-50 px-3 py-2 text-sm">
+                  <div className="rounded-xl border border-amber-200/80 bg-amber-50 px-3 py-2.5 text-sm">
                     <span className="text-amber-900">TL maliyet (KDV dahil): </span>
                     <span className="font-semibold tabular-nums text-amber-950">
                       {tryFmt.format(purchaseFromUsd)}
                     </span>
                   </div>
                 </div>
-              </div>
-            </div>
+              )}
 
-            <div className="mt-4">
-              <NumberField
-                id="salePrice"
-                label="Ürünün satış fiyatı (KDV dahil)"
-                hint="Evet — pazaryerinde ürün sayfasında gördüğünüz satış tutarını TL olarak buraya yazın; hesaplama bu fiyat üzerinden yapılır."
-                placeholder="Örn. 2.633"
-                showEmptyWhenZero
-                suffix="₺"
-                value={inputs.salePrice}
-                onChange={(v) => setInput("salePrice", v)}
-              />
-            </div>
-          </FormStep>
+              <div className="mt-5 border-t border-slate-100 pt-5">
+                <NumberField
+                  id="salePrice"
+                  label="Ürünün satış fiyatı (KDV dahil)"
+                  hint="Pazaryeri ürün sayfasındaki satış tutarı (KDV dahil)."
+                  placeholder="Örn. 2.633"
+                  showEmptyWhenZero
+                  suffix="₺"
+                  value={inputs.salePrice}
+                  onChange={(v) => setInput("salePrice", v)}
+                />
+              </div>
+            </FormStep>
 
           <FormStep
             step={5}
