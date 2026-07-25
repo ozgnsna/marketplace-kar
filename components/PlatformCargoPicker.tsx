@@ -47,10 +47,13 @@ export function PlatformCargoPicker({
 
   return (
     <div className={`mb-4 rounded-xl border p-4 ${cargoBorder(platform)}`}>
-      <p className="mb-3 text-xs font-medium text-slate-800">{cargoTitle(platform)}</p>
+      <p className="mb-1 text-xs font-medium text-slate-800">{cargoTitle(platform)}</p>
+      <p className="mb-3 text-[11px] leading-snug text-slate-500">
+        Paket boyutu (desi) ve kargo firmasını seçin; ücret otomatik gelir.
+      </p>
       <div className="grid gap-3 sm:grid-cols-2">
         <label className="block text-sm">
-          <span className="mb-1 block text-slate-600">Desi / KG</span>
+          <span className="mb-1 block text-slate-600">Paket boyutu (desi)</span>
           <select
             className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"
             value={safeDesi}
@@ -58,7 +61,7 @@ export function PlatformCargoPicker({
           >
             {desiOptions.map((d) => (
               <option key={d} value={d}>
-                {d}
+                {d} desi
               </option>
             ))}
           </select>
@@ -80,16 +83,21 @@ export function PlatformCargoPicker({
       </div>
       {preview != null ? (
         <p className="mt-3 text-sm text-slate-700">
-          Tablo tahmini:{" "}
+          Tahmini kargo:{" "}
           <span className="font-semibold tabular-nums text-slate-900">{preview.toFixed(2)}</span> ₺
           <span className="mt-0.5 block text-[11px] font-normal text-slate-500">
-            Aşağıdaki kargo alanına yazılır; istersen elle değiştir.
+            Aşağıdaki alana yazılır; gerekirse elle düzelt.
           </span>
         </p>
       ) : (
-        <p className="mt-2 text-xs text-amber-800">Bu kombinasyon için tablo yok; kargoyu elle girin.</p>
+        <p className="mt-2 text-xs text-amber-800">Bu seçim için tablo yok; kargoyu elle girin.</p>
       )}
-      <p className="mt-2 text-[11px] leading-snug text-slate-500">{cargoNote(platform)}</p>
+      <details className="mt-2">
+        <summary className="cursor-pointer text-[11px] font-medium text-slate-500 hover:text-slate-700">
+          Tarife notu
+        </summary>
+        <p className="mt-1 text-[11px] leading-snug text-slate-500">{cargoNote(platform)}</p>
+      </details>
     </div>
   );
 }

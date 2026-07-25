@@ -39,8 +39,8 @@ export function DesiHelper({ onApplyDesi, appliedDesi }: DesiHelperProps) {
       <details className="group rounded-2xl border border-slate-200 bg-white open:bg-slate-50/50">
         <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 text-sm font-semibold text-slate-800 marker:content-none [&::-webkit-details-marker]:hidden">
           <span>
-            Desi hesabı{" "}
-            <span className="font-medium text-slate-500">(ölçü ile)</span>
+            Paket ölçüsünden boyut bul{" "}
+            <span className="font-medium text-slate-500">(isteğe bağlı)</span>
           </span>
           <span className="tabular-nums text-xs font-semibold text-[#0B1F3B]">
             {summaryDesi} desi
@@ -48,12 +48,16 @@ export function DesiHelper({ onApplyDesi, appliedDesi }: DesiHelperProps) {
         </summary>
 
         <div className="space-y-3 border-t border-slate-100 px-4 pb-4 pt-3">
+          <p className="text-xs leading-relaxed text-slate-500">
+            Kutu en × boy × yükseklik ve ağırlığı gir; sistem ücret için kullanılan boyutu (desi)
+            otomatik seçer.
+          </p>
           <button
             type="button"
             onClick={() => setHelpOpen(true)}
             className="text-xs font-semibold text-[#0B1F3B] underline decoration-slate-300 underline-offset-2 hover:decoration-[#0B1F3B]"
           >
-            Desi nasıl hesaplanır?
+            Nasıl hesaplanır?
           </button>
 
           <div className="grid gap-3 sm:grid-cols-2">
@@ -106,7 +110,7 @@ export function DesiHelper({ onApplyDesi, appliedDesi }: DesiHelperProps) {
               Ağırlık: <span className="tabular-nums font-medium">{weightDesi.toFixed(2)}</span>
             </p>
             <p className="mt-1 font-semibold text-[#0B1F3B]">
-              Esas: {desiRounded} desi — kargo seçimine otomatik uygulandı
+              Seçilen boyut: {desiRounded} desi (kargo seçimine uygulandı)
             </p>
           </div>
         </div>

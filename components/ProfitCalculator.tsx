@@ -92,7 +92,18 @@ export function ProfitCalculator() {
   const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false);
   const [earlyAccessEmail, setEarlyAccessEmail] = useState("");
   const [earlyAccessFeedback, setEarlyAccessFeedback] = useState<string | null>(null);
+  const [earlyAccessBadgeHidden, setEarlyAccessBadgeHidden] = useState(false);
   const prevPlatformRef = useRef<MarketplacePlatform | null>(null);
+
+  useEffect(() => {
+    try {
+      setEarlyAccessBadgeHidden(
+        window.localStorage.getItem("pazarkar.earlyAccessBadge.hidden") === "1"
+      );
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -246,10 +257,14 @@ export function ProfitCalculator() {
 
   const result = useMemo(() => calculateProfit(inputsResolved), [inputsResolved]);
 
-  const hasCalculation = useMemo(() => {
+  const hasCost = useMemo(() => {
     const pp = costMode === "usd" ? purchaseFromUsd : inputs.purchasePrice;
-    return inputs.salePrice > 0 && pp > 0;
-  }, [costMode, purchaseFromUsd, inputs.purchasePrice, inputs.salePrice]);
+    return pp > 0;
+  }, [costMode, purchaseFromUsd, inputs.purchasePrice]);
+
+  const hasCalculation = useMemo(() => {
+    return inputs.salePrice > 0 && hasCost;
+  }, [hasCost, inputs.salePrice]);
 
   const breakdownEnriched = useMemo(
     () => enrichBreakdown(result, fieldSources),
@@ -387,11 +402,11 @@ export function ProfitCalculator() {
     <div className="min-h-screen bg-[#f3f5f9]">
       <LandingHero onPrimaryCta={scrollToCalculator} />
 
-      <div className="mx-auto max-w-6xl px-4 pb-8 pt-10 sm:px-6 sm:pb-10 sm:pt-12 lg:px-10">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start lg:gap-12">
+      <div className="mx-auto max-w-6xl px-4 pb-8 pt-6 sm:px-6 sm:pb-10 sm:pt-10 lg:px-10">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start lg:gap-10">
           <section
             id="hesaplama-basla"
-            className="scroll-mt-24 rounded-3xl border border-slate-200/70 bg-white p-7 shadow-premium sm:p-9 lg:p-11"
+            className="scroll-mt-24 rounded-3xl border border-slate-200/70 bg-white p-5 shadow-premium sm:p-8 lg:p-10"
           >
             <FormStep
               step={1}
@@ -854,7 +869,7 @@ export function ProfitCalculator() {
           <FormStep
             step={6}
             title="Kargo ve paket"
-            hint="Desi ve firmaya göre tablo tahmini kargo alanına yazılır; istersen elle değiştir."
+            hint="Paket boyutunu ve firmayı seçin; kargo ücreti otomatik dolar, istersen elle değiştir."
           >
             <DesiHelper onApplyDesi={applyDesiFromHelper} appliedDesi={cargoDesi} />
             <PlatformCargoPicker
@@ -925,16 +940,18 @@ export function ProfitCalculator() {
             title="Kampanya ve iade"
             hint={
               sheet
-                ? "Liste fiyatı modunda iade/risk girebilirsiniz. Kampanya için hesaplama türünü indirimli satışa alın."
+                ? "İade/risk girebilirsiniz. Kampanya için indirimli satış moduna geçin."
                 : "İndirim oranını girin; iade payı net kârı düşürür."
             }
           >
             {sheet ? (
-              <div className="mb-4 rounded-xl border border-amber-200/80 bg-amber-50/70 px-3 py-3 text-xs leading-relaxed text-amber-950">
-                İndirim / örnek kampanya alanları liste fiyatı modunda kullanılmaz.{" "}
+              <div className="mb-4 flex flex-col gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-xs leading-relaxed text-slate-600">
+                  Kampanya alanları liste fiyatı modunda kapalı.
+                </p>
                 <button
                   type="button"
-                  className="font-semibold underline decoration-amber-400 underline-offset-2 hover:decoration-amber-700"
+                  className="shrink-0 rounded-lg bg-[#0B1F3B] px-3 py-2 text-xs font-semibold text-white hover:bg-slate-800"
                   onClick={() =>
                     setInputs((p) => ({
                       ...p,
@@ -943,82 +960,81 @@ export function ProfitCalculator() {
                     }))
                   }
                 >
-                  İndirimli satış moduna geç
+                  İndirimli satışa geç
                 </button>
               </div>
-            ) : null}
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div
-                className={
-                  sheet ? "pointer-events-none opacity-45 sm:col-span-2" : "sm:col-span-2"
-                }
-              >
+            ) : (
+              <div className="mb-4 space-y-3">
                 <NumberField
                   id="discountRate"
                   label="İndirim / kampanya %"
                   suffix="%"
-                  value={sheet ? 0 : inputs.discountRate}
+                  value={inputs.discountRate}
                   onChange={(v) => setInput("discountRate", v)}
                   hint="Ürün fiyatındaki indirim oranı (ör. %10 kampanya)."
                 />
-                <label
-                  className={`mt-2.5 flex cursor-pointer items-start gap-2.5 rounded-xl border border-dashed border-slate-200 bg-slate-50/80 px-3 py-2.5 text-sm ${
-                    sheet ? "cursor-not-allowed" : ""
-                  }`}
-                >
+                <label className="flex cursor-pointer items-start gap-2.5 rounded-xl border border-dashed border-slate-200 bg-slate-50/80 px-3 py-2.5 text-sm">
                   <input
                     type="checkbox"
                     className="mt-0.5 h-4 w-4 shrink-0 rounded"
-                    disabled={sheet}
-                    checked={!sheet && inputs.fourForThree}
+                    checked={inputs.fourForThree}
                     onChange={(e) => setInput("fourForThree", e.target.checked)}
                   />
                   <span>
                     <span className="font-medium text-slate-800">Örnek: 4 al 3 öde</span>
                     <span className="mt-0.5 block text-[11px] leading-snug text-slate-500">
-                      Kampanya örneği — efektif satış ≈ %25 düşer (3/4). İstersen kapatıp sadece
-                      üstteki % indirimi kullan.
+                      Örnek kampanya — efektif satış ≈ %25 düşer. İstersen sadece üstteki %
+                      indirimi kullan.
                     </span>
                   </span>
                 </label>
+                {inputs.discountRate > 0 || inputs.fourForThree ? (
+                  <p className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2 text-xs text-slate-600">
+                    Efektif müşteri fiyatı:{" "}
+                    <span className="font-semibold tabular-nums text-[#0B1F3B]">
+                      {tryFmt.format(effectiveSalePreview)}
+                    </span>
+                  </p>
+                ) : null}
               </div>
+            )}
 
-              <div className="sm:col-span-2">
-                <NumberField
-                  id="returnRate"
-                  label={
-                    sheet
-                      ? "İade veya risk (liste üzerinden %)"
-                      : "İade oranı (net kâra etki)"
-                  }
-                  suffix="%"
-                  value={inputs.returnRate}
-                  onChange={(v) => setInput("returnRate", v)}
-                  hint="Beklenen iade / risk payı; net kârı düşürür."
-                />
-              </div>
-            </div>
-
-            {!sheet && (inputs.discountRate > 0 || inputs.fourForThree) ? (
-              <p className="mt-3 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2 text-xs text-slate-600">
-                Efektif müşteri fiyatı (tahmini):{" "}
-                <span className="font-semibold tabular-nums text-[#0B1F3B]">
-                  {tryFmt.format(effectiveSalePreview)}
-                </span>
-              </p>
-            ) : null}
+            <NumberField
+              id="returnRate"
+              label={
+                sheet
+                  ? "İade veya risk (liste üzerinden %)"
+                  : "İade oranı (net kâra etki)"
+              }
+              suffix="%"
+              value={inputs.returnRate}
+              onChange={(v) => setInput("returnRate", v)}
+              hint="Beklenen iade / risk payı; net kârı düşürür."
+            />
           </FormStep>
         </section>
 
-        <aside className="flex flex-col gap-7 sm:gap-8 lg:sticky lg:top-10">
-          <button
-            type="button"
-            onClick={applyDemoSample}
-            className="w-full rounded-2xl border-2 border-dashed border-slate-300 bg-white px-4 py-3.5 text-sm font-semibold text-[#0B1F3B] shadow-sm transition hover:border-[#22C55E] hover:bg-emerald-50/50"
-          >
-            Örnek veri ile dene
-          </button>
+        <aside className="flex flex-col gap-5 sm:gap-6 lg:sticky lg:top-8">
+          {!hasCalculation ? (
+            <button
+              type="button"
+              onClick={applyDemoSample}
+              className="w-full rounded-2xl border-2 border-emerald-500/40 bg-emerald-50 px-4 py-4 text-left shadow-sm transition hover:border-emerald-500 hover:bg-emerald-50/80"
+            >
+              <span className="block text-sm font-bold text-[#0B1F3B]">Örnek veri ile dene</span>
+              <span className="mt-1 block text-xs leading-relaxed text-slate-600">
+                Tek tıkla örnek maliyet, satış ve komisyon doldurulur — sonucu hemen gör.
+              </span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={applyDemoSample}
+              className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:text-[#0B1F3B]"
+            >
+              Örnek veriyi yeniden yükle
+            </button>
+          )}
           <ResultCard
             platform={inputs.platform}
             result={result}
@@ -1026,7 +1042,11 @@ export function ProfitCalculator() {
             hasCalculation={hasCalculation}
             breakdownEnriched={breakdownEnriched}
           />
-          <TargetPriceCard inputs={inputsResolved} emphasize={emphasizeTargetPrice} />
+          <TargetPriceCard
+            inputs={inputsResolved}
+            emphasize={emphasizeTargetPrice && hasCalculation}
+            hasCost={hasCost}
+          />
           <PsychologyCard />
         </aside>
       </div>
@@ -1038,17 +1058,35 @@ export function ProfitCalculator() {
           Sonuç tahminidir. Kesin rakam için pazaryeri hakediş ve mali müşavirinizi kullanın.
         </p>
       </footer>
-      <button
-        type="button"
-        onClick={openEarlyAccessModal}
-        className="floating-badge-enter fixed bottom-5 right-3 z-50 max-w-[11.5rem] rounded-xl border border-slate-800/20 bg-slate-900/95 px-3 py-2 text-left text-[11px] font-medium leading-snug text-white shadow-lg backdrop-blur-lg transition hover:bg-slate-900 sm:bottom-6 sm:right-4 sm:max-w-[13rem] sm:px-3.5 sm:py-2.5 sm:text-xs"
-      >
-        <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400 align-middle animate-pulse" />
-        <span className="inline-block align-middle">
-          <span className="block">Sıradaki: Amazon &amp; Etsy</span>
-          <span className="block text-white/75">Erken erişim listesi</span>
-        </span>
-      </button>
+      {!earlyAccessBadgeHidden ? (
+        <div className="floating-badge-enter fixed bottom-20 right-3 z-40 flex max-w-[10.5rem] items-start gap-1 sm:bottom-6 sm:right-4 sm:max-w-[12.5rem]">
+          <button
+            type="button"
+            onClick={openEarlyAccessModal}
+            className="rounded-xl border border-slate-800/15 bg-slate-900/90 px-2.5 py-2 text-left text-[10px] font-medium leading-snug text-white/95 shadow-md backdrop-blur-md transition hover:bg-slate-900 sm:px-3 sm:text-[11px]"
+          >
+            <span className="mr-1.5 inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 align-middle" />
+            <span className="align-middle">
+              Amazon &amp; Etsy — erken erişim
+            </span>
+          </button>
+          <button
+            type="button"
+            aria-label="Erken erişim bildirimini kapat"
+            className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-slate-900/70 text-xs text-white/80 hover:bg-slate-900 hover:text-white"
+            onClick={() => {
+              setEarlyAccessBadgeHidden(true);
+              try {
+                window.localStorage.setItem("pazarkar.earlyAccessBadge.hidden", "1");
+              } catch {
+                /* ignore */
+              }
+            }}
+          >
+            ×
+          </button>
+        </div>
+      ) : null}
 
       {isEarlyAccessOpen ? (
         <div
