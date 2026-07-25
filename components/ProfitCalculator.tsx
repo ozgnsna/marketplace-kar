@@ -617,7 +617,7 @@ export function ProfitCalculator() {
                       type="button"
                       onClick={() => void fetchTcmbRate()}
                       disabled={tcmbLoading || fxInitialLoading}
-                      className="rounded-xl bg-[#22C55E] px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#16a34a] disabled:opacity-50"
+                      className="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-[#0B1F3B] transition hover:border-slate-400 hover:bg-slate-50 disabled:opacity-50"
                     >
                       {tcmbLoading ? "Yükleniyor…" : "Merkez Bankası kurunu getir"}
                     </button>
@@ -642,11 +642,11 @@ export function ProfitCalculator() {
                 </div>
               )}
 
-              <div className="mt-5 rounded-2xl border-2 border-emerald-500/35 bg-emerald-50/50 p-4 shadow-[0_1px_0_rgba(15,23,42,0.03)] sm:p-5">
-                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-800">
+              <div className="mt-6 rounded-2xl border-2 border-emerald-600 bg-gradient-to-br from-emerald-50 to-white p-4 pl-5 shadow-[0_4px_18px_rgba(5,150,105,0.12)] ring-1 ring-emerald-500/20 sm:p-5 sm:pl-6 [border-left-width:6px] [border-left-color:#0B1F3B]">
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-800">
                   Satış fiyatı
                 </p>
-                <div className="mt-2 [&_label]:text-base [&_label]:font-semibold [&_label]:text-[#0B1F3B] [&_input]:min-h-[56px] [&_input]:border-emerald-300/70 [&_input]:bg-white [&_input]:text-lg [&_input]:font-semibold">
+                <div className="mt-2.5 [&_hint]:text-slate-600 [&_label]:text-base [&_label]:font-bold [&_label]:text-[#0B1F3B] sm:[&_label]:text-lg [&_input]:min-h-[60px] [&_input]:border-2 [&_input]:border-emerald-500/50 [&_input]:bg-white [&_input]:text-xl [&_input]:font-bold [&_input]:shadow-sm [&_input]:focus:border-emerald-600 [&_input]:focus:ring-4 [&_input]:focus:ring-emerald-500/25 [&_span]:text-base [&_span]:font-semibold [&_span]:text-emerald-800">
                   <NumberField
                     id="salePrice"
                     label="Ürünün satış fiyatı (KDV dahil)"
