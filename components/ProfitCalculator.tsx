@@ -938,7 +938,7 @@ export function ProfitCalculator() {
                   onClick={() =>
                     setInputs((p) => ({
                       ...p,
-                      calculationMode: "discounted",
+                      calculationMode: "cashflow",
                       feePercentBase: "discountedPrice",
                     }))
                   }
