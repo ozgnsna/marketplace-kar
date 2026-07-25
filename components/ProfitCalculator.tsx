@@ -642,17 +642,22 @@ export function ProfitCalculator() {
                 </div>
               )}
 
-              <div className="mt-5 border-t border-slate-100 pt-5">
-                <NumberField
-                  id="salePrice"
-                  label="Ürünün satış fiyatı (KDV dahil)"
-                  hint="Pazaryeri ürün sayfasındaki satış tutarı (KDV dahil)."
-                  placeholder="Örn. 2.633"
-                  showEmptyWhenZero
-                  suffix="₺"
-                  value={inputs.salePrice}
-                  onChange={(v) => setInput("salePrice", v)}
-                />
+              <div className="mt-5 rounded-2xl border-2 border-emerald-500/35 bg-emerald-50/50 p-4 shadow-[0_1px_0_rgba(15,23,42,0.03)] sm:p-5">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-800">
+                  Satış fiyatı
+                </p>
+                <div className="mt-2 [&_label]:text-base [&_label]:font-semibold [&_label]:text-[#0B1F3B] [&_input]:min-h-[56px] [&_input]:border-emerald-300/70 [&_input]:bg-white [&_input]:text-lg [&_input]:font-semibold">
+                  <NumberField
+                    id="salePrice"
+                    label="Ürünün satış fiyatı (KDV dahil)"
+                    hint="Pazaryeri ürün sayfasındaki satış tutarı (KDV dahil)."
+                    placeholder="Örn. 2.633"
+                    showEmptyWhenZero
+                    suffix="₺"
+                    value={inputs.salePrice}
+                    onChange={(v) => setInput("salePrice", v)}
+                  />
+                </div>
               </div>
             </FormStep>
 
