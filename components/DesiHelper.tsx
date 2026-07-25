@@ -1,13 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type DesiHelperProps = {
   onApplyDesi: (desi: number) => void;
+  /** Seçicide görünen desi — özet satırı için */
+  appliedDesi?: number;
 };
 
-export function DesiHelper({ onApplyDesi }: DesiHelperProps) {
-  const [open, setOpen] = useState(false);
+export function DesiHelper({ onApplyDesi, appliedDesi }: DesiHelperProps) {
+  const [helpOpen, setHelpOpen] = useState(false);
   const [en, setEn] = useState(30);
   const [boy, setBoy] = useState(20);
   const [yuk, setYuk] = useState(10);
@@ -26,95 +28,97 @@ export function DesiHelper({ onApplyDesi }: DesiHelperProps) {
 
   const desiRounded = Math.min(33, Math.max(0, Math.round(billing)));
 
+  useEffect(() => {
+    onApplyDesi(desiRounded);
+  }, [desiRounded, onApplyDesi]);
+
+  const summaryDesi = appliedDesi ?? desiRounded;
+
   return (
-    <div className="mb-4 rounded-2xl border border-slate-200/90 bg-slate-50/50 p-4">
-      <p className="text-xs leading-relaxed text-slate-700">
-        Kargo firmaları önce kutu ölçülerinden desiyi hesaplar, sonra gerçek ağırlığı kontrol eder.
-        Ölçüsel desi ile gerçek ağırlıktan hangisi daha yüksekse, ücretlendirme o değer üzerinden
-        yapılır.
-      </p>
+    <div className="mb-4">
+      <details className="group rounded-2xl border border-slate-200 bg-white open:bg-slate-50/50">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 text-sm font-semibold text-slate-800 marker:content-none [&::-webkit-details-marker]:hidden">
+          <span>
+            Desi hesabı{" "}
+            <span className="font-medium text-slate-500">(ölçü ile)</span>
+          </span>
+          <span className="tabular-nums text-xs font-semibold text-[#0B1F3B]">
+            {summaryDesi} desi
+          </span>
+        </summary>
 
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#0B1F3B] underline decoration-slate-300 underline-offset-2 hover:decoration-[#0B1F3B]"
-      >
-        Desi nasıl hesaplanır?
-      </button>
+        <div className="space-y-3 border-t border-slate-100 px-4 pb-4 pt-3">
+          <button
+            type="button"
+            onClick={() => setHelpOpen(true)}
+            className="text-xs font-semibold text-[#0B1F3B] underline decoration-slate-300 underline-offset-2 hover:decoration-[#0B1F3B]"
+          >
+            Desi nasıl hesaplanır?
+          </button>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
-        <label className="block text-sm">
-          <span className="mb-1 block text-slate-600">En (cm)</span>
-          <input
-            type="number"
-            inputMode="decimal"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
-            value={en || ""}
-            onChange={(e) => setEn(parseFloat(e.target.value) || 0)}
-          />
-        </label>
-        <label className="block text-sm">
-          <span className="mb-1 block text-slate-600">Boy (cm)</span>
-          <input
-            type="number"
-            inputMode="decimal"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
-            value={boy || ""}
-            onChange={(e) => setBoy(parseFloat(e.target.value) || 0)}
-          />
-        </label>
-        <label className="block text-sm">
-          <span className="mb-1 block text-slate-600">Yükseklik (cm)</span>
-          <input
-            type="number"
-            inputMode="decimal"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
-            value={yuk || ""}
-            onChange={(e) => setYuk(parseFloat(e.target.value) || 0)}
-          />
-        </label>
-        <label className="block text-sm">
-          <span className="mb-1 block text-slate-600">Gerçek ağırlık (kg)</span>
-          <input
-            type="number"
-            inputMode="decimal"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
-            value={agirlik || ""}
-            onChange={(e) => setAgirlik(parseFloat(e.target.value) || 0)}
-          />
-        </label>
-      </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="block text-sm">
+              <span className="mb-1 block text-slate-600">En (cm)</span>
+              <input
+                type="number"
+                inputMode="decimal"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                value={en || ""}
+                onChange={(e) => setEn(parseFloat(e.target.value) || 0)}
+              />
+            </label>
+            <label className="block text-sm">
+              <span className="mb-1 block text-slate-600">Boy (cm)</span>
+              <input
+                type="number"
+                inputMode="decimal"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                value={boy || ""}
+                onChange={(e) => setBoy(parseFloat(e.target.value) || 0)}
+              />
+            </label>
+            <label className="block text-sm">
+              <span className="mb-1 block text-slate-600">Yükseklik (cm)</span>
+              <input
+                type="number"
+                inputMode="decimal"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                value={yuk || ""}
+                onChange={(e) => setYuk(parseFloat(e.target.value) || 0)}
+              />
+            </label>
+            <label className="block text-sm">
+              <span className="mb-1 block text-slate-600">Gerçek ağırlık (kg)</span>
+              <input
+                type="number"
+                inputMode="decimal"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+                value={agirlik || ""}
+                onChange={(e) => setAgirlik(parseFloat(e.target.value) || 0)}
+              />
+            </label>
+          </div>
 
-      <div className="mt-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700">
-        <p>
-          <span className="font-medium text-slate-800">Ölçüsel desi:</span>{" "}
-          <span className="tabular-nums">{volumetricDesi.toFixed(2)}</span>
-        </p>
-        <p className="mt-1">
-          <span className="font-medium text-slate-800">Ağırlık (kg) → desi karşılığı:</span>{" "}
-          <span className="tabular-nums">{weightDesi.toFixed(2)}</span>
-        </p>
-        <p className="mt-1 font-semibold text-[#0B1F3B]">
-          Ücretlendirmede esas:{" "}
-          <span className="tabular-nums">{billing.toFixed(2)}</span> desi (yuvarlanmış:{" "}
-          {desiRounded})
-        </p>
-        <button
-          type="button"
-          onClick={() => onApplyDesi(desiRounded)}
-          className="mt-3 w-full rounded-xl bg-[#0B1F3B] px-3 py-2 text-xs font-semibold text-white hover:bg-slate-800 sm:w-auto"
-        >
-          Bu desiyi kargo seçiminde kullan
-        </button>
-      </div>
+          <div className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700">
+            <p>
+              Ölçüsel desi: <span className="tabular-nums font-medium">{volumetricDesi.toFixed(2)}</span>
+              {" · "}
+              Ağırlık: <span className="tabular-nums font-medium">{weightDesi.toFixed(2)}</span>
+            </p>
+            <p className="mt-1 font-semibold text-[#0B1F3B]">
+              Esas: {desiRounded} desi — kargo seçimine otomatik uygulandı
+            </p>
+          </div>
+        </div>
+      </details>
 
-      {open ? (
+      {helpOpen ? (
         <div
           className="fixed inset-0 z-[100] flex items-end justify-center bg-black/40 p-4 sm:items-center"
           role="dialog"
           aria-modal="true"
           aria-labelledby="desi-modal-title"
-          onClick={() => setOpen(false)}
+          onClick={() => setHelpOpen(false)}
         >
           <div
             className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-5 shadow-2xl"
@@ -124,9 +128,7 @@ export function DesiHelper({ onApplyDesi }: DesiHelperProps) {
               Desi nasıl hesaplanır?
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">
-              Kargo firmaları önce kutu ölçülerinden desiyi hesaplar, sonra gerçek ağırlığı kontrol
-              eder. Ölçüsel desi ile gerçek ağırlıktan hangisi daha yüksekse, ücretlendirme o değer
-              üzerinden yapılır.
+              Firmalar ölçüsel desi ile gerçek ağırlıktan yüksek olanı kullanır.
             </p>
             <p className="mt-3 text-sm font-medium text-slate-800">
               Desi = (En × Boy × Yükseklik) ÷ 3000
@@ -136,7 +138,7 @@ export function DesiHelper({ onApplyDesi }: DesiHelperProps) {
             </p>
             <button
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={() => setHelpOpen(false)}
               className="mt-6 w-full rounded-xl bg-slate-100 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-200"
             >
               Kapat

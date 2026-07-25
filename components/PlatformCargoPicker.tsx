@@ -21,13 +21,9 @@ function cargoBorder(platform: MarketplacePlatform): string {
 }
 
 function cargoTitle(platform: MarketplacePlatform): string {
-  if (platform === "trendyol") {
-    return "Trendyol anlaşmalı kargo — desi ve firmaya göre tahmini maliyet (KDV dahil)";
-  }
-  if (platform === "hepsiburada") {
-    return "Hepsiburada anlaşmalı kargo — desi ve firmaya göre tahmini maliyet (KDV dahil)";
-  }
-  return "Shopier anlaşmalı kargo — desi ve firmaya göre panel ücreti";
+  if (platform === "trendyol") return "Trendyol anlaşmalı kargo (KDV dahil)";
+  if (platform === "hepsiburada") return "Hepsiburada anlaşmalı kargo (KDV dahil)";
+  return "Shopier anlaşmalı kargo";
 }
 
 function cargoNote(platform: MarketplacePlatform): string {
@@ -84,8 +80,11 @@ export function PlatformCargoPicker({
       </div>
       {preview != null ? (
         <p className="mt-3 text-sm text-slate-700">
-          Tahmini kargo:{" "}
+          Tablo tahmini:{" "}
           <span className="font-semibold tabular-nums text-slate-900">{preview.toFixed(2)}</span> ₺
+          <span className="mt-0.5 block text-[11px] font-normal text-slate-500">
+            Aşağıdaki kargo alanına yazılır; istersen elle değiştir.
+          </span>
         </p>
       ) : (
         <p className="mt-2 text-xs text-amber-800">Bu kombinasyon için tablo yok; kargoyu elle girin.</p>

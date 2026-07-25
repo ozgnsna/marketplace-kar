@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { calculateProfit } from "@/lib/calculateProfit";
 import { DEFAULT_PROFIT_INPUTS } from "@/lib/defaultInputs";
 import type { CalculationMode, MarketplacePlatform, ProfitInputs } from "@/types/profit";
@@ -83,6 +83,11 @@ export function ProfitCalculator() {
   const [cargoDesi, setCargoDesi] = useState(2);
   const [cargoCarrier, setCargoCarrier] = useState("average");
   const [kargoAuto, setKargoAuto] = useState(true);
+
+  const applyDesiFromHelper = useCallback((d: number) => {
+    setCargoDesi(d);
+    setKargoAuto(true);
+  }, []);
   const [paymentFeeAuto, setPaymentFeeAuto] = useState(true);
   const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false);
   const [earlyAccessEmail, setEarlyAccessEmail] = useState("");
@@ -750,6 +755,24 @@ export function ProfitCalculator() {
               />
             </div>
 
+            <div className="mt-4">
+              <NumberField
+                id="hizmetBedeli"
+                label="Hizmet bedeli"
+                suffix="₺"
+                value={inputs.hizmetBedeli}
+                onChange={(v) => setInput("hizmetBedeli", v, { fromUser: true })}
+                labelAccessory={FIELD_VARIANCE_TOOLTIP}
+              />
+              <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
+                {inputs.platform === "hepsiburada"
+                  ? "Hepsiburada’da genelde sabit hizmet bedeli; hesabınıza göre değişebilir."
+                  : inputs.platform === "trendyol"
+                    ? "Trendyol sipariş başına platform hizmet bedeli; varsayılan yaklaşık tutar kullanılır."
+                    : "Shopier işlem başına 0,49 TL (+KDV); varsayılan 0,59 TL KDV dahildir."}
+              </p>
+            </div>
+
             {!sheet ? (
               <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50 p-3">
                 <p className="mb-2 text-xs font-medium text-slate-700">% kesintiler hangi fiyat üzerinden?</p>
@@ -826,32 +849,27 @@ export function ProfitCalculator() {
           <FormStep
             step={6}
             title="Kargo ve paket"
-            hint="Desi ve firmaya göre kargo tahmini otomatik dolar; kargo alanını istediğiniz gibi değiştirebilirsiniz."
+            hint="Desi ve firmaya göre tablo tahmini kargo alanına yazılır; istersen elle değiştir."
           >
-            <DesiHelper
-              onApplyDesi={(d) => {
+            <DesiHelper onApplyDesi={applyDesiFromHelper} appliedDesi={cargoDesi} />
+            <PlatformCargoPicker
+              platform={inputs.platform}
+              desi={cargoDesi}
+              carrierKey={cargoCarrier}
+              onDesiChange={(d) => {
                 setCargoDesi(d);
                 setKargoAuto(true);
               }}
+              onCarrierChange={(c) => {
+                setCargoCarrier(c);
+                setKargoAuto(true);
+              }}
             />
-              <PlatformCargoPicker
-                platform={inputs.platform}
-                desi={cargoDesi}
-                carrierKey={cargoCarrier}
-                onDesiChange={(d) => {
-                  setCargoDesi(d);
-                  setKargoAuto(true);
-                }}
-                onCarrierChange={(c) => {
-                  setCargoCarrier(c);
-                  setKargoAuto(true);
-                }}
-              />
             <p className="mb-3 flex flex-wrap items-center gap-2 text-xs text-slate-500">
               <span>
                 {kargoAuto
-                  ? "Kargo, seçilen desi ve firmaya göre otomatik güncellenir."
-                  : "Kargo elle düzenlendi; otomatik güncellemeyi tekrar açabilirsiniz."}
+                  ? "Kargo alanı tablo tahminine bağlı."
+                  : "Kargo elle düzenlendi."}
               </span>
               {!kargoAuto ? (
                 <button
@@ -864,51 +882,18 @@ export function ProfitCalculator() {
               ) : null}
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
-              <NumberField
-                id="kargo"
-                label="Kargo (size maliyet)"
-                suffix="₺"
-                value={inputs.kargo}
-                onChange={(v) => {
-                  setKargoAuto(false);
-                  setInput("kargo", v, { fromUser: true });
-                }}
-                labelAccessory={FIELD_VARIANCE_TOOLTIP}
-              />
-              <NumberField
-                id="paketleme"
-                label="Paketleme"
-                suffix="₺"
-                value={inputs.paketleme}
-                onChange={(v) => setInput("paketleme", v, { fromUser: true })}
-                labelAccessory={FIELD_VARIANCE_TOOLTIP}
-              />
-              <div>
+              <div className="space-y-3">
                 <NumberField
-                  id="hizmetBedeli"
-                  label="Hizmet bedeli"
+                  id="kargo"
+                  label="Kargo (size maliyet)"
                   suffix="₺"
-                  value={inputs.hizmetBedeli}
-                  onChange={(v) => setInput("hizmetBedeli", v, { fromUser: true })}
+                  value={inputs.kargo}
+                  onChange={(v) => {
+                    setKargoAuto(false);
+                    setInput("kargo", v, { fromUser: true });
+                  }}
                   labelAccessory={FIELD_VARIANCE_TOOLTIP}
                 />
-                {inputs.platform === "hepsiburada" ? (
-                  <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
-                    Hepsiburada&apos;da genellikle sabit hizmet bedelidir. Hesabınıza göre değişebilir.
-                  </p>
-                ) : inputs.platform === "trendyol" ? (
-                  <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
-                    Trendyol&apos;da sipariş başına platform hizmet bedeli hesabınıza göre değişebilir;
-                    varsayılan yaklaşık tutar kullanılır.
-                  </p>
-                ) : (
-                  <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
-                    Shopier işlem başına 0,49 TL (+KDV) sabit ücret keser; varsayılan 0,59 TL KDV
-                    dahildir.
-                  </p>
-                )}
-              </div>
-              <div className="flex items-end">
                 <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm">
                   <input
                     type="checkbox"
@@ -919,6 +904,14 @@ export function ProfitCalculator() {
                   Kargoyu müşteri ödüyor
                 </label>
               </div>
+              <NumberField
+                id="paketleme"
+                label="Paketleme"
+                suffix="₺"
+                value={inputs.paketleme}
+                onChange={(v) => setInput("paketleme", v, { fromUser: true })}
+                labelAccessory={FIELD_VARIANCE_TOOLTIP}
+              />
             </div>
           </FormStep>
 
