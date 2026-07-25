@@ -664,28 +664,33 @@ export function ProfitCalculator() {
           <FormStep
             step={5}
             title="Komisyon ve giderler"
-            hint="Oranlar satış matrahına göre hesaplanır. Otomatik gelen değerleri istediğiniz gibi değiştirebilirsiniz."
+            hint="Platform varsayılanlarıyla gelir; oranları istediğiniz gibi değiştirebilirsiniz."
           >
-            <p className="mb-3 rounded-lg border border-slate-100 bg-slate-50/90 px-3 py-2 text-xs text-slate-600">
-              {/* TODO: gerçek HB sabit gider profili data/platformDefaults.ts üzerinden güncellenecek */}
-              Sabit ₺ ve bazı oranlar platform varsayılanlarıyla başlar; aşağıdan özelleştirebilirsiniz.
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
+            <div className="mb-4 rounded-2xl border-2 border-[#0B1F3B]/15 bg-slate-50/80 p-3.5 sm:p-4 [border-left-width:5px] [border-left-color:#0B1F3B]">
+              <div className="[&_label]:font-semibold [&_label]:text-[#0B1F3B] [&_input]:min-h-[52px] [&_input]:border-[#0B1F3B]/20 [&_input]:bg-white [&_input]:text-base [&_input]:font-semibold">
                 <NumberField
                   id="commissionRate"
-                  label="Komisyon"
+                  label={inputs.platform === "shopier" ? "İşlem ücreti oranı" : "Komisyon"}
                   suffix="%"
                   value={inputs.commissionRate}
                   onChange={(v) => setInput("commissionRate", v, { fromUser: true })}
                   labelAccessory={FIELD_VARIANCE_TOOLTIP}
                 />
-                {fieldSources.commissionRate === "category" ? (
-                  <p className="mt-1 text-[11px] text-slate-500">
-                    Seçilen kategoriye göre otomatik dolduruldu.
-                  </p>
-                ) : null}
               </div>
+              {fieldSources.commissionRate === "category" ? (
+                <p className="mt-1.5 text-[11px] text-slate-500">
+                  Seçilen kategori / dilime göre dolduruldu.
+                </p>
+              ) : inputs.commissionRate <= 0 ? (
+                <p className="mt-1.5 text-[11px] text-amber-800">
+                  {inputs.platform === "shopier"
+                    ? "Ciro dilimi seçin veya oranı manuel girin."
+                    : "Kategori seçin veya komisyon oranını manuel girin."}
+                </p>
+              ) : null}
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <NumberField
                   id="paymentFeeRate"
@@ -698,25 +703,26 @@ export function ProfitCalculator() {
                   }}
                   labelAccessory={FIELD_VARIANCE_TOOLTIP}
                 />
-                <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
-                  Tahsilat yönetim bedeli sipariş tutarına göre değişir. Bu ortalama bir değerdir.
-                </p>
-                <p className="mt-1 flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
-                  <span>
-                    {paymentFeeAuto
-                      ? "Oran sipariş tutarına göre otomatik güncellenir."
-                      : "Oran elle düzenlendi."}
-                  </span>
-                  {!paymentFeeAuto ? (
-                    <button
-                      type="button"
-                      className="font-semibold text-[#0B1F3B] underline decoration-slate-300 underline-offset-2 hover:decoration-[#0B1F3B]"
-                      onClick={() => setPaymentFeeAuto(true)}
-                    >
-                      Otomatik kademeye dön
-                    </button>
-                  ) : null}
-                </p>
+                {inputs.platform !== "shopier" ? (
+                  <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-slate-500">
+                    <span>
+                      {paymentFeeAuto
+                        ? "Sipariş tutarına göre otomatik."
+                        : "Elle düzenlendi."}
+                    </span>
+                    {!paymentFeeAuto ? (
+                      <button
+                        type="button"
+                        className="font-semibold text-[#0B1F3B] underline decoration-slate-300 underline-offset-2 hover:decoration-[#0B1F3B]"
+                        onClick={() => setPaymentFeeAuto(true)}
+                      >
+                        Otomatiğe dön
+                      </button>
+                    ) : null}
+                  </p>
+                ) : (
+                  <p className="mt-1 text-[11px] text-slate-500">Shopier’de genelde 0.</p>
+                )}
               </div>
               <NumberField
                 id="stopajRate"
@@ -734,7 +740,16 @@ export function ProfitCalculator() {
                 onChange={(v) => setInput("advertisingRate", v, { fromUser: true })}
                 labelAccessory={FIELD_VARIANCE_TOOLTIP}
               />
+              <NumberField
+                id="vatRate"
+                label="KDV oranı (özet için)"
+                suffix="%"
+                value={inputs.vatRate}
+                onChange={(v) => setInput("vatRate", v)}
+                hint="0 ise sonuçta KDV özeti çıkmaz."
+              />
             </div>
+
             {!sheet ? (
               <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50 p-3">
                 <p className="mb-2 text-xs font-medium text-slate-700">% kesintiler hangi fiyat üzerinden?</p>
@@ -765,15 +780,19 @@ export function ProfitCalculator() {
               </div>
             ) : null}
 
-            <p className="mt-4 text-[11px] text-slate-500">
-              Stopaj, tahsilat ve sabit ₺ kalemler platform varsayılanlarına göre dolduruldu; değiştirebilirsiniz.
-            </p>
-
-            <details className="mt-6 rounded-2xl border border-dashed border-slate-200 bg-slate-50/50 p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-slate-800">
-                Ek sabit kalemler: listeleme, depo, KDV (isteğe bağlı)
+            <details className="group mt-5 rounded-2xl border border-slate-200 bg-white open:border-slate-300 open:bg-slate-50/60">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 text-sm font-semibold text-slate-800 marker:content-none [&::-webkit-details-marker]:hidden">
+                <span>
+                  <span className="text-slate-500">İsteğe bağlı · </span>
+                  Ek sabit kalemler
+                </span>
+                <span className="text-xs font-medium text-slate-500 group-open:hidden">Aç</span>
+                <span className="hidden text-xs font-medium text-slate-500 group-open:inline">Kapat</span>
               </summary>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 border-t border-slate-100 px-4 pb-4 pt-3 sm:grid-cols-2">
+                <p className="sm:col-span-2 text-[11px] text-slate-500">
+                  Listeleme, depo ve diğer sabit ₺ giderler — çoğu senaryoda boş bırakılabilir.
+                </p>
                 <NumberField
                   id="listingFee"
                   label="Listeleme / vitrin"
@@ -798,16 +817,6 @@ export function ProfitCalculator() {
                     value={inputs.otherFixed}
                     onChange={(v) => setInput("otherFixed", v, { fromUser: true })}
                     labelAccessory={FIELD_VARIANCE_TOOLTIP}
-                  />
-                </div>
-                <div className="sm:col-span-2">
-                  <NumberField
-                    id="vatRate"
-                    label="KDV oranı (sadece alttaki KDV satırları için)"
-                    suffix="%"
-                    value={inputs.vatRate}
-                    onChange={(v) => setInput("vatRate", v)}
-                    hint="0 yaparsanız KDV özeti çıkmaz."
                   />
                 </div>
               </div>
