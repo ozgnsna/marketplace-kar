@@ -171,7 +171,7 @@ export function ResultCard({
           className="mt-6 rounded-2xl border border-dashed border-slate-200 bg-slate-50/90 px-4 py-8 text-center text-sm leading-relaxed text-slate-600"
           role="status"
         >
-          Henüz hesaplama yapılmadı. Değerleri girerek kârını anında gör.
+          Net kâr için maliyet ve satış fiyatını girin. Soldaki örnek veri ile de deneyebilirsiniz.
         </p>
       ) : (
         <>
@@ -360,17 +360,18 @@ export function ResultCard({
         </div>
       ) : null}
 
-      <p className="mt-6 text-xs leading-relaxed text-slate-500">
-        Bu hesaplama gerçek pazaryeri verilerine dayalı tahmini sonuçlar sunar. Nihai değerler değişiklik
-        gösterebilir.
-        {platform === "shopier" ? (
-          <>
-            {" "}
-            Shopier için seçtiğiniz ciro dilimi oranı, işlem başına sabit ücret (varsayılan 0,59 ₺ KDV
-            dahil) ve panel kargo tarifesi kullanılır; dilim değişirse net kâr da değişir.
-          </>
-        ) : null}
-      </p>
+      {hasCalculation ? (
+        <p className="mt-6 text-xs leading-relaxed text-slate-500">
+          Tahmini sonuçtur; nihai değerler panel ve sözleşmenize göre değişebilir.
+          {platform === "shopier" ? (
+            <>
+              {" "}
+              Shopier’de seçili ciro dilimi, sabit işlem ücreti (0,59 ₺ KDV dahil) ve panel kargo
+              kullanılır.
+            </>
+          ) : null}
+        </p>
+      ) : null}
     </div>
   );
 }

@@ -16,7 +16,7 @@ import { DesiHelper } from "@/components/DesiHelper";
 import { enrichBreakdown } from "@/lib/enrichBreakdown";
 import { getPaymentFeeRateByOrderAmount } from "@/lib/getPaymentFeeTier";
 import { applyPlatformDefaultsToInputs } from "@/lib/getPlatformDefaults";
-import { getCargoPrice } from "@/lib/cargoPrice";
+import { getCargoPrice, maxDesiForPlatform } from "@/lib/cargoPrice";
 import { LandingHero } from "@/components/landing/LandingHero";
 import { HomeGuideLinks } from "@/components/seo/HomeGuideLinks";
 import { PsychologyCard } from "@/components/landing/PsychologyCard";
@@ -48,10 +48,7 @@ const tryFmt = new Intl.NumberFormat("tr-TR", {
   minimumFractionDigits: 2,
 });
 
-const FIELD_VARIANCE_HINT = "Bu değerler pazaryerine ve ürüne göre değişebilir.";
-const FIELD_VARIANCE_TOOLTIP = (
-  <InfoTooltip label="Bu alan hakkında bilgi" text={FIELD_VARIANCE_HINT} />
-);
+const FIELD_VARIANCE_HINT = "Platform varsayılanlarıyla gelir; oranlar pazaryerine göre değişebilir.";
 
 export function ProfitCalculator() {
   const [inputs, setInputs] = useState<ProfitInputs>(DEFAULT_PROFIT_INPUTS);
@@ -84,10 +81,13 @@ export function ProfitCalculator() {
   const [cargoCarrier, setCargoCarrier] = useState("average");
   const [kargoAuto, setKargoAuto] = useState(true);
 
-  const applyDesiFromHelper = useCallback((d: number) => {
-    setCargoDesi(d);
-    setKargoAuto(true);
-  }, []);
+  const applyDesiFromHelper = useCallback(
+    (d: number) => {
+      setCargoDesi(Math.min(d, maxDesiForPlatform(inputs.platform)));
+      setKargoAuto(true);
+    },
+    [inputs.platform]
+  );
   const [paymentFeeAuto, setPaymentFeeAuto] = useState(true);
   const [isEarlyAccessOpen, setIsEarlyAccessOpen] = useState(false);
   const [earlyAccessEmail, setEarlyAccessEmail] = useState("");
@@ -176,7 +176,7 @@ export function ProfitCalculator() {
       otherFixed: "platform_default",
     }));
     setCargoCarrier("average");
-    setCargoDesi(2);
+    setCargoDesi((d) => Math.min(d, maxDesiForPlatform(inputs.platform)));
     setKargoAuto(true);
   }, [inputs.platform]);
 
@@ -445,113 +445,94 @@ export function ProfitCalculator() {
             <FormStep
               step={3}
               title="Hesaplama türü"
-              hint="Hesaplama türü, komisyon ve gelirin hangi fiyat üzerinden işlendiğini belirler."
+              hint="Komisyon ve gelirin hangi fiyat üzerinden işlendiğini belirler."
             >
-              <fieldset className="border-0 p-0">
-                  <legend className="mb-3 text-sm font-medium text-slate-600">Hesaplama türü</legend>
-                  <div
-                    role="status"
-                    className={`mb-4 rounded-2xl border px-4 py-3 text-sm leading-relaxed ${
-                      recommendedMode === "list"
-                        ? "border-slate-200/90 bg-slate-50/90 text-slate-700"
-                        : "border-emerald-200/80 bg-emerald-50/80 text-emerald-950"
-                    }`}
-                  >
-                    {recommendedMode === "list" ? (
-                      <span>
-                        Standart satış yapıyorsunuz. Liste fiyatı üzerinden hesaplama uygundur.
-                      </span>
-                    ) : (
-                      <span>
-                        İndirimli satış tespit edildi. Daha doğru sonuç için &quot;İndirimli Satış
-                        Hesabı&quot; önerilir.
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex flex-col gap-3 sm:flex-row sm:gap-4" role="radiogroup">
-                    {(
-                      [
-                        {
-                          mode: "sheet" as const,
-                          title: "Liste Fiyatı Üzerinden Hesapla",
-                          description:
-                            "Ürünü liste fiyatına göre satıyorsanız (standart satış)",
-                          example:
-                            "Örnek: Listede 5.999 ₺ görünüyorsa komisyon ve kesintiler bu tutar üzerinden düşülür.",
-                        },
-                        {
-                          mode: "cashflow" as const,
-                          title: "İndirimli Satış Hesabı",
-                          description:
-                            "Kampanya veya indirim sonrası satış fiyatına göre hesaplama",
-                          example:
-                            "Örnek: %10 kampanya sonrası müşterinin ödediği tutar geliriniz olur; kesinti matrahını aşağıda seçersiniz.",
-                        },
-                      ] as const
-                    ).map(({ mode, title, description, example }) => {
-                      const active = inputs.calculationMode === mode;
-                      const isRecommended =
-                        (recommendedMode === "list" && mode === "sheet") ||
-                        (recommendedMode === "discount" && mode === "cashflow");
-                      return (
-                        <label
-                          key={mode}
-                          className={`relative flex min-h-0 flex-1 cursor-pointer flex-col rounded-2xl border-2 px-4 pb-4 pt-4 text-left transition focus-within:ring-2 focus-within:ring-[#22C55E] focus-within:ring-offset-2 sm:min-w-0 sm:max-w-none ${
+              <div
+                role="status"
+                className={`mb-4 rounded-2xl border px-4 py-3 text-sm leading-relaxed ${
+                  recommendedMode === "list"
+                    ? "border-slate-200/90 bg-slate-50/90 text-slate-700"
+                    : "border-emerald-200/80 bg-emerald-50/80 text-emerald-950"
+                }`}
+              >
+                {recommendedMode === "list" ? (
+                  <span>
+                    Standart satış: liste fiyatı üzerinden hesaplama uygundur.
+                  </span>
+                ) : (
+                  <span>
+                    İndirimli satış tespit edildi — &quot;İndirimli Satış Hesabı&quot; önerilir.
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4" role="radiogroup">
+                {(
+                  [
+                    {
+                      mode: "sheet" as const,
+                      title: "Liste fiyatı",
+                      description: "Standart satış; kesintiler liste tutarı üzerinden.",
+                    },
+                    {
+                      mode: "cashflow" as const,
+                      title: "İndirimli satış",
+                      description: "Kampanya sonrası müşterinin ödediği tutara göre.",
+                    },
+                  ] as const
+                ).map(({ mode, title, description }) => {
+                  const active = inputs.calculationMode === mode;
+                  const isRecommended =
+                    (recommendedMode === "list" && mode === "sheet") ||
+                    (recommendedMode === "discount" && mode === "cashflow");
+                  return (
+                    <label
+                      key={mode}
+                      className={`relative flex min-h-0 flex-1 cursor-pointer flex-col rounded-2xl border-2 px-4 pb-4 pt-4 text-left transition focus-within:ring-2 focus-within:ring-[#22C55E] focus-within:ring-offset-2 sm:min-w-0 sm:max-w-none ${
+                        active
+                          ? "border-[#0B1F3B] bg-[#0B1F3B] text-white shadow-md"
+                          : "border-slate-200 bg-white hover:border-slate-300"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="calculationMode"
+                        value={mode}
+                        checked={active}
+                        onChange={() =>
+                          setInputs((p) => ({
+                            ...p,
+                            calculationMode: mode as CalculationMode,
+                          }))
+                        }
+                        className="sr-only"
+                      />
+                      {isRecommended ? (
+                        <span
+                          className={`absolute right-3 top-3 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
                             active
-                              ? "border-[#0B1F3B] bg-[#0B1F3B] text-white shadow-md"
-                              : "border-slate-200 bg-white hover:border-slate-300"
+                              ? "bg-emerald-400 text-emerald-950"
+                              : "bg-emerald-100 text-emerald-800 ring-1 ring-emerald-200/90"
                           }`}
                         >
-                          <input
-                            type="radio"
-                            name="calculationMode"
-                            value={mode}
-                            checked={active}
-                            onChange={() =>
-                              setInputs((p) => ({
-                                ...p,
-                                calculationMode: mode as CalculationMode,
-                              }))
-                            }
-                            className="sr-only"
-                          />
-                          {isRecommended ? (
-                            <span
-                              className={`absolute right-3 top-3 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
-                                active
-                                  ? "bg-emerald-400 text-emerald-950"
-                                  : "bg-emerald-100 text-emerald-800 ring-1 ring-emerald-200/90"
-                              }`}
-                            >
-                              Önerilen
-                            </span>
-                          ) : null}
-                          <span
-                            className={`text-sm font-bold leading-snug ${isRecommended ? "pr-14 sm:pr-16" : ""}`}
-                          >
-                            {title}
-                          </span>
-                          <span
-                            className={`mt-2 text-xs leading-relaxed ${
-                              active ? "text-white/85" : "text-slate-600"
-                            }`}
-                          >
-                            {description}
-                          </span>
-                          <span
-                            className={`mt-3 border-t pt-3 text-[11px] leading-snug ${
-                              active
-                                ? "border-white/20 text-white/75"
-                                : "border-slate-100 text-slate-500"
-                            }`}
-                          >
-                            {example}
-                          </span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </fieldset>
+                          Önerilen
+                        </span>
+                      ) : null}
+                      <span
+                        className={`text-sm font-bold leading-snug ${isRecommended ? "pr-14 sm:pr-16" : ""}`}
+                      >
+                        {title}
+                      </span>
+                      <span
+                        className={`mt-2 text-xs leading-relaxed ${
+                          active ? "text-white/85" : "text-slate-600"
+                        }`}
+                      >
+                        {description}
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
             </FormStep>
 
             <FormStep
@@ -689,7 +670,7 @@ export function ProfitCalculator() {
           <FormStep
             step={5}
             title="Komisyon ve giderler"
-            hint="Platform varsayılanlarıyla gelir; oranları istediğiniz gibi değiştirebilirsiniz."
+            hint={FIELD_VARIANCE_HINT}
           >
             <div className="mb-4 rounded-2xl border-2 border-[#0B1F3B]/15 bg-slate-50/80 p-3.5 sm:p-4 [border-left-width:5px] [border-left-color:#0B1F3B]">
               <div className="[&_label]:font-semibold [&_label]:text-[#0B1F3B] [&_input]:min-h-[52px] [&_input]:border-[#0B1F3B]/20 [&_input]:bg-white [&_input]:text-base [&_input]:font-semibold">
@@ -699,7 +680,6 @@ export function ProfitCalculator() {
                   suffix="%"
                   value={inputs.commissionRate}
                   onChange={(v) => setInput("commissionRate", v, { fromUser: true })}
-                  labelAccessory={FIELD_VARIANCE_TOOLTIP}
                 />
               </div>
               {fieldSources.commissionRate === "category" ? (
@@ -726,7 +706,6 @@ export function ProfitCalculator() {
                     setPaymentFeeAuto(false);
                     setInput("paymentFeeRate", v, { fromUser: true });
                   }}
-                  labelAccessory={FIELD_VARIANCE_TOOLTIP}
                 />
                 {inputs.platform !== "shopier" ? (
                   <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-slate-500">
@@ -755,7 +734,6 @@ export function ProfitCalculator() {
                 suffix="%"
                 value={inputs.stopajRate}
                 onChange={(v) => setInput("stopajRate", v, { fromUser: true })}
-                labelAccessory={FIELD_VARIANCE_TOOLTIP}
               />
               <NumberField
                 id="advertisingRate"
@@ -763,7 +741,6 @@ export function ProfitCalculator() {
                 suffix="%"
                 value={inputs.advertisingRate}
                 onChange={(v) => setInput("advertisingRate", v, { fromUser: true })}
-                labelAccessory={FIELD_VARIANCE_TOOLTIP}
               />
               <NumberField
                 id="vatRate"
@@ -782,7 +759,6 @@ export function ProfitCalculator() {
                 suffix="₺"
                 value={inputs.hizmetBedeli}
                 onChange={(v) => setInput("hizmetBedeli", v, { fromUser: true })}
-                labelAccessory={FIELD_VARIANCE_TOOLTIP}
               />
               <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
                 {inputs.platform === "hepsiburada"
@@ -842,7 +818,6 @@ export function ProfitCalculator() {
                   suffix="₺"
                   value={inputs.listingFee}
                   onChange={(v) => setInput("listingFee", v, { fromUser: true })}
-                  labelAccessory={FIELD_VARIANCE_TOOLTIP}
                 />
                 <NumberField
                   id="warehouseShippingFee"
@@ -850,7 +825,6 @@ export function ProfitCalculator() {
                   suffix="₺"
                   value={inputs.warehouseShippingFee}
                   onChange={(v) => setInput("warehouseShippingFee", v, { fromUser: true })}
-                  labelAccessory={FIELD_VARIANCE_TOOLTIP}
                 />
                 <div className="sm:col-span-2">
                   <NumberField
@@ -859,7 +833,6 @@ export function ProfitCalculator() {
                     suffix="₺"
                     value={inputs.otherFixed}
                     onChange={(v) => setInput("otherFixed", v, { fromUser: true })}
-                    labelAccessory={FIELD_VARIANCE_TOOLTIP}
                   />
                 </div>
               </div>
@@ -871,7 +844,11 @@ export function ProfitCalculator() {
             title="Kargo ve paket"
             hint="Paket boyutunu ve firmayı seçin; kargo ücreti otomatik dolar, istersen elle değiştir."
           >
-            <DesiHelper onApplyDesi={applyDesiFromHelper} appliedDesi={cargoDesi} />
+            <DesiHelper
+              onApplyDesi={applyDesiFromHelper}
+              appliedDesi={cargoDesi}
+              maxDesi={maxDesiForPlatform(inputs.platform)}
+            />
             <PlatformCargoPicker
               platform={inputs.platform}
               desi={cargoDesi}
@@ -912,7 +889,6 @@ export function ProfitCalculator() {
                     setKargoAuto(false);
                     setInput("kargo", v, { fromUser: true });
                   }}
-                  labelAccessory={FIELD_VARIANCE_TOOLTIP}
                 />
                 <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm">
                   <input
@@ -930,7 +906,6 @@ export function ProfitCalculator() {
                 suffix="₺"
                 value={inputs.paketleme}
                 onChange={(v) => setInput("paketleme", v, { fromUser: true })}
-                labelAccessory={FIELD_VARIANCE_TOOLTIP}
               />
             </div>
           </FormStep>
@@ -1053,13 +1028,8 @@ export function ProfitCalculator() {
 
       <HomeGuideLinks />
 
-      <footer className="mt-5 border-t border-slate-200/80 pt-4 text-center text-xs text-slate-500 sm:text-left">
-        <p>
-          Sonuç tahminidir. Kesin rakam için pazaryeri hakediş ve mali müşavirinizi kullanın.
-        </p>
-      </footer>
       {!earlyAccessBadgeHidden ? (
-        <div className="floating-badge-enter fixed bottom-20 right-3 z-40 flex max-w-[10.5rem] items-start gap-1 sm:bottom-6 sm:right-4 sm:max-w-[12.5rem]">
+        <div className="floating-badge-enter fixed bottom-28 right-3 z-40 flex max-w-[10.5rem] items-start gap-1 sm:bottom-6 sm:right-4 sm:max-w-[12.5rem]">
           <button
             type="button"
             onClick={openEarlyAccessModal}

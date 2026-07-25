@@ -20,7 +20,7 @@ const FOOTER_CTA_LABEL = "Kâr mı zarar mı? 30 saniyede öğren";
 
 export function LegalFooter() {
   return (
-    <footer className="border-t border-slate-200/90 bg-slate-50/80 pb-24 sm:pb-10">
+    <footer className="border-t border-slate-200/90 bg-slate-50/80 pb-28 sm:pb-10">
       <div className="mx-auto max-w-xl px-5 py-8 sm:px-6 sm:py-10">
         {/* 1 — CTA omurgası */}
         <div className="text-center">

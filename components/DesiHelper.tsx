@@ -6,9 +6,15 @@ type DesiHelperProps = {
   onApplyDesi: (desi: number) => void;
   /** Seçicide görünen desi — özet satırı için */
   appliedDesi?: number;
+  /** Platform üst sınırı (ör. Shopier 12) */
+  maxDesi?: number;
 };
 
-export function DesiHelper({ onApplyDesi, appliedDesi }: DesiHelperProps) {
+export function DesiHelper({
+  onApplyDesi,
+  appliedDesi,
+  maxDesi = 33,
+}: DesiHelperProps) {
   const [helpOpen, setHelpOpen] = useState(false);
   const [en, setEn] = useState(30);
   const [boy, setBoy] = useState(20);
@@ -26,7 +32,9 @@ export function DesiHelper({ onApplyDesi, appliedDesi }: DesiHelperProps) {
     };
   }, [en, boy, yuk, agirlik]);
 
-  const desiRounded = Math.min(33, Math.max(0, Math.round(billing)));
+  const desiRounded = Math.min(maxDesi, Math.max(0, Math.round(billing)));
+  const rawRounded = Math.max(0, Math.round(billing));
+  const capped = rawRounded > maxDesi;
 
   useEffect(() => {
     onApplyDesi(desiRounded);
@@ -112,6 +120,12 @@ export function DesiHelper({ onApplyDesi, appliedDesi }: DesiHelperProps) {
             <p className="mt-1 font-semibold text-[#0B1F3B]">
               Seçilen boyut: {desiRounded} desi (kargo seçimine uygulandı)
             </p>
+            {capped ? (
+              <p className="mt-1 text-amber-800">
+                Bu pazaryeri için üst sınır {maxDesi} desi; {rawRounded} yerine {desiRounded}{" "}
+                kullanıldı.
+              </p>
+            ) : null}
           </div>
         </div>
       </details>
