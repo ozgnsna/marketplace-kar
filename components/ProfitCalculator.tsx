@@ -264,18 +264,23 @@ export function ProfitCalculator() {
     return shouldEmphasizeTargetPrice(insight.status);
   }, [result.netProfit, result.profitMarginPercent]);
 
+  const effectiveSalePreview = useMemo(
+    () =>
+      computeEffectiveCustomerPrice({
+        salePrice: inputs.salePrice,
+        discountRate: inputs.discountRate,
+        fourForThree: inputs.fourForThree,
+      }),
+    [inputs.salePrice, inputs.discountRate, inputs.fourForThree]
+  );
+
   const recommendedMode = useMemo(() => {
-    const effective = computeEffectiveCustomerPrice({
-      salePrice: inputs.salePrice,
-      discountRate: inputs.discountRate,
-      fourForThree: inputs.fourForThree,
-    });
     return getRecommendedMode({
       listPrice: inputs.salePrice,
-      salePrice: effective,
+      salePrice: effectiveSalePreview,
       discountRate: inputs.discountRate,
     });
-  }, [inputs.salePrice, inputs.discountRate, inputs.fourForThree]);
+  }, [inputs.salePrice, effectiveSalePreview, inputs.discountRate]);
 
   const setInput = <K extends keyof ProfitInputs>(
     key: K,
@@ -918,27 +923,67 @@ export function ProfitCalculator() {
           <FormStep
             step={7}
             title="Kampanya ve iade"
-            hint="İndirimli satış modunda kampanya oranı ve iade/risk satırını buradan ayarlayın."
+            hint={
+              sheet
+                ? "Liste fiyatı modunda iade/risk girebilirsiniz. Kampanya için hesaplama türünü indirimli satışa alın."
+                : "İndirim oranını girin; iade payı net kârı düşürür."
+            }
           >
+            {sheet ? (
+              <div className="mb-4 rounded-xl border border-amber-200/80 bg-amber-50/70 px-3 py-3 text-xs leading-relaxed text-amber-950">
+                İndirim / örnek kampanya alanları liste fiyatı modunda kullanılmaz.{" "}
+                <button
+                  type="button"
+                  className="font-semibold underline decoration-amber-400 underline-offset-2 hover:decoration-amber-700"
+                  onClick={() =>
+                    setInputs((p) => ({
+                      ...p,
+                      calculationMode: "discounted",
+                      feePercentBase: "discountedPrice",
+                    }))
+                  }
+                >
+                  İndirimli satış moduna geç
+                </button>
+              </div>
+            ) : null}
+
             <div className="grid gap-4 sm:grid-cols-2">
-              <NumberField
-                id="discountRate"
-                label="İndirim / kampanya %"
-                suffix="%"
-                value={inputs.discountRate}
-                onChange={(v) => setInput("discountRate", v)}
-              />
-              <div className="flex items-end">
-                <label className="flex cursor-pointer items-center gap-2 text-sm">
+              <div
+                className={
+                  sheet ? "pointer-events-none opacity-45 sm:col-span-2" : "sm:col-span-2"
+                }
+              >
+                <NumberField
+                  id="discountRate"
+                  label="İndirim / kampanya %"
+                  suffix="%"
+                  value={sheet ? 0 : inputs.discountRate}
+                  onChange={(v) => setInput("discountRate", v)}
+                  hint="Ürün fiyatındaki indirim oranı (ör. %10 kampanya)."
+                />
+                <label
+                  className={`mt-2.5 flex cursor-pointer items-start gap-2.5 rounded-xl border border-dashed border-slate-200 bg-slate-50/80 px-3 py-2.5 text-sm ${
+                    sheet ? "cursor-not-allowed" : ""
+                  }`}
+                >
                   <input
                     type="checkbox"
-                    className="h-4 w-4 rounded"
-                    checked={inputs.fourForThree}
+                    className="mt-0.5 h-4 w-4 shrink-0 rounded"
+                    disabled={sheet}
+                    checked={!sheet && inputs.fourForThree}
                     onChange={(e) => setInput("fourForThree", e.target.checked)}
                   />
-                  4 al 3 öde
+                  <span>
+                    <span className="font-medium text-slate-800">Örnek: 4 al 3 öde</span>
+                    <span className="mt-0.5 block text-[11px] leading-snug text-slate-500">
+                      Kampanya örneği — efektif satış ≈ %25 düşer (3/4). İstersen kapatıp sadece
+                      üstteki % indirimi kullan.
+                    </span>
+                  </span>
                 </label>
               </div>
+
               <div className="sm:col-span-2">
                 <NumberField
                   id="returnRate"
@@ -950,9 +995,19 @@ export function ProfitCalculator() {
                   suffix="%"
                   value={inputs.returnRate}
                   onChange={(v) => setInput("returnRate", v)}
+                  hint="Beklenen iade / risk payı; net kârı düşürür."
                 />
               </div>
             </div>
+
+            {!sheet && (inputs.discountRate > 0 || inputs.fourForThree) ? (
+              <p className="mt-3 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2 text-xs text-slate-600">
+                Efektif müşteri fiyatı (tahmini):{" "}
+                <span className="font-semibold tabular-nums text-[#0B1F3B]">
+                  {tryFmt.format(effectiveSalePreview)}
+                </span>
+              </p>
+            ) : null}
           </FormStep>
         </section>
 
