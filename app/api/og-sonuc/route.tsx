@@ -63,7 +63,7 @@ export async function GET(request: Request) {
           <div style={{ fontSize: 26, fontWeight: 700, opacity: 0.85, letterSpacing: 1 }}>
             PAZARKAR
           </div>
-          <div style={{ fontSize: 22, opacity: 0.55 }}>· {platformLabel} satışı</div>
+          <div style={{ display: "flex", fontSize: 22, opacity: 0.55 }}>· {platformLabel} satışı</div>
         </div>
 
         <div style={{ display: "flex", marginTop: 30, fontSize: 30, fontWeight: 600, opacity: 0.85 }}>
