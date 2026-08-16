@@ -1,6 +1,6 @@
 "use client";
 
-import { BrandLogo } from "@/components/BrandLogo";
+import { StatsCounter } from "@/components/StatsCounter";
 
 /** A/B: "Gerçek kârını gör" */
 const HERO_CTA_LABEL = "Kâr mı zarar mı? Hemen öğren";
@@ -12,12 +12,6 @@ interface LandingHeroProps {
 export function LandingHero({ onPrimaryCta }: LandingHeroProps) {
   return (
     <section className="relative overflow-hidden">
-      <div className="relative z-20 w-full border-b border-slate-200/90 bg-white">
-        <div className="mx-auto flex max-w-[800px] justify-center px-5 py-0.5 sm:px-6 sm:py-1">
-          <BrandLogo variant="hero" priority className="drop-shadow-none" />
-        </div>
-      </div>
-
       <div className="relative px-5 py-8 sm:px-6 sm:py-10">
         <div
           className="absolute inset-0 bg-[linear-gradient(162deg,#02060d_0%,#0B1F3B_42%,#143d38_78%,#061612_100%)]"
@@ -61,6 +55,7 @@ export function LandingHero({ onPrimaryCta }: LandingHeroProps) {
               30 saniyede sonuç <span className="text-white/45">•</span> Ücretsiz{" "}
               <span className="text-white/45">•</span> Kayıt gerekmez
             </p>
+            <StatsCounter />
           </div>
         </div>
       </div>

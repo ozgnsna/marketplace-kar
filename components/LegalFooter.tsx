@@ -14,6 +14,10 @@ const GUIDES = [
   { href: "/hepsiburada-komisyon-hesaplama", label: "Hepsiburada komisyon" },
   { href: "/shopier-komisyon-hesaplama", label: "Shopier komisyon" },
   { href: "/pazaryeri-komisyon-oranlari", label: "Komisyon oranları" },
+  { href: "/trendyol-giyim-komisyon-hesaplama", label: "Trendyol giyim komisyonu" },
+  { href: "/trendyol-elektronik-komisyon-hesaplama", label: "Trendyol elektronik komisyonu" },
+  { href: "/hepsiburada-giyim-komisyon-hesaplama", label: "Hepsiburada giyim komisyonu" },
+  { href: "/hepsiburada-elektronik-komisyon-hesaplama", label: "Hepsiburada elektronik komisyonu" },
 ] as const;
 
 const FOOTER_CTA_LABEL = "Kâr mı zarar mı? 30 saniyede öğren";

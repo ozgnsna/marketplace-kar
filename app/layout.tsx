@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import { LegalConsentGate } from "@/components/LegalConsentGate";
 import { LegalFooter } from "@/components/LegalFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -128,6 +129,7 @@ export default function RootLayout({
           `}
         </Script>
         <LegalConsentGate>
+          <SiteHeader />
           {children}
           <LegalFooter />
         </LegalConsentGate>

@@ -1,3 +1,4 @@
+import { DataFreshnessBadge } from "@/components/DataFreshnessBadge";
 import { GuideCta } from "@/components/seo/GuideCta";
 import { RelatedGuides } from "@/components/seo/RelatedGuides";
 import { pageMetadata } from "@/lib/seoMetadata";
@@ -22,6 +23,10 @@ export default function PazaryeriKomisyonOranlariPage() {
         <h1 className="text-2xl font-bold text-[#0B1F3B] sm:text-3xl">
           Pazaryeri komisyon oranları: Sadece yüzde değil, toplam kârlılık resmi
         </h1>
+
+        <div className="mt-4">
+          <DataFreshnessBadge />
+        </div>
 
         <div className="mt-6 space-y-5 text-sm leading-relaxed text-slate-700 sm:text-base">
           <p>

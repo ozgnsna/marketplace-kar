@@ -102,6 +102,28 @@ export default function HepsiburadaKomisyonHesaplamaPage() {
             Böylece fiyat kararlarını sezgi yerine veriye dayalı şekilde alırsınız.
           </p>
 
+          <h2 className="text-xl font-semibold text-[#0B1F3B]">
+            Kategoriye özel rehberler
+          </h2>
+          <p>
+            Komisyon oranı kategoriden kategoriye büyük fark gösterebiliyor. En çok aranan iki kategori
+            için ayrı rehberlerimize bakabilirsiniz:{" "}
+            <a
+              href="/hepsiburada-giyim-komisyon-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              Hepsiburada giyim komisyon hesaplama
+            </a>{" "}
+            ve{" "}
+            <a
+              href="/hepsiburada-elektronik-komisyon-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              Hepsiburada elektronik komisyon hesaplama
+            </a>
+            .
+          </p>
+
           <GuideCta title="Hepsiburada komisyon ve net kârını hemen hesapla" />
           <RelatedGuides currentPath="/hepsiburada-komisyon-hesaplama" />
         </div>

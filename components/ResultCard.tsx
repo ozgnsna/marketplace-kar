@@ -130,7 +130,15 @@ export function ResultCard({
 
   async function handleShare() {
     const text = buildShareText(inputs.salePrice, netProfit);
-    const url = typeof window !== "undefined" ? window.location.origin : "https://www.pazarkar.com";
+    let url = "https://www.pazarkar.com/sonuc";
+    if (typeof window !== "undefined") {
+      const shareUrl = new URL("/sonuc", window.location.origin);
+      shareUrl.searchParams.set("platform", platform);
+      shareUrl.searchParams.set("netProfit", String(Math.round(netProfit)));
+      shareUrl.searchParams.set("marginPercent", profitMarginPercent.toFixed(1));
+      shareUrl.searchParams.set("salePrice", String(Math.round(inputs.salePrice)));
+      url = shareUrl.toString();
+    }
     const sharePayload = { title: "Pazarkar kâr hesabı", text, url };
 
     try {

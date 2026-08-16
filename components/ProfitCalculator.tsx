@@ -11,6 +11,7 @@ import { ResultCard } from "@/components/ResultCard";
 import { TargetPriceCard } from "@/components/TargetPriceCard";
 import { PlatformCargoPicker } from "@/components/PlatformCargoPicker";
 import { CategorySearchCombobox } from "@/components/CategorySearchCombobox";
+import { DataFreshnessBadge } from "@/components/DataFreshnessBadge";
 import { findCommissionCategory } from "@/data/commissionCategories";
 import { DesiHelper } from "@/components/DesiHelper";
 import { enrichBreakdown } from "@/lib/enrichBreakdown";
@@ -19,6 +20,7 @@ import { applyPlatformDefaultsToInputs } from "@/lib/getPlatformDefaults";
 import { getCargoPrice, maxDesiForPlatform } from "@/lib/cargoPrice";
 import { LandingHero } from "@/components/landing/LandingHero";
 import { HomeGuideLinks } from "@/components/seo/HomeGuideLinks";
+import { Testimonials } from "@/components/Testimonials";
 import { PsychologyCard } from "@/components/landing/PsychologyCard";
 import {
   computeEffectiveCustomerPrice,
@@ -266,6 +268,36 @@ export function ProfitCalculator() {
     return inputs.salePrice > 0 && hasCost;
   }, [hasCost, inputs.salePrice]);
 
+  /**
+   * "Bugüne kadar X hesaplama yapıldı" sayacı — kullanıcı gerçek bir sonuca
+   * ulaştığında (maliyet + satış fiyatı girilmiş) oturum başına en fazla bir kez
+   * sunucuya bildirilir. Sayaç kritik değil; istek başarısız olursa sessizce yutulur.
+   */
+  const calcCountedRef = useRef(false);
+  useEffect(() => {
+    if (!hasCalculation || calcCountedRef.current) return;
+    try {
+      if (window.sessionStorage.getItem("pazarkar.calcCounted") === "1") {
+        calcCountedRef.current = true;
+        return;
+      }
+    } catch {
+      /* ignore */
+    }
+    const timeoutId = setTimeout(() => {
+      calcCountedRef.current = true;
+      try {
+        window.sessionStorage.setItem("pazarkar.calcCounted", "1");
+      } catch {
+        /* ignore */
+      }
+      fetch("/api/stats", { method: "POST" }).catch(() => {
+        /* ignore */
+      });
+    }, 1500);
+    return () => clearTimeout(timeoutId);
+  }, [hasCalculation]);
+
   const breakdownEnriched = useMemo(
     () => enrichBreakdown(result, fieldSources),
     [result, fieldSources]
@@ -433,6 +465,9 @@ export function ProfitCalculator() {
                 value={inputs.commissionCategoryId}
                 onValueChange={(id) => setInputs((p) => ({ ...p, commissionCategoryId: id }))}
               />
+              {inputs.platform !== "shopier" ? (
+                <DataFreshnessBadge className="mt-2" />
+              ) : null}
               {inputs.platform === "shopier" ? (
                 <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
                   Shopier kategori komisyonu almaz; dilim oranı KDV dahildir. Her satışa ek{" "}
@@ -1026,6 +1061,7 @@ export function ProfitCalculator() {
         </aside>
       </div>
 
+      <Testimonials />
       <HomeGuideLinks />
 
       {!earlyAccessBadgeHidden ? (

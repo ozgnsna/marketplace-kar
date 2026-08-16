@@ -15,6 +15,10 @@ const DEFAULT_GUIDES: GuideLink[] = [
   },
   { href: "/shopier-komisyon-hesaplama", label: "Shopier komisyon hesaplama" },
   { href: "/pazaryeri-komisyon-oranlari", label: "Pazaryeri komisyon oranları" },
+  { href: "/trendyol-giyim-komisyon-hesaplama", label: "Trendyol giyim komisyonu" },
+  { href: "/trendyol-elektronik-komisyon-hesaplama", label: "Trendyol elektronik komisyonu" },
+  { href: "/hepsiburada-giyim-komisyon-hesaplama", label: "Hepsiburada giyim komisyonu" },
+  { href: "/hepsiburada-elektronik-komisyon-hesaplama", label: "Hepsiburada elektronik komisyonu" },
 ];
 
 type RelatedGuidesProps = {

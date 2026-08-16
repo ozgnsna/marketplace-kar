@@ -130,6 +130,28 @@ export default function TrendyolKomisyonHesaplamaPage() {
             karşılaştırabilirsiniz.
           </p>
 
+          <h2 className="text-xl font-semibold text-[#0B1F3B]">
+            Kategoriye özel rehberler
+          </h2>
+          <p>
+            Komisyon oranı kategoriden kategoriye büyük fark gösterebiliyor. En çok aranan iki kategori
+            için ayrı rehberlerimize bakabilirsiniz:{" "}
+            <a
+              href="/trendyol-giyim-komisyon-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              Trendyol giyim komisyon hesaplama
+            </a>{" "}
+            ve{" "}
+            <a
+              href="/trendyol-elektronik-komisyon-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              Trendyol elektronik komisyon hesaplama
+            </a>
+            .
+          </p>
+
           <GuideCta title="Trendyol komisyonunu ve net kârını şimdi hesapla" />
           <RelatedGuides currentPath="/trendyol-komisyon-hesaplama" />
         </div>
