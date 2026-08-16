@@ -66,7 +66,7 @@ export async function GET(request: Request) {
           <div style={{ fontSize: 22, opacity: 0.55 }}>· {platformLabel} satışı</div>
         </div>
 
-        <div style={{ marginTop: 30, fontSize: 30, fontWeight: 600, opacity: 0.85 }}>
+        <div style={{ display: "flex", marginTop: 30, fontSize: 30, fontWeight: 600, opacity: 0.85 }}>
           {formatTry(salePrice)}&apos;lik satış, gerçekte...
         </div>
 
@@ -77,7 +77,7 @@ export async function GET(request: Request) {
           <div style={{ fontSize: 34, fontWeight: 600, opacity: 0.75 }}>net kâr</div>
         </div>
 
-        <div style={{ marginTop: 20, fontSize: 28, fontWeight: 500, opacity: 0.8 }}>
+        <div style={{ display: "flex", marginTop: 20, fontSize: 28, fontWeight: 500, opacity: 0.8 }}>
           Marj: %{marginLabel} — {status.label}
         </div>
 

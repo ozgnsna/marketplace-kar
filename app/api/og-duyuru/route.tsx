@@ -55,7 +55,7 @@ export async function GET(request: Request) {
           >
             DUYURU
           </div>
-          <div style={{ fontSize: 22, opacity: 0.65 }}>
+          <div style={{ display: "flex", fontSize: 22, opacity: 0.65 }}>
             {platformLabel}
             {dateLabel ? ` · ${dateLabel}` : ""}
           </div>
