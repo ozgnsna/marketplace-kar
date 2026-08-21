@@ -22,6 +22,11 @@ const GUIDES = [
     hint: "3719 kategori",
   },
   {
+    href: "/pttavm-komisyon-hesaplama",
+    label: "PttAVM komisyon",
+    hint: "5000+ kategori",
+  },
+  {
     href: "/shopier-komisyon-hesaplama",
     label: "Shopier komisyon",
     hint: "Ciro dilimi",
@@ -43,9 +48,9 @@ export function HomeGuideLinks() {
           Pazaryeri kâr ve komisyon rehberleri
         </h2>
         <p className="mt-1 text-sm text-slate-600">
-          Trendyol, Hepsiburada, n11 ve Shopier için komisyon / kâr hesaplama rehberleri.
+          Trendyol, Hepsiburada, n11, PttAVM ve Shopier için komisyon / kâr hesaplama rehberleri.
         </p>
-        <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {GUIDES.map((g) => (
             <li key={g.href}>
               <Link

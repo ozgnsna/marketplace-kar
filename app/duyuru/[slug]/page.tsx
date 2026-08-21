@@ -11,6 +11,7 @@ const PLATFORM_LABEL: Record<string, string> = {
   hepsiburada: "Hepsiburada",
   shopier: "Shopier",
   n11: "n11",
+  pttavm: "PttAVM",
   genel: "Pazaryeri",
 };
 

@@ -13,6 +13,7 @@ const GUIDES = [
   { href: "/trendyol-kar-hesaplama", label: "Trendyol kâr hesaplama" },
   { href: "/hepsiburada-komisyon-hesaplama", label: "Hepsiburada komisyon" },
   { href: "/n11-komisyon-hesaplama", label: "n11 komisyon" },
+  { href: "/pttavm-komisyon-hesaplama", label: "PttAVM komisyon" },
   { href: "/shopier-komisyon-hesaplama", label: "Shopier komisyon" },
   { href: "/pazaryeri-komisyon-oranlari", label: "Komisyon oranları" },
   { href: "/trendyol-giyim-komisyon-hesaplama", label: "Trendyol giyim komisyonu" },
@@ -42,7 +43,7 @@ export function LegalFooter() {
             30 sn · cihazında kalır · ücretsiz &amp; kayıtsız
           </p>
           <p className="mt-1.5 text-[11px] text-slate-400 sm:text-xs">
-            Trendyol · Hepsiburada · n11 · Shopier
+            Trendyol · Hepsiburada · n11 · PttAVM · Shopier
           </p>
         </div>
 

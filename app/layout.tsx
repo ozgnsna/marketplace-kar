@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Pazaryeri kâr hesaplama ve Trendyol komisyon hesaplama aracı. Komisyon, kargo, kampanya ve iade dahil net kâr ile minimum satış fiyatı. Trendyol, Hepsiburada, n11 ve Shopier.",
+    "Pazaryeri kâr hesaplama ve Trendyol komisyon hesaplama aracı. Komisyon, kargo, kampanya ve iade dahil net kâr ile minimum satış fiyatı. Trendyol, Hepsiburada, n11, PttAVM ve Shopier.",
   keywords: [
     "pazaryeri kar hesaplama",
     "pazaryeri kâr hesaplama",
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Pazaryeri Kâr Hesaplama | Trendyol Komisyon Hesaplama",
     description:
-      "Pazaryeri kâr hesaplama: Trendyol, Hepsiburada, n11 ve Shopier. Komisyon, kargo ve kampanya dahil net kârı saniyeler içinde görün.",
+      "Pazaryeri kâr hesaplama: Trendyol, Hepsiburada, n11, PttAVM ve Shopier. Komisyon, kargo ve kampanya dahil net kârı saniyeler içinde görün.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Pazaryeri Kâr Hesaplama | Trendyol Komisyon Hesaplama",
     description:
-      "Trendyol, Hepsiburada, n11 ve Shopier için pazaryeri kâr hesaplama. Ücretsiz, kayıtsız.",
+      "Trendyol, Hepsiburada, n11, PttAVM ve Shopier için pazaryeri kâr hesaplama. Ücretsiz, kayıtsız.",
   },
   robots: {
     index: true,
@@ -104,7 +104,7 @@ const appJsonLd = {
     priceCurrency: "TRY",
   },
   description:
-    "Trendyol komisyon hesaplama, Hepsiburada, n11 ve Shopier için net kâr ve minimum satış fiyatı hesaplayıcı.",
+    "Trendyol komisyon hesaplama, Hepsiburada, n11, PttAVM ve Shopier için net kâr ve minimum satış fiyatı hesaplayıcı.",
 };
 
 export default function RootLayout({

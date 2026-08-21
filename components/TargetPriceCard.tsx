@@ -20,6 +20,7 @@ const PLATFORM_LABEL: Record<MarketplacePlatform, string> = {
   hepsiburada: "Hepsiburada",
   shopier: "Shopier",
   n11: "n11",
+  pttavm: "PttAVM",
 };
 
 const QUICK_MARGINS = [10, 20, 30, 50, 100] as const;

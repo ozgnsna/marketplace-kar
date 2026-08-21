@@ -13,6 +13,7 @@ const PLATFORM_LABEL: Record<MarketplacePlatform, string> = {
   hepsiburada: "Hepsiburada",
   shopier: "Shopier",
   n11: "n11",
+  pttavm: "PttAVM",
 };
 
 const tryCurrency = new Intl.NumberFormat("tr-TR", {
@@ -384,6 +385,12 @@ export function ResultCard({
               {" "}
               N11’de komisyon, pazarlama hizmet bedeli ve pazaryeri hizmet bedeli birlikte
               hesaplanır; anlaşmalı kargo tablosu (KDV dahil) kullanılır.
+            </>
+          ) : null}
+          {platform === "pttavm" ? (
+            <>
+              {" "}
+              PttAVM’de seçili kategori komisyonu ve anlaşmalı PttAVM kargo (KDV dahil) kullanılır.
             </>
           ) : null}
         </p>

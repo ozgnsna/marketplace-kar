@@ -28,7 +28,7 @@ export function LandingHero({ onPrimaryCta }: LandingHeroProps) {
           </h1>
 
           <p className="mt-4 w-full max-w-none text-pretty text-base leading-relaxed text-white/70 md:text-lg md:leading-relaxed">
-            Trendyol, Hepsiburada, n11 ve Shopier için net kârını saniyeler içinde hesapla.
+            Trendyol, Hepsiburada, n11, PttAVM ve Shopier için net kârını saniyeler içinde hesapla.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-center text-center">

@@ -8,6 +8,10 @@ import {
   N11_COMMISSION_CATEGORIES,
   type N11CommissionCategoryRaw,
 } from "./n11CommissionCategories";
+import {
+  PTTAVM_COMMISSION_CATEGORIES,
+  type PttavmCommissionCategoryRaw,
+} from "./pttavmCommissionCategories";
 import { SHOPIER_COMMISSION_CATEGORIES } from "./shopierCommissionTiers";
 
 /**
@@ -16,6 +20,7 @@ import { SHOPIER_COMMISSION_CATEGORIES } from "./shopierCommissionTiers";
  * - Hepsiburada: `hepsiburada-commission-source.tsv` → `hepsiburadaCommissionCategories.generated.json`
  * - Shopier: `shopierCommissionTiers.ts` (aylık ciro dilimleri; kategori komisyonu yok)
  * - N11: `n11-commission-source.tsv` → `n11CommissionCategories.generated.json`
+ * - PttAVM: `pttavm-commission-source.tsv` → `pttavmCommissionCategories.generated.json`
  */
 
 export type CommissionCategoryRow = {
@@ -81,6 +86,19 @@ function mapN11RawToRow(raw: N11CommissionCategoryRaw): CommissionCategoryRow {
   };
 }
 
+function mapPttavmRawToRow(raw: PttavmCommissionCategoryRaw): CommissionCategoryRow {
+  return {
+    id: raw.id,
+    platform: "pttavm",
+    mainCategory: raw.mainCategory,
+    subCategory: raw.subCategory,
+    fullPath: raw.fullPath,
+    keywords: raw.keywords,
+    commissionRate: raw.commissionRate,
+    commissionLabel: raw.commissionLabel,
+  };
+}
+
 /** N11 KDV hariç % → formda KDV dahil */
 export function n11FeeInclVat(exclPercent: number): number {
   return Math.round(exclPercent * 1.2 * 1000) / 1000;
@@ -90,16 +108,18 @@ const ty = generated.trendyol as CommissionCategoryRow[];
 const hb = HB_COMMISSION_CATEGORIES.map(mapHbRawToRow);
 const shopier = SHOPIER_COMMISSION_CATEGORIES as CommissionCategoryRow[];
 const n11 = N11_COMMISSION_CATEGORIES.map(mapN11RawToRow);
+const pttavm = PTTAVM_COMMISSION_CATEGORIES.map(mapPttavmRawToRow);
 
 export const COMMISSION_CATEGORIES: Record<MarketplacePlatform, CommissionCategoryRow[]> = {
   trendyol: ty,
   hepsiburada: hb,
   shopier,
   n11,
+  pttavm,
 };
 
 const BY_ID = new Map<string, CommissionCategoryRow>();
-for (const row of [...ty, ...hb, ...shopier, ...n11]) {
+for (const row of [...ty, ...hb, ...shopier, ...n11, ...pttavm]) {
   BY_ID.set(row.id, row);
 }
 

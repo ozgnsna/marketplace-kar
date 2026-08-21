@@ -11,7 +11,7 @@ export default function YasalBilgilendirmePage() {
   return (
     <LegalPageShell title="Yasal Bilgilendirme">
       <p>
-        Pazarkar; Trendyol, Hepsiburada, n11, Shopier veya diğer pazaryeri markalarının resmi temsilcisi,
+        Pazarkar; Trendyol, Hepsiburada, n11, PttAVM, Shopier veya diğer pazaryeri markalarının resmi temsilcisi,
         iştiraki veya iş ortağı değildir. Bu platform üzerinde geçen ticari markalar ilgili hak
         sahiplerine aittir; yalnızca kullanıcıyı bilgilendirme amacıyla anılmaktadır.
       </p>

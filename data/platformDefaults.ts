@@ -59,4 +59,14 @@ export const platformDefaults: Record<MarketplacePlatform, PlatformDefaultProfil
     warehouseShippingFee: 0,
     otherFixed: 0,
   },
+  pttavm: {
+    serviceFee: 0,
+    packaging: 0,
+    stopajRate: 1,
+    paymentFeeRate: 1.2,
+    advertisingRate: 0,
+    listingFee: 0,
+    warehouseShippingFee: 0,
+    otherFixed: 0,
+  },
 };

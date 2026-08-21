@@ -9,6 +9,7 @@ import {
   n11KargoToInclVat,
   type N11CarrierId,
 } from "@/lib/n11Kargo";
+import { getPttavmKargoInclVat } from "@/lib/pttavmKargo";
 import {
   getShopierKargo,
   shopierAverageKargo,
@@ -90,6 +91,10 @@ export function getCargoPrice(
     return excl != null ? n11KargoToInclVat(excl) : null;
   }
 
+  if (platform === "pttavm") {
+    return getPttavmKargoInclVat(d);
+  }
+
   return null;
 }
 
@@ -143,6 +148,9 @@ export function listCargoCarriers(platform: MarketplacePlatform): { id: string; 
       { id: "kolayGelsin", label: "Kolay Gelsin" },
       { id: "dhl", label: "DHL e-Commerce" },
     ];
+  }
+  if (platform === "pttavm") {
+    return [{ id: "average", label: "PttAVM kargo" }];
   }
   return [{ id: "average", label: "Elle girilecek" }];
 }

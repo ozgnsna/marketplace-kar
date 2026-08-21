@@ -27,6 +27,7 @@ const PLATFORMS: {
   { id: "trendyol", label: "Trendyol", src: "/logos/trendyol.png", width: 280, height: 78 },
   { id: "hepsiburada", label: "Hepsiburada", src: "/logos/hepsiburada.png", width: 320, height: 85 },
   { id: "n11", label: "n11", src: "/logos/n11.jpg", width: 320, height: 180 },
+  { id: "pttavm", label: "PttAVM", src: "/logos/pttavm.png", width: 320, height: 180 },
   { id: "shopier", label: "Shopier", src: "/logos/shopier.png", width: 400, height: 240 },
 ];
 
@@ -34,7 +35,7 @@ const PLATFORMS: {
 export function PlatformLogoCards({ value, onChange }: PlatformLogoCardsProps) {
   return (
     <div
-      className="grid w-full max-w-2xl grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3"
+      className="grid w-full max-w-3xl grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5 sm:gap-3"
       role="radiogroup"
       aria-label="Pazaryeri seçin"
     >

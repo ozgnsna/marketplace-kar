@@ -13,6 +13,8 @@
     "generate:hepsiburada-commission": "node scripts/build-hepsiburada-commission-from-tsv.mjs",
     "generate:n11-commission": "node scripts/build-n11-commission-from-tsv.mjs",
     "generate:n11-kargo": "node scripts/build-n11-kargo-from-tsv.mjs",
+    "generate:pttavm-commission": "node scripts/build-pttavm-commission-from-tsv.mjs",
+    "generate:pttavm-kargo": "node scripts/build-pttavm-kargo-from-tsv.mjs",
     "start": "next start",
     "lint": "next lint"
   },

@@ -506,6 +506,12 @@ export function ProfitCalculator() {
                   dahil).
                 </p>
               ) : null}
+              {inputs.platform === "pttavm" ? (
+                <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+                  PttAVM’de ağacın her seviyesinin kendi komisyon oranı olabilir. Ürününüzün panelde
+                  atandığı kategori seviyesini seçin (genel veya daha spesifik).
+                </p>
+              ) : null}
             </FormStep>
 
             <FormStep
@@ -841,7 +847,9 @@ export function ProfitCalculator() {
                     ? "Trendyol sipariş başına platform hizmet bedeli; varsayılan yaklaşık tutar kullanılır."
                     : inputs.platform === "n11"
                       ? "N11’de sabit ₺ hizmet bedeli yok; yüzde kesintiler yukarıdaki alanlarda."
-                      : "Shopier işlem başına 0,49 TL (+KDV); varsayılan 0,59 TL KDV dahildir."}
+                      : inputs.platform === "pttavm"
+                        ? "PttAVM’de sabit ₺ hizmet bedeli varsayılanı 0; panelinizde ekstra kesinti varsa elle girin."
+                        : "Shopier işlem başına 0,49 TL (+KDV); varsayılan 0,59 TL KDV dahildir."}
               </p>
             </div>
 
