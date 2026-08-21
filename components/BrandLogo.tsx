@@ -42,6 +42,11 @@ export function BrandLogo({
       width={560}
       height={220}
       priority={priority}
+      sizes={
+        variant === "hero"
+          ? "(max-width: 640px) 85vw, 360px"
+          : "(max-width: 640px) 200px, 220px"
+      }
       className={`object-contain object-center ${sizeClass} ${blendClass} ${className}`}
     />
   );

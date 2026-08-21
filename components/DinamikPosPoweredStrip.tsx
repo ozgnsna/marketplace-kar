@@ -15,6 +15,8 @@ export function DinamikPosPoweredStrip() {
         alt="DinamikPOS"
         width={200}
         height={200}
+        sizes="152px"
+        loading="lazy"
         className="h-auto w-[8.5rem] object-contain sm:w-[9.5rem]"
       />
       <span className="text-center text-xs text-slate-500 sm:text-[13px]">

@@ -18,7 +18,6 @@ import { enrichBreakdown } from "@/lib/enrichBreakdown";
 import { getPaymentFeeRateByOrderAmount } from "@/lib/getPaymentFeeTier";
 import { applyPlatformDefaultsToInputs } from "@/lib/getPlatformDefaults";
 import { getCargoPrice, maxDesiForPlatform } from "@/lib/cargoPrice";
-import { LandingHero } from "@/components/landing/LandingHero";
 import { HomeGuideLinks } from "@/components/seo/HomeGuideLinks";
 import { Testimonials } from "@/components/Testimonials";
 import { PsychologyCard } from "@/components/landing/PsychologyCard";
@@ -370,13 +369,6 @@ export function ProfitCalculator() {
 
   const sheet = inputs.calculationMode === "sheet";
 
-  function scrollToCalculator() {
-    document.getElementById("hesaplama-basla")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-
   function applyDemoSample() {
     const demoCatId = "hb-33";
     const entry = findCommissionCategory("hepsiburada", demoCatId);
@@ -455,9 +447,7 @@ export function ProfitCalculator() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f3f5f9]">
-      <LandingHero onPrimaryCta={scrollToCalculator} />
-
+    <div className="bg-[#f3f5f9]">
       <div className="mx-auto max-w-6xl px-4 pb-8 pt-6 sm:px-6 sm:pb-10 sm:pt-10 lg:px-10">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start lg:gap-10">
           <section

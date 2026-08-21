@@ -57,8 +57,10 @@ export function PlatformLogoCards({ value, onChange }: PlatformLogoCardsProps) {
                 alt={p.label}
                 width={p.width}
                 height={p.height}
+                sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 140px"
                 className="max-h-full w-auto max-w-[95%] object-contain object-center"
-                priority={p.id !== "hepsiburada"}
+                /* Fold altı: priority/preload LCP (H1) ile bant genişliği yarışmasın */
+                loading="lazy"
               />
             </span>
             <span
