@@ -14,7 +14,7 @@ Komisyon oranları, kargo ücretleri ve diğer giderler pazaryerlerine, ürün k
 
 Pazarkar, sunulan verilerin doğruluğunu garanti etmez ve oluşabilecek mali kayıplardan sorumlu tutulamaz.
 
-Bu platform Trendyol, Hepsiburada veya Shopier ile resmi bir iş ortaklığı içinde değildir.
+Bu platform Trendyol, Hepsiburada, n11 veya Shopier ile resmi bir iş ortaklığı içinde değildir.
 
 Kullanıcılar, nihai satış kararlarını kendi ticari değerlendirmelerine göre vermelidir.`;
 

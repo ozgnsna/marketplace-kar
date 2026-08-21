@@ -5,14 +5,15 @@ import { pageMetadata } from "@/lib/seoMetadata";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata = pageMetadata({
-  title: "Pazaryeri Kâr Hesaplama — Trendyol, Hepsiburada, Shopier",
+  title: "Pazaryeri Kâr Hesaplama — Trendyol, Hepsiburada, n11, Shopier",
   description:
-    "Pazaryeri kâr hesaplama aracı: Trendyol komisyon hesaplama, Hepsiburada ve Shopier kesintileriyle net kâr ve minimum satış fiyatını ücretsiz hesaplayın.",
+    "Pazaryeri kâr hesaplama aracı: Trendyol, Hepsiburada, n11 ve Shopier kesintileriyle net kâr ve minimum satış fiyatını ücretsiz hesaplayın.",
   path: "/pazaryeri-kar-hesaplama",
   keywords: [
     "pazaryeri kar hesaplama",
     "pazaryeri kâr hesaplama",
     "trendyol komisyon hesaplama",
+    "n11 komisyon hesaplama",
     "marketplace kâr",
   ],
 });
@@ -24,7 +25,7 @@ const faq = [
   },
   {
     q: "Hangi pazaryerlerini kapsar?",
-    a: "Pazarkar; Trendyol, Hepsiburada ve Shopier için komisyon/kargo varsayımlarıyla net kâr hesaplamayı destekler.",
+    a: "Pazarkar; Trendyol, Hepsiburada, n11 ve Shopier için komisyon/kargo varsayımlarıyla net kâr hesaplamayı destekler.",
   },
   {
     q: "Trendyol komisyon hesaplama ile pazaryeri kâr hesabı aynı mı?",
@@ -64,8 +65,8 @@ export default function PazaryeriKarHesaplamaPage() {
 
         <div className="mt-6 space-y-5 text-sm leading-relaxed text-slate-700 sm:text-base">
           <p>
-            <strong>Pazaryeri kâr hesaplama</strong>, Trendyol, Hepsiburada veya Shopier&apos;de satış
-            yapan her satıcının düzenli yapması gereken temel kontroldür. Liste fiyatı ile alış
+            <strong>Pazaryeri kâr hesaplama</strong>, Trendyol, Hepsiburada, n11 veya Shopier&apos;de
+            satış yapan her satıcının düzenli yapması gereken temel kontroldür. Liste fiyatı ile alış
             fiyatını karşılaştırmak yanıltıcıdır; gerçek sonuç komisyon, kargo, kampanya ve iade
             sonrası kalan net tutardır. Bu sayfa, pazaryeri satışlarında net kârı nasıl
             hesaplayacağınızı ve fiyat kararını nasıl güvenli hale getireceğinizi anlatır.
@@ -99,13 +100,14 @@ export default function PazaryeriKarHesaplamaPage() {
           </p>
 
           <h2 className="text-xl font-semibold text-[#0B1F3B]">
-            Platform farkları: Trendyol, Hepsiburada, Shopier
+            Platform farkları: Trendyol, Hepsiburada, n11, Shopier
           </h2>
           <p>
-            Trendyol ve Hepsiburada kategori komisyonlarıyla çalışır; Shopier ise aylık ciro dilimine
-            göre işlem ücreti uygular. Kargo tabloları ve sabit bedeller de platforma göre değişir.
-            Bu nedenle aynı ürünü farklı pazaryerinde satarken ayrı model kurmak doğru yaklaşımdır.
-            Pazarkar aracı üç platformu tek ekranda karşılaştırmanıza yardımcı olur.
+            Trendyol, Hepsiburada ve n11 kategori komisyonlarıyla çalışır; n11’de ek olarak pazarlama
+            ve pazaryeri hizmet bedelleri vardır. Shopier ise aylık ciro dilimine göre işlem ücreti
+            uygular. Kargo tabloları ve sabit bedeller de platforma göre değişir. Bu nedenle aynı
+            ürünü farklı pazaryerinde satarken ayrı model kurmak doğru yaklaşımdır. Pazarkar aracı
+            dört platformu tek ekranda karşılaştırmanıza yardımcı olur.
           </p>
 
           <h2 className="text-xl font-semibold text-[#0B1F3B]">

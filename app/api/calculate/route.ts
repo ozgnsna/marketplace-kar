@@ -14,7 +14,9 @@ function parseInputs(body: unknown): ProfitInputs | null {
       ? "hepsiburada"
       : body.platform === "shopier"
         ? "shopier"
-        : "trendyol";
+        : body.platform === "n11"
+          ? "n11"
+          : "trendyol";
   const commissionCategoryId =
     typeof body.commissionCategoryId === "string" ? body.commissionCategoryId : "";
   const calculationMode =

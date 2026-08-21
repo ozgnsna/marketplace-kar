@@ -11,6 +11,8 @@
     "generate:trendyol-commission": "node scripts/build-trendyol-commission-from-tsv.mjs",
     "export:hepsiburada-commission-tsv": "node scripts/export-hepsiburada-ts-to-tsv.mjs",
     "generate:hepsiburada-commission": "node scripts/build-hepsiburada-commission-from-tsv.mjs",
+    "generate:n11-commission": "node scripts/build-n11-commission-from-tsv.mjs",
+    "generate:n11-kargo": "node scripts/build-n11-kargo-from-tsv.mjs",
     "start": "next start",
     "lint": "next lint"
   },

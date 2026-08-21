@@ -6,6 +6,7 @@ const GUIDES = [
   { href: "/trendyol-kar-hesaplama", label: "Trendyol kâr hesaplama" },
   { href: "/trendyol-komisyon-hesaplama", label: "Trendyol komisyon hesaplama" },
   { href: "/hepsiburada-komisyon-hesaplama", label: "Hepsiburada komisyon" },
+  { href: "/n11-komisyon-hesaplama", label: "n11 komisyon" },
   { href: "/shopier-komisyon-hesaplama", label: "Shopier komisyon" },
   { href: "/pazaryeri-komisyon-oranlari", label: "Komisyon oranları" },
 ] as const;

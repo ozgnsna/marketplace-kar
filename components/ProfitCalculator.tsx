@@ -12,7 +12,7 @@ import { TargetPriceCard } from "@/components/TargetPriceCard";
 import { PlatformCargoPicker } from "@/components/PlatformCargoPicker";
 import { CategorySearchCombobox } from "@/components/CategorySearchCombobox";
 import { DataFreshnessBadge } from "@/components/DataFreshnessBadge";
-import { findCommissionCategory } from "@/data/commissionCategories";
+import { findCommissionCategory, n11FeeInclVat } from "@/data/commissionCategories";
 import { DesiHelper } from "@/components/DesiHelper";
 import { enrichBreakdown } from "@/lib/enrichBreakdown";
 import { getPaymentFeeRateByOrderAmount } from "@/lib/getPaymentFeeTier";
@@ -159,7 +159,7 @@ export function ProfitCalculator() {
     }
     if (prevPlatformRef.current === inputs.platform) return;
     prevPlatformRef.current = inputs.platform;
-    setPaymentFeeAuto(inputs.platform !== "shopier");
+    setPaymentFeeAuto(inputs.platform !== "shopier" && inputs.platform !== "n11");
     setInputs((prev) =>
       applyPlatformDefaultsToInputs(inputs.platform, {
         ...prev,
@@ -171,7 +171,10 @@ export function ProfitCalculator() {
       hizmetBedeli: "platform_default",
       paketleme: "platform_default",
       stopajRate: "platform_default",
-      paymentFeeRate: inputs.platform === "shopier" ? "platform_default" : "auto",
+      paymentFeeRate:
+        inputs.platform === "shopier" || inputs.platform === "n11"
+          ? "platform_default"
+          : "auto",
       advertisingRate: "platform_default",
       listingFee: "platform_default",
       warehouseShippingFee: "platform_default",
@@ -183,7 +186,7 @@ export function ProfitCalculator() {
   }, [inputs.platform]);
 
   useEffect(() => {
-    if (!paymentFeeAuto || inputs.platform === "shopier") return;
+    if (!paymentFeeAuto || inputs.platform === "shopier" || inputs.platform === "n11") return;
     const rate = getPaymentFeeRateByOrderAmount(inputs.salePrice);
     setInputs((p) => (p.paymentFeeRate === rate ? p : { ...p, paymentFeeRate: rate }));
     setFieldSources((s) => ({ ...s, paymentFeeRate: "auto" }));
@@ -194,6 +197,27 @@ export function ProfitCalculator() {
     if (!id) return;
     const entry = findCommissionCategory(inputs.platform, id);
     if (!entry) return;
+    if (inputs.platform === "n11") {
+      const marketing =
+        entry.marketingFeePercent != null ? n11FeeInclVat(entry.marketingFeePercent) : undefined;
+      const marketplace =
+        entry.marketplaceFeePercent != null
+          ? n11FeeInclVat(entry.marketplaceFeePercent)
+          : undefined;
+      setInputs((p) => ({
+        ...p,
+        commissionRate: entry.commissionRate,
+        ...(marketing != null ? { advertisingRate: marketing } : {}),
+        ...(marketplace != null ? { paymentFeeRate: marketplace } : {}),
+      }));
+      setFieldSources((s) => ({
+        ...s,
+        commissionRate: "category",
+        ...(marketing != null ? { advertisingRate: "category" as const } : {}),
+        ...(marketplace != null ? { paymentFeeRate: "category" as const } : {}),
+      }));
+      return;
+    }
     setInputs((p) => ({ ...p, commissionRate: entry.commissionRate }));
     setFieldSources((s) => ({ ...s, commissionRate: "category" }));
   }, [inputs.platform, inputs.commissionCategoryId]);
@@ -475,6 +499,13 @@ export function ProfitCalculator() {
                   alanına yansıtılır.
                 </p>
               ) : null}
+              {inputs.platform === "n11" ? (
+                <p className="mt-2 text-[11px] leading-relaxed text-slate-500">
+                  N11’de komisyon + pazarlama hizmet bedeli + pazaryeri hizmet bedeli (%0,67)
+                  birlikte kesilir. Kategori seçince üçü de forma yansır (hizmet bedelleri KDV
+                  dahil).
+                </p>
+              ) : null}
             </FormStep>
 
             <FormStep
@@ -734,7 +765,9 @@ export function ProfitCalculator() {
               <div>
                 <NumberField
                   id="paymentFeeRate"
-                  label="Tahsilat yönetim"
+                  label={
+                    inputs.platform === "n11" ? "Pazaryeri hizmet bedeli" : "Tahsilat yönetim"
+                  }
                   suffix="%"
                   value={inputs.paymentFeeRate}
                   onChange={(v) => {
@@ -742,7 +775,13 @@ export function ProfitCalculator() {
                     setInput("paymentFeeRate", v, { fromUser: true });
                   }}
                 />
-                {inputs.platform !== "shopier" ? (
+                {inputs.platform === "shopier" ? (
+                  <p className="mt-1 text-[11px] text-slate-500">Shopier’de genelde 0.</p>
+                ) : inputs.platform === "n11" ? (
+                  <p className="mt-1 text-[11px] text-slate-500">
+                    N11 pazaryeri hizmet bedeli (KDV dahil; kaynak %0,67 + KDV).
+                  </p>
+                ) : (
                   <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-slate-500">
                     <span>
                       {paymentFeeAuto
@@ -759,8 +798,6 @@ export function ProfitCalculator() {
                       </button>
                     ) : null}
                   </p>
-                ) : (
-                  <p className="mt-1 text-[11px] text-slate-500">Shopier’de genelde 0.</p>
                 )}
               </div>
               <NumberField
@@ -772,7 +809,9 @@ export function ProfitCalculator() {
               />
               <NumberField
                 id="advertisingRate"
-                label="Reklam (varsa)"
+                label={
+                  inputs.platform === "n11" ? "Pazarlama hizmet bedeli" : "Reklam (varsa)"
+                }
                 suffix="%"
                 value={inputs.advertisingRate}
                 onChange={(v) => setInput("advertisingRate", v, { fromUser: true })}
@@ -800,7 +839,9 @@ export function ProfitCalculator() {
                   ? "Hepsiburada’da genelde sabit hizmet bedeli; hesabınıza göre değişebilir."
                   : inputs.platform === "trendyol"
                     ? "Trendyol sipariş başına platform hizmet bedeli; varsayılan yaklaşık tutar kullanılır."
-                    : "Shopier işlem başına 0,49 TL (+KDV); varsayılan 0,59 TL KDV dahildir."}
+                    : inputs.platform === "n11"
+                      ? "N11’de sabit ₺ hizmet bedeli yok; yüzde kesintiler yukarıdaki alanlarda."
+                      : "Shopier işlem başına 0,49 TL (+KDV); varsayılan 0,59 TL KDV dahildir."}
               </p>
             </div>
 

@@ -6,11 +6,12 @@ import { pageMetadata } from "@/lib/seoMetadata";
 export const metadata = pageMetadata({
   title: "Pazaryeri Komisyon Oranları ve Kâr Rehberi",
   description:
-    "Pazaryeri komisyon oranları: Trendyol, Hepsiburada kategori komisyonları ve Shopier ciro dilimi ile net kâr planı.",
+    "Pazaryeri komisyon oranları: Trendyol, Hepsiburada, n11 kategori komisyonları ve Shopier ciro dilimi ile net kâr planı.",
   path: "/pazaryeri-komisyon-oranlari",
   keywords: [
     "pazaryeri komisyon oranları",
     "trendyol komisyon hesaplama",
+    "n11 komisyon oranları",
     "pazaryeri kar hesaplama",
     "shopier komisyon",
   ],
@@ -55,17 +56,34 @@ export default function PazaryeriKomisyonOranlariPage() {
             varsa ürün kartını açmadan önce oranları karşılaştırmak gerekir.
           </p>
           <p>
-            Trendyol ve Hepsiburada gibi platformlarda komisyon listeleri zaman içinde güncellenebilir.
-            Bu yüzden birkaç ay önce çalışan bir marj modeli bugün geçersiz olabilir. Sağlıklı süreç için
-            komisyon güncellemelerini düzenli takip etmek, fiyatlama modelinizi belirli aralıklarla revize
-            etmek ve yeni oranları satış kararına hızlı yansıtmak gerekir. Trendyol özelinde{" "}
+            Trendyol, Hepsiburada ve n11 gibi platformlarda komisyon listeleri zaman içinde
+            güncellenebilir. Bu yüzden birkaç ay önce çalışan bir marj modeli bugün geçersiz
+            olabilir. Sağlıklı süreç için komisyon güncellemelerini düzenli takip etmek, fiyatlama
+            modelinizi belirli aralıklarla revize etmek ve yeni oranları satış kararına hızlı
+            yansıtmak gerekir. Trendyol özelinde{" "}
             <a
               href="/trendyol-komisyon-hesaplama"
               className="font-medium text-emerald-800 underline-offset-2 hover:underline"
             >
               Trendyol komisyon hesaplama
+            </a>
+            ; n11 için{" "}
+            <a
+              href="/n11-komisyon-hesaplama"
+              className="font-medium text-emerald-800 underline-offset-2 hover:underline"
+            >
+              n11 komisyon hesaplama
             </a>{" "}
             adımlarını da inceleyebilirsiniz.
+          </p>
+
+          <h2 className="text-xl font-semibold text-[#0B1F3B]">
+            n11 farkı: komisyon + iki hizmet bedeli
+          </h2>
+          <p>
+            n11 kategori komisyonuna ek olarak pazarlama hizmet bedeli ve sabit pazaryeri hizmet
+            bedeli (%0,67 + KDV) keser. Sadece komisyon yüzdesine bakmak net kârı şişirir; üç kalemi
+            birlikte modele alın.
           </p>
 
           <h2 className="text-xl font-semibold text-[#0B1F3B]">

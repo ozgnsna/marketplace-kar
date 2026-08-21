@@ -1,7 +1,7 @@
 export interface Announcement {
   /** URL slug — /duyuru/[slug] */
   slug: string;
-  platform: "trendyol" | "hepsiburada" | "shopier" | "genel";
+  platform: "trendyol" | "hepsiburada" | "shopier" | "n11" | "genel";
   /** Kısa, paylaşılabilir başlık. Örn: "Trendyol elektronikte komisyon %2 düştü" */
   title: string;
   /** 1-2 cümlelik açıklama */

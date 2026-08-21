@@ -7,6 +7,7 @@ const routes: { path: string; changeFrequency: MetadataRoute.Sitemap[0]["changeF
   { path: "/trendyol-komisyon-hesaplama", changeFrequency: "weekly", priority: 0.95 },
   { path: "/trendyol-kar-hesaplama", changeFrequency: "weekly", priority: 0.85 },
   { path: "/hepsiburada-komisyon-hesaplama", changeFrequency: "weekly", priority: 0.85 },
+  { path: "/n11-komisyon-hesaplama", changeFrequency: "weekly", priority: 0.85 },
   { path: "/shopier-komisyon-hesaplama", changeFrequency: "monthly", priority: 0.8 },
   { path: "/pazaryeri-komisyon-oranlari", changeFrequency: "weekly", priority: 0.85 },
   { path: "/trendyol-giyim-komisyon-hesaplama", changeFrequency: "weekly", priority: 0.75 },

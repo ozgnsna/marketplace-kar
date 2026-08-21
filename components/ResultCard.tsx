@@ -12,6 +12,7 @@ const PLATFORM_LABEL: Record<MarketplacePlatform, string> = {
   trendyol: "Trendyol",
   hepsiburada: "Hepsiburada",
   shopier: "Shopier",
+  n11: "n11",
 };
 
 const tryCurrency = new Intl.NumberFormat("tr-TR", {
@@ -376,6 +377,13 @@ export function ResultCard({
               {" "}
               Shopier’de seçili ciro dilimi, sabit işlem ücreti (0,59 ₺ KDV dahil) ve panel kargo
               kullanılır.
+            </>
+          ) : null}
+          {platform === "n11" ? (
+            <>
+              {" "}
+              N11’de komisyon, pazarlama hizmet bedeli ve pazaryeri hizmet bedeli birlikte
+              hesaplanır; anlaşmalı kargo tablosu (KDV dahil) kullanılır.
             </>
           ) : null}
         </p>

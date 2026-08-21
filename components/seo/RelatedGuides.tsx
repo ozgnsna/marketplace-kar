@@ -13,6 +13,7 @@ const DEFAULT_GUIDES: GuideLink[] = [
     href: "/hepsiburada-komisyon-hesaplama",
     label: "Hepsiburada komisyon hesaplama",
   },
+  { href: "/n11-komisyon-hesaplama", label: "n11 komisyon hesaplama" },
   { href: "/shopier-komisyon-hesaplama", label: "Shopier komisyon hesaplama" },
   { href: "/pazaryeri-komisyon-oranlari", label: "Pazaryeri komisyon oranları" },
   { href: "/trendyol-giyim-komisyon-hesaplama", label: "Trendyol giyim komisyonu" },

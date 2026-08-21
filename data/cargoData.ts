@@ -17,4 +17,7 @@ export const cargoData: Record<MarketplacePlatform, CargoCarrierTables> = {
   shopier: {
     average: {},
   },
+  n11: {
+    average: {},
+  },
 };

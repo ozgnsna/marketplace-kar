@@ -2,6 +2,7 @@
 
 import { getCargoPrice, listCargoCarriers, maxDesiForPlatform } from "@/lib/cargoPrice";
 import { HEPSIBURADA_CARGO_NOTE } from "@/lib/hepsiburadaKargo";
+import { N11_CARGO_NOTE } from "@/lib/n11Kargo";
 import { SHOPIER_CARGO_NOTE } from "@/lib/shopierKargo";
 import { TRENDYOL_CARGO_NOTE } from "@/lib/trendyolKargo";
 import type { MarketplacePlatform } from "@/types/profit";
@@ -17,18 +18,21 @@ type PlatformCargoPickerProps = {
 function cargoBorder(platform: MarketplacePlatform): string {
   if (platform === "trendyol") return "border-orange-100 bg-orange-50/60";
   if (platform === "hepsiburada") return "border-violet-100 bg-violet-50/60";
+  if (platform === "n11") return "border-fuchsia-100 bg-fuchsia-50/60";
   return "border-rose-100 bg-rose-50/60";
 }
 
 function cargoTitle(platform: MarketplacePlatform): string {
   if (platform === "trendyol") return "Trendyol anlaşmalı kargo (KDV dahil)";
   if (platform === "hepsiburada") return "Hepsiburada anlaşmalı kargo (KDV dahil)";
+  if (platform === "n11") return "n11 anlaşmalı kargo (KDV dahil)";
   return "Shopier anlaşmalı kargo";
 }
 
 function cargoNote(platform: MarketplacePlatform): string {
   if (platform === "trendyol") return TRENDYOL_CARGO_NOTE;
   if (platform === "hepsiburada") return HEPSIBURADA_CARGO_NOTE;
+  if (platform === "n11") return N11_CARGO_NOTE;
   return SHOPIER_CARGO_NOTE;
 }
 

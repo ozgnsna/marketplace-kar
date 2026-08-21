@@ -12,6 +12,7 @@ const PLATFORM_LABEL: Record<string, string> = {
   trendyol: "Trendyol",
   hepsiburada: "Hepsiburada",
   shopier: "Shopier",
+  n11: "n11",
 };
 
 function num(v: string | string[] | undefined, fallback = 0): number {

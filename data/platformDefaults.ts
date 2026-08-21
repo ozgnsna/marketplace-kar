@@ -47,4 +47,16 @@ export const platformDefaults: Record<MarketplacePlatform, PlatformDefaultProfil
     warehouseShippingFee: 0,
     otherFixed: 0,
   },
+  n11: {
+    serviceFee: 0,
+    packaging: 0,
+    stopajRate: 1,
+    /** Pazaryeri Hizmet Bedeli %0,67 + KDV → formda KDV dahil */
+    paymentFeeRate: Math.round(0.67 * 1.2 * 1000) / 1000,
+    /** Pazarlama Hizmet Bedeli varsayılan %1 + KDV (kategori seçince güncellenir) */
+    advertisingRate: Math.round(1 * 1.2 * 1000) / 1000,
+    listingFee: 0,
+    warehouseShippingFee: 0,
+    otherFixed: 0,
+  },
 };

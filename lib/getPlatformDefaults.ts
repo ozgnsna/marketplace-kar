@@ -20,7 +20,9 @@ export function applyPlatformDefaultsToInputs(
     paketleme: d.packaging,
     stopajRate: d.stopajRate,
     paymentFeeRate:
-      platform === "shopier" ? d.paymentFeeRate : getPaymentFeeRateByOrderAmount(prev.salePrice),
+      platform === "shopier" || platform === "n11"
+        ? d.paymentFeeRate
+        : getPaymentFeeRateByOrderAmount(prev.salePrice),
     advertisingRate: d.advertisingRate,
     listingFee: d.listingFee,
     warehouseShippingFee: d.warehouseShippingFee,

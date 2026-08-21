@@ -4,6 +4,12 @@ import {
   type HepsiburadaCarrierId,
 } from "@/lib/hepsiburadaKargo";
 import {
+  getN11KargoExclVat,
+  n11AverageKargoInclVat,
+  n11KargoToInclVat,
+  type N11CarrierId,
+} from "@/lib/n11Kargo";
+import {
   getShopierKargo,
   shopierAverageKargo,
   type ShopierCarrierId,
@@ -76,6 +82,14 @@ export function getCargoPrice(
     return getShopierKargo(d, carrierKey as ShopierCarrierId);
   }
 
+  if (platform === "n11") {
+    if (carrierKey === "average") {
+      return n11AverageKargoInclVat(d);
+    }
+    const excl = getN11KargoExclVat(d, carrierKey as N11CarrierId);
+    return excl != null ? n11KargoToInclVat(excl) : null;
+  }
+
   return null;
 }
 
@@ -111,12 +125,26 @@ export function listCargoCarriers(platform: MarketplacePlatform): { id: string; 
       { id: "horoz", label: "Horoz" },
     ];
   }
-  return [
-    { id: "average", label: "Ortalama fiyat (önerilen)" },
-    { id: "ptt", label: "PTT Kargo" },
-    { id: "dhl", label: "MNG (DHL eCommerce)" },
-    { id: "yurtici", label: "Yurtiçi Kargo" },
-  ];
+  if (platform === "shopier") {
+    return [
+      { id: "average", label: "Ortalama fiyat (önerilen)" },
+      { id: "ptt", label: "PTT Kargo" },
+      { id: "dhl", label: "MNG (DHL eCommerce)" },
+      { id: "yurtici", label: "Yurtiçi Kargo" },
+    ];
+  }
+  if (platform === "n11") {
+    return [
+      { id: "average", label: "Ortalama fiyat (önerilen)" },
+      { id: "aras", label: "Aras Kargo" },
+      { id: "surat", label: "Sürat Kargo" },
+      { id: "ptt", label: "PTT Kargo" },
+      { id: "yurtici", label: "Yurtiçi Kargo" },
+      { id: "kolayGelsin", label: "Kolay Gelsin" },
+      { id: "dhl", label: "DHL e-Commerce" },
+    ];
+  }
+  return [{ id: "average", label: "Elle girilecek" }];
 }
 
 export const MAX_DESI_OPTION = 33;

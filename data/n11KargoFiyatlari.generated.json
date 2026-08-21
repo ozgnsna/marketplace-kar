@@ -1,0 +1,920 @@
+[
+{
+"tier": "Dosya",
+"aras": 90.5,
+"surat": 95.32,
+"ptt": 81.82,
+"yurtici": 117.84,
+"kolayGelsin": 98.39,
+"dhl": 99.16
+},
+{
+"tier": "1",
+"aras": 90.5,
+"surat": 95.32,
+"ptt": 81.82,
+"yurtici": 117.84,
+"kolayGelsin": 98.39,
+"dhl": 99.16
+},
+{
+"tier": "2",
+"aras": 92.14,
+"surat": 95.32,
+"ptt": 81.82,
+"yurtici": 120.83,
+"kolayGelsin": 98.39,
+"dhl": 99.16
+},
+{
+"tier": "3",
+"aras": 102.81,
+"surat": 107.52,
+"ptt": 101.29,
+"yurtici": 128.5,
+"kolayGelsin": 108.89,
+"dhl": 112.35
+},
+{
+"tier": "4",
+"aras": 113.82,
+"surat": 117.25,
+"ptt": 102.88,
+"yurtici": 131.04,
+"kolayGelsin": 120.44,
+"dhl": 126.03
+},
+{
+"tier": "5",
+"aras": 122.05,
+"surat": 121.56,
+"ptt": 102.88,
+"yurtici": 146.32,
+"kolayGelsin": 129.89,
+"dhl": 137.75
+},
+{
+"tier": "6",
+"aras": 132.97,
+"surat": 133.13,
+"ptt": 106.25,
+"yurtici": 151.43,
+"kolayGelsin": 140.39,
+"dhl": 151.43
+},
+{
+"tier": "7",
+"aras": 141.02,
+"surat": 142.44,
+"ptt": 112.16,
+"yurtici": 171.1,
+"kolayGelsin": 149.84,
+"dhl": 160.22
+},
+{
+"tier": "8",
+"aras": 150.45,
+"surat": 151.1,
+"ptt": 123.97,
+"yurtici": 178.31,
+"kolayGelsin": 160.34,
+"dhl": 170.0
+},
+{
+"tier": "9",
+"aras": 159.07,
+"surat": 160.55,
+"ptt": 135.78,
+"yurtici": 188.91,
+"kolayGelsin": 169.79,
+"dhl": 181.72
+},
+{
+"tier": "10",
+"aras": 170.09,
+"surat": 169.74,
+"ptt": 153.48,
+"yurtici": 197.37,
+"kolayGelsin": 181.34,
+"dhl": 191.49
+},
+{
+"tier": "11",
+"aras": 179.27,
+"surat": 183.45,
+"ptt": 161.34,
+"yurtici": 210.2,
+"kolayGelsin": 191.83,
+"dhl": 201.26
+},
+{
+"tier": "12",
+"aras": 185.87,
+"surat": 191.17,
+"ptt": 169.22,
+"yurtici": 223.36,
+"kolayGelsin": 203.39,
+"dhl": 212.01
+},
+{
+"tier": "13",
+"aras": 194.3,
+"surat": 198.89,
+"ptt": 177.09,
+"yurtici": 230.64,
+"kolayGelsin": 213.89,
+"dhl": 221.78
+},
+{
+"tier": "14",
+"aras": 201.8,
+"surat": 206.61,
+"ptt": 184.95,
+"yurtici": 248.87,
+"kolayGelsin": 225.44,
+"dhl": 231.55
+},
+{
+"tier": "15",
+"aras": 209.24,
+"surat": 214.2,
+"ptt": 192.83,
+"yurtici": 262.11,
+"kolayGelsin": 236.99,
+"dhl": 246.2
+},
+{
+"tier": "16",
+"aras": 220.97,
+"surat": 222.19,
+"ptt": 200.7,
+"yurtici": 269.32,
+"kolayGelsin": 248.53,
+"dhl": 283.33
+},
+{
+"tier": "17",
+"aras": 232.63,
+"surat": 233.91,
+"ptt": 208.57,
+"yurtici": 284.17,
+"kolayGelsin": 260.09,
+"dhl": 297.01
+},
+{
+"tier": "18",
+"aras": 244.37,
+"surat": 245.62,
+"ptt": 216.44,
+"yurtici": 298.72,
+"kolayGelsin": 271.64,
+"dhl": 316.55
+},
+{
+"tier": "19",
+"aras": 256.06,
+"surat": 257.46,
+"ptt": 224.31,
+"yurtici": 305.07,
+"kolayGelsin": 283.19,
+"dhl": 341.95
+},
+{
+"tier": "20",
+"aras": 261.08,
+"surat": 269.18,
+"ptt": 232.18,
+"yurtici": 311.44,
+"kolayGelsin": 294.73,
+"dhl": 359.54
+},
+{
+"tier": "21",
+"aras": 274.24,
+"surat": 281.3,
+"ptt": 240.05,
+"yurtici": 329.33,
+"kolayGelsin": 306.29,
+"dhl": 373.22
+},
+{
+"tier": "22",
+"aras": 286.25,
+"surat": 292.08,
+"ptt": 245.96,
+"yurtici": 343.78,
+"kolayGelsin": 317.84,
+"dhl": 381.04
+},
+{
+"tier": "23",
+"aras": 298.24,
+"surat": 302.86,
+"ptt": 253.83,
+"yurtici": 352.24,
+"kolayGelsin": 329.39,
+"dhl": 408.39
+},
+{
+"tier": "24",
+"aras": 308.9,
+"surat": 313.64,
+"ptt": 261.7,
+"yurtici": 359.05,
+"kolayGelsin": 340.94,
+"dhl": 433.8
+},
+{
+"tier": "25",
+"aras": 319.5,
+"surat": 324.43,
+"ptt": 269.57,
+"yurtici": 383.82,
+"kolayGelsin": 352.49,
+"dhl": 460.18
+},
+{
+"tier": "26",
+"aras": 334.36,
+"surat": 334.81,
+"ptt": 277.45,
+"yurtici": 419.55,
+"kolayGelsin": 364.04,
+"dhl": 486.56
+},
+{
+"tier": "27",
+"aras": 347.93,
+"surat": 345.33,
+"ptt": 285.31,
+"yurtici": 439.02,
+"kolayGelsin": 375.59,
+"dhl": 512.94
+},
+{
+"tier": "28",
+"aras": 360.06,
+"surat": 355.71,
+"ptt": 293.19,
+"yurtici": 459.06,
+"kolayGelsin": 387.14,
+"dhl": 539.32
+},
+{
+"tier": "29",
+"aras": 373.97,
+"surat": 366.09,
+"ptt": 301.05,
+"yurtici": 474.79,
+"kolayGelsin": 398.69,
+"dhl": 565.7
+},
+{
+"tier": "30",
+"aras": 384.58,
+"surat": 376.48,
+"ptt": 308.92,
+"yurtici": 479.5,
+"kolayGelsin": 410.24,
+"dhl": 593.05
+},
+{
+"tier": "31",
+"aras": 397.15,
+"surat": 450.37,
+"ptt": 432.88,
+"yurtici": 493.27,
+"kolayGelsin": 421.74,
+"dhl": 628.21
+},
+{
+"tier": "32",
+"aras": 409.72,
+"surat": 463.41,
+"ptt": 442.72,
+"yurtici": 507.08,
+"kolayGelsin": 433.24,
+"dhl": 663.37
+},
+{
+"tier": "33",
+"aras": 422.29,
+"surat": 476.59,
+"ptt": 452.56,
+"yurtici": 520.82,
+"kolayGelsin": 444.74,
+"dhl": 698.53
+},
+{
+"tier": "34",
+"aras": 434.86,
+"surat": 489.63,
+"ptt": 464.36,
+"yurtici": 534.59,
+"kolayGelsin": 456.24,
+"dhl": 733.69
+},
+{
+"tier": "35",
+"aras": 447.43,
+"surat": 502.82,
+"ptt": 474.21,
+"yurtici": 548.39,
+"kolayGelsin": 467.74,
+"dhl": 768.85
+},
+{
+"tier": "36",
+"aras": 460.0,
+"surat": 515.86,
+"ptt": 484.03,
+"yurtici": 562.17,
+"kolayGelsin": 479.24,
+"dhl": 804.01
+},
+{
+"tier": "37",
+"aras": 472.57,
+"surat": 529.04,
+"ptt": 495.84,
+"yurtici": 576.0,
+"kolayGelsin": 490.74,
+"dhl": 839.17
+},
+{
+"tier": "38",
+"aras": 485.14,
+"surat": 542.09,
+"ptt": 505.68,
+"yurtici": 589.75,
+"kolayGelsin": 502.24,
+"dhl": 874.33
+},
+{
+"tier": "39",
+"aras": 497.71,
+"surat": 555.27,
+"ptt": 515.52,
+"yurtici": 603.57,
+"kolayGelsin": 513.74,
+"dhl": 909.49
+},
+{
+"tier": "40",
+"aras": 510.28,
+"surat": 574.44,
+"ptt": 527.32,
+"yurtici": 617.34,
+"kolayGelsin": 525.24,
+"dhl": 944.65
+},
+{
+"tier": "41",
+"aras": 522.85,
+"surat": 587.75,
+"ptt": 537.17,
+"yurtici": 631.13,
+"kolayGelsin": 536.74,
+"dhl": 979.81
+},
+{
+"tier": "42",
+"aras": 535.42,
+"surat": 600.93,
+"ptt": 547.0,
+"yurtici": 644.93,
+"kolayGelsin": 548.24,
+"dhl": 1014.97
+},
+{
+"tier": "43",
+"aras": 547.99,
+"surat": 614.24,
+"ptt": 558.8,
+"yurtici": 658.61,
+"kolayGelsin": 559.74,
+"dhl": 1050.13
+},
+{
+"tier": "44",
+"aras": 560.56,
+"surat": 627.42,
+"ptt": 568.65,
+"yurtici": 672.43,
+"kolayGelsin": 571.24,
+"dhl": 1085.29
+},
+{
+"tier": "45",
+"aras": 573.13,
+"surat": 640.74,
+"ptt": 578.48,
+"yurtici": 686.2,
+"kolayGelsin": 582.74,
+"dhl": 1120.45
+},
+{
+"tier": "46",
+"aras": 585.7,
+"surat": 653.91,
+"ptt": 590.29,
+"yurtici": 700.01,
+"kolayGelsin": 594.24,
+"dhl": 1155.61
+},
+{
+"tier": "47",
+"aras": 598.27,
+"surat": 667.22,
+"ptt": 600.13,
+"yurtici": 713.82,
+"kolayGelsin": 605.74,
+"dhl": 1190.77
+},
+{
+"tier": "48",
+"aras": 610.84,
+"surat": 680.41,
+"ptt": 609.97,
+"yurtici": 727.61,
+"kolayGelsin": 617.24,
+"dhl": 1225.93
+},
+{
+"tier": "49",
+"aras": 623.41,
+"surat": 693.72,
+"ptt": 621.77,
+"yurtici": 741.38,
+"kolayGelsin": 628.74,
+"dhl": 1261.09
+},
+{
+"tier": "50",
+"aras": 635.98,
+"surat": 706.89,
+"ptt": 631.62,
+"yurtici": 755.19,
+"kolayGelsin": 640.24,
+"dhl": 1296.25
+},
+{
+"tier": "51",
+"aras": 648.55,
+"surat": 720.21,
+"ptt": 645.9,
+"yurtici": 768.93,
+"kolayGelsin": 651.74,
+"dhl": 1331.41
+},
+{
+"tier": "52",
+"aras": 661.12,
+"surat": 733.39,
+"ptt": 660.2,
+"yurtici": 782.76,
+"kolayGelsin": 663.24,
+"dhl": 1366.57
+},
+{
+"tier": "53",
+"aras": 673.69,
+"surat": 746.7,
+"ptt": 674.49,
+"yurtici": 796.46,
+"kolayGelsin": 674.74,
+"dhl": 1401.73
+},
+{
+"tier": "54",
+"aras": 686.26,
+"surat": 759.88,
+"ptt": 688.79,
+"yurtici": 810.27,
+"kolayGelsin": 686.24,
+"dhl": 1436.89
+},
+{
+"tier": "55",
+"aras": 698.83,
+"surat": 773.19,
+"ptt": 703.08,
+"yurtici": 824.05,
+"kolayGelsin": 697.74,
+"dhl": 1472.05
+},
+{
+"tier": "56",
+"aras": 711.4,
+"surat": 786.37,
+"ptt": 717.37,
+"yurtici": 837.87,
+"kolayGelsin": 709.24,
+"dhl": 1507.21
+},
+{
+"tier": "57",
+"aras": 723.97,
+"surat": 799.69,
+"ptt": 731.66,
+"yurtici": 851.66,
+"kolayGelsin": 720.74,
+"dhl": 1542.37
+},
+{
+"tier": "58",
+"aras": 736.54,
+"surat": 812.86,
+"ptt": 745.95,
+"yurtici": 865.48,
+"kolayGelsin": 732.24,
+"dhl": 1577.53
+},
+{
+"tier": "59",
+"aras": 749.11,
+"surat": 826.17,
+"ptt": 760.25,
+"yurtici": 879.23,
+"kolayGelsin": 743.74,
+"dhl": 1612.69
+},
+{
+"tier": "60",
+"aras": 761.68,
+"surat": 839.36,
+"ptt": 774.54,
+"yurtici": 893.05,
+"kolayGelsin": 755.24,
+"dhl": 1647.85
+},
+{
+"tier": "61",
+"aras": 774.25,
+"surat": 852.67,
+"ptt": 788.84,
+"yurtici": 906.77,
+"kolayGelsin": 766.74,
+"dhl": 1683.01
+},
+{
+"tier": "62",
+"aras": 786.82,
+"surat": 865.85,
+"ptt": 803.13,
+"yurtici": 920.62,
+"kolayGelsin": 778.24,
+"dhl": 1718.17
+},
+{
+"tier": "63",
+"aras": 799.39,
+"surat": 879.16,
+"ptt": 817.42,
+"yurtici": 934.31,
+"kolayGelsin": 789.74,
+"dhl": 1753.33
+},
+{
+"tier": "64",
+"aras": 811.96,
+"surat": 892.34,
+"ptt": 831.71,
+"yurtici": 948.13,
+"kolayGelsin": 801.24,
+"dhl": 1788.49
+},
+{
+"tier": "65",
+"aras": 824.53,
+"surat": 905.65,
+"ptt": 846.0,
+"yurtici": 961.88,
+"kolayGelsin": 812.74,
+"dhl": 1823.65
+},
+{
+"tier": "66",
+"aras": 837.1,
+"surat": 918.83,
+"ptt": 860.3,
+"yurtici": 975.72,
+"kolayGelsin": 824.24,
+"dhl": 1858.81
+},
+{
+"tier": "67",
+"aras": 849.67,
+"surat": 932.14,
+"ptt": 874.59,
+"yurtici": 989.5,
+"kolayGelsin": 835.74,
+"dhl": 1893.97
+},
+{
+"tier": "68",
+"aras": 862.24,
+"surat": 945.33,
+"ptt": 888.89,
+"yurtici": 1003.31,
+"kolayGelsin": 847.24,
+"dhl": 1929.13
+},
+{
+"tier": "69",
+"aras": 874.81,
+"surat": 958.64,
+"ptt": 903.18,
+"yurtici": 1017.06,
+"kolayGelsin": 858.74,
+"dhl": 1964.29
+},
+{
+"tier": "70",
+"aras": 887.38,
+"surat": 971.81,
+"ptt": 917.46,
+"yurtici": 1030.88,
+"kolayGelsin": 870.24,
+"dhl": 1999.45
+},
+{
+"tier": "71",
+"aras": 899.95,
+"surat": 985.13,
+"ptt": 931.76,
+"yurtici": 1044.62,
+"kolayGelsin": 881.74,
+"dhl": 2034.61
+},
+{
+"tier": "72",
+"aras": 912.52,
+"surat": 998.31,
+"ptt": 946.05,
+"yurtici": 1058.47,
+"kolayGelsin": 893.24,
+"dhl": 2069.77
+},
+{
+"tier": "73",
+"aras": 925.09,
+"surat": 1011.62,
+"ptt": 960.35,
+"yurtici": 1072.17,
+"kolayGelsin": 904.74,
+"dhl": 2104.93
+},
+{
+"tier": "74",
+"aras": 937.66,
+"surat": 1024.8,
+"ptt": 974.64,
+"yurtici": 1085.98,
+"kolayGelsin": 916.24,
+"dhl": 2140.09
+},
+{
+"tier": "75",
+"aras": 950.23,
+"surat": 1038.11,
+"ptt": 988.93,
+"yurtici": 1099.76,
+"kolayGelsin": 927.74,
+"dhl": 2175.25
+},
+{
+"tier": "76",
+"aras": 962.8,
+"surat": 1051.29,
+"ptt": 1003.22,
+"yurtici": 1113.55,
+"kolayGelsin": 939.24,
+"dhl": 2210.41
+},
+{
+"tier": "77",
+"aras": 975.37,
+"surat": 1064.61,
+"ptt": 1017.51,
+"yurtici": 1127.32,
+"kolayGelsin": 950.74,
+"dhl": 2245.57
+},
+{
+"tier": "78",
+"aras": 987.94,
+"surat": 1077.78,
+"ptt": 1031.81,
+"yurtici": 1141.15,
+"kolayGelsin": 962.24,
+"dhl": 2280.73
+},
+{
+"tier": "79",
+"aras": 1000.51,
+"surat": 1091.09,
+"ptt": 1046.1,
+"yurtici": 1154.92,
+"kolayGelsin": 973.74,
+"dhl": 2315.89
+},
+{
+"tier": "80",
+"aras": 1013.08,
+"surat": 1104.28,
+"ptt": 1060.4,
+"yurtici": 1168.73,
+"kolayGelsin": 985.24,
+"dhl": 2351.05
+},
+{
+"tier": "81",
+"aras": 1025.65,
+"surat": 1117.59,
+"ptt": 1074.69,
+"yurtici": 1182.48,
+"kolayGelsin": 996.74,
+"dhl": 2386.21
+},
+{
+"tier": "82",
+"aras": 1038.22,
+"surat": 1130.76,
+"ptt": 1088.98,
+"yurtici": 1196.32,
+"kolayGelsin": 1008.24,
+"dhl": 2421.37
+},
+{
+"tier": "83",
+"aras": 1050.79,
+"surat": 1144.08,
+"ptt": 1103.27,
+"yurtici": 1210.0,
+"kolayGelsin": 1019.74,
+"dhl": 2456.53
+},
+{
+"tier": "84",
+"aras": 1063.36,
+"surat": 1157.26,
+"ptt": 1117.56,
+"yurtici": 1223.81,
+"kolayGelsin": 1031.24,
+"dhl": 2491.69
+},
+{
+"tier": "85",
+"aras": 1075.93,
+"surat": 1170.57,
+"ptt": 1131.86,
+"yurtici": 1237.62,
+"kolayGelsin": 1042.74,
+"dhl": 2526.85
+},
+{
+"tier": "86",
+"aras": 1088.5,
+"surat": 1183.75,
+"ptt": 1146.15,
+"yurtici": 1251.41,
+"kolayGelsin": 1054.24,
+"dhl": 2562.01
+},
+{
+"tier": "87",
+"aras": 1101.07,
+"surat": 1197.06,
+"ptt": 1160.45,
+"yurtici": 1265.18,
+"kolayGelsin": 1065.74,
+"dhl": 2597.17
+},
+{
+"tier": "88",
+"aras": 1113.64,
+"surat": 1210.24,
+"ptt": 1174.74,
+"yurtici": 1278.99,
+"kolayGelsin": 1077.24,
+"dhl": 2632.33
+},
+{
+"tier": "89",
+"aras": 1126.21,
+"surat": 1223.56,
+"ptt": 1189.02,
+"yurtici": 1292.76,
+"kolayGelsin": 1088.74,
+"dhl": 2667.49
+},
+{
+"tier": "90",
+"aras": 1138.78,
+"surat": 1236.73,
+"ptt": 1203.32,
+"yurtici": 1306.59,
+"kolayGelsin": 1100.24,
+"dhl": 2702.65
+},
+{
+"tier": "91",
+"aras": 1151.35,
+"surat": 1250.04,
+"ptt": 1217.61,
+"yurtici": 1320.37,
+"kolayGelsin": 1111.74,
+"dhl": 2737.81
+},
+{
+"tier": "92",
+"aras": 1163.92,
+"surat": 1263.23,
+"ptt": 1231.91,
+"yurtici": 1334.15,
+"kolayGelsin": 1123.24,
+"dhl": 2772.97
+},
+{
+"tier": "93",
+"aras": 1176.49,
+"surat": 1276.54,
+"ptt": 1246.2,
+"yurtici": 1347.85,
+"kolayGelsin": 1134.74,
+"dhl": 2808.13
+},
+{
+"tier": "94",
+"aras": 1189.06,
+"surat": 1289.72,
+"ptt": 1260.49,
+"yurtici": 1361.66,
+"kolayGelsin": 1146.24,
+"dhl": 2843.29
+},
+{
+"tier": "95",
+"aras": 1201.63,
+"surat": 1303.03,
+"ptt": 1274.78,
+"yurtici": 1375.47,
+"kolayGelsin": 1157.74,
+"dhl": 2878.45
+},
+{
+"tier": "96",
+"aras": 1214.2,
+"surat": 1316.21,
+"ptt": 1289.07,
+"yurtici": 1389.21,
+"kolayGelsin": 1169.24,
+"dhl": 2913.61
+},
+{
+"tier": "97",
+"aras": 1226.77,
+"surat": 1329.39,
+"ptt": 1303.37,
+"yurtici": 1403.03,
+"kolayGelsin": 1180.74,
+"dhl": 2948.77
+},
+{
+"tier": "98",
+"aras": 1239.34,
+"surat": 1342.7,
+"ptt": 1317.66,
+"yurtici": 1416.77,
+"kolayGelsin": 1192.24,
+"dhl": 2983.93
+},
+{
+"tier": "99",
+"aras": 1251.91,
+"surat": 1356.01,
+"ptt": 1331.96,
+"yurtici": 1430.6,
+"kolayGelsin": 1203.74,
+"dhl": 3019.09
+},
+{
+"tier": "100",
+"aras": 1264.48,
+"surat": 1369.2,
+"ptt": 1346.25,
+"yurtici": 1444.41,
+"kolayGelsin": 1215.24,
+"dhl": 3054.25
+},
+{
+"tier": "+",
+"aras": 12.57,
+"surat": 14.38,
+"ptt": 27.0,
+"yurtici": 13.79,
+"kolayGelsin": 11.5,
+"dhl": 35.16
+}
+]
