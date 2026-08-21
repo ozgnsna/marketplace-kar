@@ -26,7 +26,7 @@ const PLATFORMS: {
 }[] = [
   { id: "trendyol", label: "Trendyol", src: "/logos/trendyol.png", width: 280, height: 78 },
   { id: "hepsiburada", label: "Hepsiburada", src: "/logos/hepsiburada.png", width: 320, height: 85 },
-  { id: "n11", label: "n11", src: "/logos/n11.png", width: 320, height: 180 },
+  { id: "n11", label: "n11", src: "/logos/n11.jpg", width: 320, height: 180 },
   { id: "shopier", label: "Shopier", src: "/logos/shopier.png", width: 400, height: 240 },
 ];
 
