@@ -67,6 +67,31 @@ Kaynak sayfada KDV/ek ücret istisnası notu N11'deki kadar net görünmüyordu 
 entegrasyon öncesi PttAVM panelinden bu fiyatlara nelerin dahil olduğu teyit
 edilmesi önerilir.
 
+### Düzeltilmiş anomali: "#N/A" kategori adı (22.08.2026, canlı sitede tespit edildi)
+
+Komisyon PDF'inin kenar listesinde 13 kategori (id: 24, 26, 27, 28, 29, 30, 31,
+32, 33, 34, 35, 36, 4125 — Dizüstü Bilgisayarlar, Tabletler, Veri Depolama,
+Bilgisayar Bileşenleri, Çevre Birimleri, Monitörler, Yazılım Ürünleri, Ağ &
+Modem, Yazıcı & Aksesuarları, Barkod Ürünleri, Yenilenmiş & İkinci El Ürünler,
+Bilgisayar Aksesuarları, Sunucu) `parentId=17` taşıyor, ama **id=17'nin kendi
+satırı PDF'te hiç yok** — bu yüzden PTT'nin export'unda bu 13 kategorinin
+`parentName` hücresi literal olarak `"#N/A"` yazıyordu (muhtemelen PDF Excel'den
+export edilirken bir VLOOKUP/formül hatası). Bu, `fullPath`'e sızıp
+`pazarkar.com`'da "#N/A > Dizüstü Bilgisayarlar Aksesuarları" gibi görünüyordu
+(119 kayıt etkilendi — 13 doğrudan + tüm alt kategorileri; **komisyon oranları
+etkilenmedi**, sadece görüntülenen yol bozuktu).
+
+**Düzeltme:** `pttavm-commission-source.tsv`'de bu 13 satırın `parentName`
+sütunu `"#N/A"` yerine **"Bilgisayar & Tablet"** olarak dolduruldu ve JSON
+yeniden derlendi. Bu isim PDF'te doğrudan teyit edilmedi — id=17'nin, id=25
+("Elektronik > Bilgisayar & Tablet", %20) adlı ayrı/doğru kayıtlı kategoriden
+farklı, muhtemelen yeniden yapılandırma sırasında PDF export'ta koptuğu için
+kendi satırını kaybetmiş bir **kopya/yetim düğüm** olduğu değerlendirildi —
+13 çocuğunun hepsinin (dizüstü, tablet, depolama, bileşen, çevre birimi vb.)
+tipik bir "Bilgisayar & Tablet" alt kırılımı olması bu tahmini güçlü kılıyor.
+PTT panelinden teyit edilirse ve farklı bir isim çıkarsa, aynı TSV'deki 13
+satırda tek noktadan düzeltilip yeniden derlenebilir.
+
 ## Önerilen entegrasyon adımları (N11 ile aynı deseni izleyerek)
 
 1. `types/profit.ts` → `MarketplacePlatform` tipine `"pttavm"` ekle (N11

@@ -160,19 +160,19 @@ id	parentId	parentName	name	commissionRate
 4094	16	Film & Müzik & Oyun	Film	15
 4099	16	Film & Müzik & Oyun	Müzik	15
 4113	16	Film & Müzik & Oyun	Video Oyunu	15
-24	17	#N/A	Dizüstü Bilgisayarlar	6
-26	17	#N/A	Tabletler	6
-27	17	#N/A	Veri Depolama	10
-28	17	#N/A	Bilgisayar Bileşenleri	8
-29	17	#N/A	Çevre Birimleri	12
-30	17	#N/A	Monitörler	8
-31	17	#N/A	Yazılım Ürünleri	40
-32	17	#N/A	Ağ & Modem	10
-33	17	#N/A	Yazıcı & Aksesuarları	8
-34	17	#N/A	Barkod Ürünleri	10
-35	17	#N/A	Yenilenmiş & İkinci El Ürünler	15
-36	17	#N/A	Bilgisayar Aksesuarları	20
-4125	17	#N/A	Sunucu	8
+24	17	Bilgisayar & Tablet	Dizüstü Bilgisayarlar	6
+26	17	Bilgisayar & Tablet	Tabletler	6
+27	17	Bilgisayar & Tablet	Veri Depolama	10
+28	17	Bilgisayar & Tablet	Bilgisayar Bileşenleri	8
+29	17	Bilgisayar & Tablet	Çevre Birimleri	12
+30	17	Bilgisayar & Tablet	Monitörler	8
+31	17	Bilgisayar & Tablet	Yazılım Ürünleri	40
+32	17	Bilgisayar & Tablet	Ağ & Modem	10
+33	17	Bilgisayar & Tablet	Yazıcı & Aksesuarları	8
+34	17	Bilgisayar & Tablet	Barkod Ürünleri	10
+35	17	Bilgisayar & Tablet	Yenilenmiş & İkinci El Ürünler	15
+36	17	Bilgisayar & Tablet	Bilgisayar Aksesuarları	20
+4125	17	Bilgisayar & Tablet	Sunucu	8
 37	18	Beyaz Eşya	Buzdolapları	12
 38	18	Beyaz Eşya	Çamaşır Makineleri	12
 39	18	Beyaz Eşya	Bulaşık Makineleri	12
