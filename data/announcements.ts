@@ -23,14 +23,15 @@ export interface Announcement {
  * Slug önerisi: "platform-kategori-ay-yil", örn. "trendyol-elektronik-eylul-2026".
  */
 export const ANNOUNCEMENTS: Announcement[] = [
-  // {
-  //   slug: "trendyol-elektronik-eylul-2026",
-  //   platform: "trendyol",
-  //   title: "Trendyol elektronik aksesuarda komisyon %2 düştü",
-  //   summary: "Eylül 2026 itibarıyla elektronik aksesuar alt kategorisinde komisyon oranı güncellendi.",
-  //   date: "2026-09-01",
-  //   relatedGuideHref: "/trendyol-elektronik-komisyon-hesaplama",
-  // },
+  {
+    slug: "hepsiburada-kargo-ekim-2026",
+    platform: "hepsiburada",
+    title: "Hepsiburada anlaşmalı kargo fiyatları güncellendi",
+    summary:
+      "5 Ekim 2026 itibarıyla geçerli yeni kargo tablosu yayında. HepsiJet, CEVA ve Horoz başta olmak üzere birçok desi kademesinde artış var; hesaplayıcıdaki Hepsiburada kargo alanına yansıtıldı.",
+    date: "2026-10-05",
+    relatedGuideHref: "/hepsiburada-komisyon-hesaplama",
+  },
 ];
 
 export function getAnnouncementBySlug(slug: string): Announcement | undefined {
