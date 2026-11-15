@@ -4,11 +4,11 @@ import Image from "next/image";
 export function DinamikPosPoweredStrip() {
   return (
     <a
-      href="https://dinamikpos.com.tr/"
+      href="https://www.dinamikpos.com/"
       target="_blank"
       rel="noopener noreferrer"
       className="group inline-flex flex-col items-center gap-2 rounded-xl outline-none transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
-      aria-label="DinamikPOS — dinamikpos.com.tr (yeni sekmede açılır)"
+      aria-label="DinamikPOS — dinamikpos.com (yeni sekmede açılır)"
     >
       <Image
         src="/dinamikpos-logo.png"
