@@ -12,6 +12,7 @@ import {
 import { getPttavmKargoInclVat } from "@/lib/pttavmKargo";
 import {
   getShopierKargo,
+  SHOPIER_MAX_DESI,
   shopierAverageKargo,
   type ShopierCarrierId,
 } from "@/lib/shopierKargo";
@@ -156,8 +157,8 @@ export function listCargoCarriers(platform: MarketplacePlatform): { id: string; 
 
 export const MAX_DESI_OPTION = 33;
 
-/** Platforma göre desi seçenek üst sınırı (Shopier panel 0–12) */
+/** Platforma göre desi seçenek üst sınırı (Shopier panel 0–25) */
 export function maxDesiForPlatform(platform: MarketplacePlatform): number {
-  if (platform === "shopier") return 12;
+  if (platform === "shopier") return SHOPIER_MAX_DESI;
   return MAX_DESI_OPTION;
 }
