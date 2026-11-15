@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { enrichBreakdown, sourceLabel, type EnrichedBreakdownRow } from "@/lib/enrichBreakdown";
-import { encodeShareBreakdown } from "@/lib/shareBreakdown";
+import { buildSharePath } from "@/lib/shareBreakdown";
 import type { MarketplacePlatform, ProfitInputs, ProfitResult } from "@/types/profit";
 import { getProfitStatus } from "@/lib/getProfitStatus";
 
@@ -135,14 +135,16 @@ export function ResultCard({
     const text = buildShareText(inputs.salePrice, netProfit);
     let url = "https://www.pazarkar.com/sonuc";
     if (typeof window !== "undefined") {
-      const shareUrl = new URL("/sonuc", window.location.origin);
-      shareUrl.searchParams.set("platform", platform);
-      shareUrl.searchParams.set("netProfit", String(Math.round(netProfit)));
-      shareUrl.searchParams.set("marginPercent", profitMarginPercent.toFixed(1));
-      shareUrl.searchParams.set("salePrice", String(Math.round(inputs.salePrice)));
-      const breakdown = encodeShareBreakdown(result.breakdown);
-      if (breakdown) shareUrl.searchParams.set("bd", breakdown);
-      url = shareUrl.toString();
+      url = new URL(
+        buildSharePath({
+          platform,
+          netProfit,
+          marginPercent: profitMarginPercent,
+          salePrice: inputs.salePrice,
+          breakdown: result.breakdown,
+        }),
+        window.location.origin
+      ).toString();
     }
     const sharePayload = { title: "Pazarkar kâr hesabı", text, url };
 
