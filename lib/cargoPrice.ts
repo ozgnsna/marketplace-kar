@@ -109,7 +109,6 @@ export function listCargoCarriers(platform: MarketplacePlatform): { id: string; 
       { id: "surat", label: "Sürat" },
       { id: "tex", label: "TEX" },
       { id: "yurtici", label: "Yurtiçi" },
-      { id: "cevaTedarik", label: "CEVA Tedarik" },
       { id: "ceva", label: "CEVA" },
       { id: "horoz", label: "Horoz" },
     ];
