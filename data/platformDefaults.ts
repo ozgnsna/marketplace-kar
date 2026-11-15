@@ -12,6 +12,14 @@ export type PlatformDefaultProfile = {
   otherFixed: number;
 };
 
+/** HepsiJet dışındaki HB gönderilerinde sipariş başı hizmet bedeli (KDV dahil). */
+export const HEPSIBURADA_HIZMET_BEDELI = 13.19;
+
+/** HepsiJet ile gönderimde HB hizmet bedeli kesmez. */
+export function hepsiburadaHizmetBedeli(carrierKey: string): number {
+  return carrierKey === "hepsiJet" ? 0 : HEPSIBURADA_HIZMET_BEDELI;
+}
+
 /** Platform varsayılan gider profili (panel / sözleşmeye göre güncellenir). */
 export const platformDefaults: Record<MarketplacePlatform, PlatformDefaultProfile> = {
   trendyol: {
@@ -26,7 +34,8 @@ export const platformDefaults: Record<MarketplacePlatform, PlatformDefaultProfil
     otherFixed: 0,
   },
   hepsiburada: {
-    serviceFee: 12.6,
+    /** HepsiJet değilse 13,19₺; HepsiJet seçilince formda 0 yazılır */
+    serviceFee: HEPSIBURADA_HIZMET_BEDELI,
     packaging: 2.5,
     stopajRate: 1,
     paymentFeeRate: 1.5,

@@ -17,6 +17,7 @@ import { DesiHelper } from "@/components/DesiHelper";
 import { enrichBreakdown } from "@/lib/enrichBreakdown";
 import { getPaymentFeeRateByOrderAmount } from "@/lib/getPaymentFeeTier";
 import { applyPlatformDefaultsToInputs } from "@/lib/getPlatformDefaults";
+import { hepsiburadaHizmetBedeli } from "@/data/platformDefaults";
 import { getCargoPrice, maxDesiForPlatform } from "@/lib/cargoPrice";
 import { HomeGuideLinks } from "@/components/seo/HomeGuideLinks";
 import { Testimonials } from "@/components/Testimonials";
@@ -228,6 +229,15 @@ export function ProfitCalculator() {
     setInputs((prev) => ({ ...prev, kargo: p }));
     setFieldSources((s) => ({ ...s, kargo: "cargo_auto" }));
   }, [inputs.platform, cargoCarrier, cargoDesi, kargoAuto]);
+
+  useEffect(() => {
+    if (inputs.platform !== "hepsiburada") return;
+    const fee = hepsiburadaHizmetBedeli(cargoCarrier);
+    setInputs((prev) => (prev.hizmetBedeli === fee ? prev : { ...prev, hizmetBedeli: fee }));
+    setFieldSources((s) =>
+      s.hizmetBedeli === "platform_default" ? s : { ...s, hizmetBedeli: "platform_default" }
+    );
+  }, [inputs.platform, cargoCarrier]);
 
   async function fetchTcmbRate() {
     setTcmbLoading(true);
@@ -832,7 +842,7 @@ export function ProfitCalculator() {
               />
               <p className="mt-1 text-[11px] leading-relaxed text-slate-500">
                 {inputs.platform === "hepsiburada"
-                  ? "Hepsiburada’da genelde sabit hizmet bedeli; hesabınıza göre değişebilir."
+                  ? "HepsiJet ile gönderimde hizmet bedeli 0₺. Diğer kargolarda sipariş başı 13,19₺."
                   : inputs.platform === "trendyol"
                     ? "Trendyol sipariş başına platform hizmet bedeli; varsayılan yaklaşık tutar kullanılır."
                     : inputs.platform === "n11"
