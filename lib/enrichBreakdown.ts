@@ -59,6 +59,10 @@ const DESCRIPTIONS: Record<string, string> = {
   "Alış fiyatı (KDV dahil)": "Ürün maliyeti (KDV dahil).",
 };
 
+export function describeBreakdownLabel(label: string): string | undefined {
+  return DESCRIPTIONS[label];
+}
+
 function sourceLabel(tag: FieldSourceTag | undefined): string {
   if (!tag) return "";
   switch (tag) {

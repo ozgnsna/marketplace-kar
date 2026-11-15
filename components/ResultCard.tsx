@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { enrichBreakdown, sourceLabel, type EnrichedBreakdownRow } from "@/lib/enrichBreakdown";
+import { encodeShareBreakdown } from "@/lib/shareBreakdown";
 import type { MarketplacePlatform, ProfitInputs, ProfitResult } from "@/types/profit";
 import { getProfitStatus } from "@/lib/getProfitStatus";
 
@@ -139,6 +140,8 @@ export function ResultCard({
       shareUrl.searchParams.set("netProfit", String(Math.round(netProfit)));
       shareUrl.searchParams.set("marginPercent", profitMarginPercent.toFixed(1));
       shareUrl.searchParams.set("salePrice", String(Math.round(inputs.salePrice)));
+      const breakdown = encodeShareBreakdown(result.breakdown);
+      if (breakdown) shareUrl.searchParams.set("bd", breakdown);
       url = shareUrl.toString();
     }
     const sharePayload = { title: "Pazarkar kâr hesabı", text, url };

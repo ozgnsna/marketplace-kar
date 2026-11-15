@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideCta } from "@/components/seo/GuideCta";
+import { describeBreakdownLabel } from "@/lib/enrichBreakdown";
 import { getProfitStatus } from "@/lib/getProfitStatus";
+import { decodeShareBreakdown } from "@/lib/shareBreakdown";
 import { SITE_URL } from "@/lib/site";
 
 export const runtime = "edge";
@@ -31,6 +33,13 @@ const tryFmt = new Intl.NumberFormat("tr-TR", {
   style: "currency",
   currency: "TRY",
   maximumFractionDigits: 0,
+});
+
+const tryDetailFmt = new Intl.NumberFormat("tr-TR", {
+  style: "currency",
+  currency: "TRY",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
 });
 
 /**
@@ -89,6 +98,8 @@ export default async function SonucPage({ searchParams }: { searchParams: Search
   const salePrice = num(sp.salePrice);
   const status = getProfitStatus({ netProfit, profitMarginPercent: marginPercent });
   const platformLabel = PLATFORM_LABEL[platform] ?? "Pazaryeri";
+  const breakdown = decodeShareBreakdown(str(sp.bd));
+  const totalExpenses = breakdown.reduce((sum, row) => sum + row.amount, 0);
 
   const statusColorClass =
     status.status === "zarar"
@@ -109,10 +120,42 @@ export default async function SonucPage({ searchParams }: { searchParams: Search
         <p className={`mt-4 text-5xl font-bold tabular-nums ${statusColorClass}`}>
           {tryFmt.format(netProfit)}
         </p>
-        <p className="mt-1 text-base text-slate-600">net kâr bırakıyor.</p>
+        <p className="mt-1 text-base text-slate-600">
+          {netProfit < 0 ? "zarar yazıyor." : "net kâr bırakıyor."}
+        </p>
         <p className="mt-3 text-sm font-medium text-slate-700">
           Marj: %{marginPercent.toFixed(1).replace(".", ",")} — {status.label}
         </p>
+
+        {breakdown.length > 0 ? (
+          <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-5">
+            <h2 className="text-sm font-semibold text-[#0B1F3B]">Hesap detayı</h2>
+            <ul className="mt-3 space-y-3 border-t border-slate-100 pt-3">
+              {breakdown.map((row) => {
+                const description = describeBreakdownLabel(row.label);
+                return (
+                  <li key={row.label} className="text-sm text-slate-600">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0 flex-1">
+                        <span className="font-medium text-slate-800">{row.label}</span>
+                        {description ? (
+                          <p className="mt-1 text-[11px] leading-snug text-slate-500">{description}</p>
+                        ) : null}
+                      </div>
+                      <span className="shrink-0 font-medium tabular-nums text-slate-900">
+                        {tryDetailFmt.format(row.amount)}
+                      </span>
+                    </div>
+                  </li>
+                );
+              })}
+              <li className="flex items-center justify-between border-t border-slate-100 pt-2 text-sm font-semibold text-slate-900">
+                <span>Toplam gider</span>
+                <span className="tabular-nums">{tryDetailFmt.format(totalExpenses)}</span>
+              </li>
+            </ul>
+          </section>
+        ) : null}
 
         <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-5">
           <p className="text-sm leading-relaxed text-slate-600">
